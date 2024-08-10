@@ -20,8 +20,9 @@ class CompanySignUp (Resource):
                 facebook_link = request.json.get('facebook_link'),
                 instagram_link = request.json.get('instagram_link'),
                 linkedin_link = request.json.get('linkedin_link'),
+                logo = request.json.get('logo'),
                 admin_email = request.json.get('admin_email'),
-                hashed_password = request.json.get('hashed_password'),
+                hashed_password = request.json.get('hashed_password')
             )
 
         db.session.add(company)

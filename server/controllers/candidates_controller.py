@@ -15,7 +15,9 @@ class CandidateSignUp (Resource):
                 first_name = request.json.get('first_name'),
                 last_name = request.json.get('last_name'),
                 email = request.json.get('email'),
-                hashed_password = request.json.get('hashed_password')
+                hashed_password = request.json.get('hashed_password'),
+                preferred_department = request.json.get('preferred_department'),
+                preferred_industry = request.json.get('preferred_industry')
             )
 
         db.session.add(candidate)

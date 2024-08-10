@@ -15,6 +15,8 @@ class Candidate (db.Model, SerializerMixin):
     last_name = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False, unique=True)
     _hashed_password = db.Column(db.String, nullable=False)
+    preferred_industry = db.Column(db.String)
+    preferred_department = db.Column(db.String)
 
     saved_jobs = db.relationship('SavedJob', back_populates='candidate', cascade='all,delete-orphan')
     jobs = association_proxy('saved_jobs', 'job', creator=lambda j:SavedJob(job=j))
@@ -42,6 +44,24 @@ class Candidate (db.Model, SerializerMixin):
 
         return email
 
+    @validates('preferred_industry')
+    def validate_preferred_industry(self, key, preferred_industry):
+        industries = ["agriculture, forestry & fishing","construction","consumer goods & services","education","health","hospitality, travel & lesiure","legal & financial services","media & telecommunications","manufacturing","mining","technology & software"]
+
+        if preferred_industry.lower() not in industries:
+            raise ValueError("Industry must be from the predefined list")
+
+        return preferred_industry
+
+    @validates('preferred_department')
+    def validate_preferred_department(self, key, preferred_department):
+        departments = ["co-founder","customer services","data & analytics","design","finance","human resources","legal","marketing","operations","sales","technology"]
+
+        if preferred_department.lower() not in departments:
+            raise ValueError("Department must be from the predefined list")
+
+        return preferred_department
+
     @hybrid_property
     def hashed_password (self):
         return self._hashed_password
@@ -65,6 +85,7 @@ class Company (db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False, unique=True)
+    logo = db.Column(db.String)
     abn = db.Column(db.Integer, unique=True)
     size = db.Column(db.Integer, nullable=False)
     industry = db.Column(db.String, nullable=False)
@@ -116,7 +137,7 @@ class Company (db.Model, SerializerMixin):
 
     @validates('industry')
     def validate_industry(self, key, industry):
-        industries = ["agriculture","construction","health & education","financial services","hospitality","legal","manufactuting","retail & consumer goods","technology"]
+        industries = ["agriculture, forestry & fishing","construction","consumer goods & services","education","health","hospitality, travel & lesiure","legal & financial services","media & telecommunications","manufacturing","mining","technology & software"]
 
         if industry.lower() not in industries:
             raise ValueError("Industry must be from the predefined list")
@@ -137,7 +158,7 @@ class Company (db.Model, SerializerMixin):
 
         return admin_email
 
-    @validates('website_link','facebook_link','instagram_link','linkedin_link')
+    @validates('website_link','facebook_link','instagram_link','linkedin_link',"logo")
     def validate_links(self, key, value):
 
         if value: 
@@ -176,6 +197,7 @@ class Job (db.Model, SerializerMixin):
     application_link = db.Column(db.String, nullable=False)
     location = db.Column(db.String, nullable=False)
     experience = db.Column(db.String)
+    job_type = db.Column(db.String, nullable=False)
     closing_date = db.Column(db.DateTime)
     date_posted = db.Column(db.DateTime)
 
@@ -187,12 +209,21 @@ class Job (db.Model, SerializerMixin):
 
     @validates('department')
     def validate_department(self, key, department):
-        departments = ["management","hr","finance","operations","tech","marketing","legal","customer services"]
+        departments = ["co-founder","customer services","data & analytics","design","finance","human resources","legal","marketing","operations","sales","technology"]
 
         if department.lower() not in departments:
             raise ValueError("Department must be from the predefined list")
 
         return department
+
+    @validates('job_type')
+    def validate_job_type(self, key, job_type):
+        job_types = ["full-time","part-time","contract","freelance","internship","volunteer"]
+
+        if job_type.lower() not in job_types:
+            raise ValueError("Job must have a defined type")
+
+        return job_type
 
 
 class SavedJob (db.Model, SerializerMixin):

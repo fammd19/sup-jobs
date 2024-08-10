@@ -33,6 +33,7 @@ class CreateJob (Resource):
                 application_link = request.json.get('application_link'),
                 location = request.json.get('location'),
                 experience = request.json.get('experience'),
+                job_type = request.json.get('job_type'),
                 closing_date = closing_date,
                 date_posted = date.today(),
                 company_id = session['company_id']
