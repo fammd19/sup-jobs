@@ -1,22 +1,6 @@
 /* Put general styling here */
 
-@import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600;700&display=swap');
-
-body {
-  font-family: 'Jura', sans-serif;
-  text-align: center;
-}
-
-#icon {
-  max-width: 50px;
-}
-
-#button {
-  background-color: #B6FFBB;
-}
-
-/*===NavBar===*/
-.navbar,
-.navbar-default {
-    background-image: linear-gradient(to right,#B6FFBB 70%,#1F935B 80%)
+.btn-primary {
+  --bs-btn-bg: #B6FFBB;
+  
 }

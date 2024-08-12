@@ -1,6 +1,7 @@
 import CandidateNavBar from "../CandidateNavBar"
 import Welcome from "../Welcome";
-import LatestJobs from "../LatestJobs";
+import SampleJobs from "../SampleJobs";
+import LightButton from "../LightButton";
 import FilterByDep from "../FilterByDep";
 
 export default function Home () {
@@ -8,7 +9,8 @@ export default function Home () {
         <>
             <CandidateNavBar />
             <Welcome />
-            <LatestJobs />
+            <SampleJobs />
+            <LightButton />
             <FilterByDep />
         </>
     )

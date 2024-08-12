@@ -10,14 +10,33 @@ body {
   min-height: 80px;
 }
 
-#button {
-  background-color: #B6FFBB;
+
+.text-container {
+  max-width: 70%;
 }
 
-/*===NavBar===*/
-.navbar,
-.navbar-default {
-    background-image: linear-gradient(to right,#B6FFBB 70%,#1F935B 80%)
+/*===NavBar Canidate===*/
+.bg-body-tertiary {
+    background-color: #B6FFBB !important;
+    color:black;
+}
+
+/*===NavBar Company===*/
+/* .bg-body-tertiary {
+  background-color: #1F935B !important;
+  color:white;
+} */
+
+.btn-primary {
+  --bs-btn-bg: #B6FFBB;
+  --bs-btn-color: black;
+  --bs-btn-border-color: None;
+  --bs-btn-margin: 10px;
+}
+
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 
@@ -66,3 +85,21 @@ body {
     transform: rotate(360deg);
   }
 }
+
+
+/* @media (min-width: 992px) {
+
+  .navbar,
+  .navbar-default {
+      background-image: linear-gradient(to right, #B6FFBB 70%, #1F935B 80%);
+  }
+} */
+
+
+/* @media (max-width: 991px) {
+
+  .navbar,
+  .navbar-default {
+      background-image: linear-gradient(to bottom, #B6FFBB 80%, #1F935B 90%);
+  }
+} */

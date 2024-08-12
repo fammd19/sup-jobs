@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row';
 
 export default function Welcome () {
     return (
-        <Container fluid="md" className="mt-2">
+        <Container className="mt-2 text-container" >
             <Row>
                 <h2>
                     Small Co's Where You Can Make A World Of Difference

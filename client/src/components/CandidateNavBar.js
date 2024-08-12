@@ -7,9 +7,8 @@ export default function CandidateNavBar () {
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home"><img src="../../../assets/sup-logo.svg" /></Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Brand href="#home" className="mx-5"><img src="../../../assets/sup-logo.svg" /></Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav"  className="mx-5"/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="#">Jobs</Nav.Link>
@@ -19,7 +18,6 @@ export default function CandidateNavBar () {
             <Nav.Link href="#">For Companies</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-      </Container>
     </Navbar>
   );
 }
