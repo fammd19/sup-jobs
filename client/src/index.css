@@ -1,23 +1,22 @@
+/* Put general styling here */
+
 @import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600;700&display=swap');
 
-
 body {
-  margin: 0;
   font-family: 'Jura', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; 
   text-align: center;
 }
 
-code {
-  font-family: 'Jura';
-} 
-
-.navbar,
-.navbar-default {
-    background-image: linear-gradient(to right,#B6FFBB 50%,#1F935B 100%)
+#icon {
+  max-width: 50px;
 }
 
-body {
-  font-family: 'Jura', sans-serif;
+#button {
+  background-color: #B6FFBB;
+}
+
+/*===NavBar===*/
+.navbar,
+.navbar-default {
+    background-image: linear-gradient(to right,#B6FFBB 70%,#1F935B 80%)
 }
