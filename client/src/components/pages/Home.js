@@ -4,10 +4,10 @@ import SampleJobs from "../SampleJobs";
 import LightButton from "../LightButton";
 import FilterByDep from "../FilterByDep";
 
-export default function Home () {
+export default function Home ({candidate}) {
     return (
         <>
-            <CandidateNavBar />
+            {/* <CandidateNavBar /> */}
             <Welcome />
             <SampleJobs />
             <LightButton />

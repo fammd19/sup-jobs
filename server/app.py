@@ -3,6 +3,7 @@ from flask_restful import Resource
 from config import app, api, bcrypt
 from models import db
 
+
 from controllers.candidates_controller import CandidateSignUp, CandidateLogin, CandidateLogout, CandidateAccount
 from controllers.companies_controller import CompanySignUp, CompanyLogin, CompanyLogout, CompanyAccount, CompanyById
 from controllers.jobs_controller import CreateJob, AllJobs, JobById, JobsByCompany
@@ -11,9 +12,9 @@ from controllers.saved_jobs_controller import SaveJob, AllSavedJobs, SavedJobByI
 # @app.before_request
 # def check_no_login():
 #     return print("Testing before request")
-    # restricted_endpoints = ['candidate_signup', 'candidate_login', 'company_signup', 'company_login']
-    # if request.endpoint in restricted_endpoints and ('candidate_id' in session or 'company_id' in session):
-    #     return make_response({"error": "Unauthorised. User already logged in."}, 401)
+#     restricted_endpoints = ['candidate_signup', 'candidate_login', 'company_signup', 'company_login']
+#     if request.endpoint in restricted_endpoints and ('candidate_id' in session or 'company_id' in session):
+#         return make_response({"error": "Unauthorised. User already logged in."}, 401)
 
 # def check_company_login():
 #     restricted_endpoints = ['company_logout', 'company_account', 'create_job']
