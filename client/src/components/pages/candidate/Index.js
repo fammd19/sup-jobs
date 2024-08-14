@@ -1,7 +1,6 @@
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {Outlet} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 
 export default function Index ({candidate}) {
@@ -13,7 +12,7 @@ export default function Index ({candidate}) {
             <Navbar.Toggle aria-controls="responsive-navbar-nav"  className="mx-5"/>
             <Navbar.Collapse id="responsive-navbar-nav">
             {
-                candidate
+                Object.keys(candidate)===0
                 ?
                 <Nav className="me-auto">
                     <Nav.Link href="#">Jobs</Nav.Link>
@@ -26,13 +25,15 @@ export default function Index ({candidate}) {
                 <Nav className="me-auto">
                     <Nav.Link href="#">Jobs</Nav.Link>
                     <Nav.Link href="#">Company Profiles</Nav.Link>
-                    <Nav.Link href="#">Login</Nav.Link>
+                    <Nav.Link href="/login">Login</Nav.Link>
                     <Nav.Link href="#">Signup</Nav.Link>
                     <Nav.Link href="#">For Companies</Nav.Link>
                 </Nav>
             }
             </Navbar.Collapse>
         </Navbar>
+        
+        <p>Logged in as: {candidate.first_name}</p>
         <Outlet />
     </>
   );

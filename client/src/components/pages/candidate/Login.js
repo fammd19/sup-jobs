@@ -1,25 +1,32 @@
 import React, { useState } from 'react'
-import {Navigate} from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 export default function Login ( {candidate, setCandidate} ) {
     
-        const [email, setEmail] = ""
-        const [password, setPassword] = ""
+        const [email, setEmail] = useState("")
+        const [password, setPassword] = useState("")
 
         function handleSubmit(e) {
             e.preventDefault()
-            fetch('/api/candidate/login')
-            .then(response=>response.json)
+
+            fetch('/api/candidate/login',{
+                method: "POST",
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify({email,password})
+            })
+            .then(response=>response.json())
             .then(json=> {
                 setCandidate(json)
             })
         }
 
-        if (candidate) {
-            return < Navigate to="/" />
-        }
+        // if (Object.keys(candidate)===0) {
+        //     return < Navigate to="/" />
+        // }
 
         return (
             <>

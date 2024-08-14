@@ -1,6 +1,6 @@
 /* Put general styling here */
 
-.btn-primary {
-  --bs-btn-bg: #B6FFBB;
-  
+/*===Global===*/
+.hide {
+  display: none;
 }

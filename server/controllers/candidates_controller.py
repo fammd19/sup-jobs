@@ -15,7 +15,7 @@ class CandidateSignUp (Resource):
                 first_name = request.json.get('first_name'),
                 last_name = request.json.get('last_name'),
                 email = request.json.get('email'),
-                hashed_password = request.json.get('hashed_password'),
+                hashed_password = request.json.get('password'),
                 preferred_department = request.json.get('preferred_department'),
                 preferred_industry = request.json.get('preferred_industry')
             )
@@ -39,7 +39,7 @@ class CandidateLogin(Resource):
             return make_response ({"error":"Unauthorised. User already logged in."}, 401)
 
         email = request.json.get('email')
-        password = request.json.get('hashed_password')
+        password = request.json.get('password')
 
         if email and password:
 
