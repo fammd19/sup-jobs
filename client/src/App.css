@@ -32,6 +32,13 @@ body {
   --bs-btn-color: black;
   --bs-btn-border-color: None;
   --bs-btn-margin: 10px;
+  --bs-btn-hover-bg: #1F935B;
+}
+
+.btn-secondary {
+  --bs-btn-bg: #1F935B;
+  --bs-btn-color: white;
+  --bs-btn-border-color: None;
 }
 
 .container {

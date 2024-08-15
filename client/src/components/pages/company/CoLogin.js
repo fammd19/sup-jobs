@@ -29,7 +29,7 @@ export default function CoLogin ( {company, setCompany} ) {
 
         return (
             <>
-                <h1>Login Page</h1>
+                <h1>Company Login</h1>
                 <Form onSubmit={handleSubmit}>
                     <Row className="justify-content-center">
                         <Col xs={12} md={7} style={{ width: '60%' }}>

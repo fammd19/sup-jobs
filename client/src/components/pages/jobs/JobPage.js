@@ -54,8 +54,7 @@ export default function JobPage ( {candidate} ) {
                             :
                             null
                         }
-                        
-
+                
                     </div>
                 </main>
                 :
