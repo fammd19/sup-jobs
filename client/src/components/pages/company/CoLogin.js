@@ -2,28 +2,28 @@ import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { Button, Form, Col, Row } from 'react-bootstrap';
 
-export default function Login ( {candidate, setCandidate} ) {
+export default function CoLogin ( {company, setCompany} ) {
     
-        const [email, setEmail] = useState("")
+        const [admin_email, setEmail] = useState("")
         const [password, setPassword] = useState("")
 
         function handleSubmit(e) {
             e.preventDefault()
 
-            fetch('/api/candidate/login',{
+            fetch('/api/company/login',{
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json"
                 },
-                body: JSON.stringify({email,password})
+                body: JSON.stringify({admin_email,password})
             })
             .then(response=>response.json())
             .then(json=> {
-                setCandidate(json)
+                setCompany(json)
             })
         }
 
-        if (candidate) {
+        if (company) {
             return < Navigate to="/" />
         }
 
@@ -34,8 +34,8 @@ export default function Login ( {candidate, setCandidate} ) {
                     <Row className="justify-content-center">
                         <Col xs={12} md={7} style={{ width: '60%' }}>
                             <Form.Group className="my-3">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                <Form.Label>Admin email</Form.Label>
+                                <Form.Control type="admin_email" value={admin_email} onChange={(e) => setEmail(e.target.value)} />
                             </Form.Group>
                             <Form.Group className="my-3">
                                 <Form.Label>Password</Form.Label>

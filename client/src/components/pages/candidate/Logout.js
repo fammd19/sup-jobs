@@ -19,3 +19,4 @@ export default function Logout ( { candidate, setCandidate } ) {
     return null
 
 }
+

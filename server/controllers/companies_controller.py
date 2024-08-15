@@ -22,7 +22,7 @@ class CompanySignUp (Resource):
                 linkedin_link = request.json.get('linkedin_link'),
                 logo = request.json.get('logo'),
                 admin_email = request.json.get('admin_email'),
-                hashed_password = request.json.get('hashed_password')
+                hashed_password = request.json.get('password')
             )
 
         db.session.add(company)
@@ -44,7 +44,7 @@ class CompanyLogin(Resource):
             return make_response ({"error":"Unauthorised. User already logged in."}, 401)
 
         admin_email = request.json.get('admin_email')
-        password = request.json.get('hashed_password')
+        password = request.json.get('password')
 
         if admin_email and password:
             company = Company.query.filter(Company.admin_email == admin_email).first()

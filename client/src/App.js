@@ -11,11 +11,13 @@ import Jobs from './components/pages/jobs/Jobs';
 import JobsIndex from './components/pages/jobs/JobsIndex';
 import JobPage from './components/pages/jobs/JobPage';
 import Logout from './components/pages/candidate/Logout';
+import PostJob from './components/pages/jobs/PostJob';
+import CoLogin from './components/pages/company/CoLogin';
 
 export default function App() {
 
-  const [candidate, setCandidate] = useState({})
-  // const [company, setCompany] = useState({})
+  const [candidate, setCandidate] = useState(null)
+  const [company, setCompany] = useState(null)
 
 
   useEffect(() => {
@@ -24,32 +26,35 @@ export default function App() {
       .then(json=> {
         if (json.id) {
           setCandidate(json)
-          } else {
-          console.log("No Candidate")
-          }
+          } 
         })}
     ,[])
-      // fetch(()=> {'/api/company/account'
-      //   .then(response=> {
-      //     if (response.okay) {
-      //       setCompany(response.json)
-      //     } else {
-      //       setCompany(null)
-      //     }
-      //   })
-      // },[]) 
+    
+    useEffect(() => {
+    fetch('/api/company/account')
+      .then(response=> response.json())
+      .then(json=> {
+        if (json.id) {
+          setCompany(json)
+          } 
+        })}
+    ,[])
+
 
   return (
     <Router>
       <Routes>
-        {/* <Route path="/" element={<Index candidate={candidate} company={company} />} /> */}
         <Route path="/" element={<Home candidate={candidate} />} />
         <Route path='/login' element={<Login candidate={candidate} setCandidate={setCandidate}/>}/>
         <Route path='/logout'element={<Logout candidate={candidate} setCandidate={setCandidate}/>}/>
+        
         <Route path='/jobs' element={<Jobs candidate={candidate} />}>
           <Route index element={<JobsIndex/>}/>
           <Route path=":id" element={<JobPage/>}/>
         </Route>
+
+        <Route path="/post-job" element={<PostJob company={company} />} />
+        <Route path='/company-login' element={<CoLogin company={company} setCompany={setCompany}/>}/>
       </Routes>
     </Router>
   );
