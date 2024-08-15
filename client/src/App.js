@@ -10,6 +10,7 @@ import Login from './components/pages/candidate/Login';
 import Jobs from './components/pages/jobs/Jobs';
 import JobsIndex from './components/pages/jobs/JobsIndex';
 import JobPage from './components/pages/jobs/JobPage';
+import Logout from './components/pages/candidate/Logout';
 
 export default function App() {
 
@@ -44,6 +45,7 @@ export default function App() {
         {/* <Route path="/" element={<Index candidate={candidate} company={company} />} /> */}
         <Route path="/" element={<Home candidate={candidate} />} />
         <Route path='login' element={<Login candidate={candidate} setCandidate={setCandidate}/>}/>
+        <Route path='logout'elemt={<Logout candidate={candidate} setCandidate={setCandidate}/>}/>
         <Route path='/jobs' element={<Jobs candidate={candidate} />}>
           <Route index element={<JobsIndex/>}/>
           <Route path=":id" element={<JobPage/>}/>
