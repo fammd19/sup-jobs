@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 import { Button, Form, Col, Row } from 'react-bootstrap';
+import NavBar from '../../NavBar';
 
 export default function Login ( {candidate, setCandidate} ) {
     
@@ -19,7 +20,12 @@ export default function Login ( {candidate, setCandidate} ) {
             })
             .then(response=>response.json())
             .then(json=> {
-                setCandidate(json)
+                if (json.id) {
+                    setCandidate(json)
+                } else {
+                    console.log("Login unsuccessful")
+                }
+                
             })
         }
 
@@ -29,7 +35,8 @@ export default function Login ( {candidate, setCandidate} ) {
 
         return (
             <>
-                <h1>Login Page</h1>
+            <NavBar />
+                <h1>Candidate login</h1>
                 <Form onSubmit={handleSubmit}>
                     <Row className="justify-content-center">
                         <Col xs={12} md={7} style={{ width: '60%' }}>
@@ -41,10 +48,11 @@ export default function Login ( {candidate, setCandidate} ) {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                             </Form.Group> 
-                            <Button type="submit">Login</Button> 
+                            <Button type="submit">Login</Button>
                         </Col>           
                     </Row>
                 </Form>
+                <Link to="/company-login">Company login</Link>
             </>
     )
 }

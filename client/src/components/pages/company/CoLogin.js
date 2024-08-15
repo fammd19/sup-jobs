@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
-import { Button, Form, Col, Row } from 'react-bootstrap';
+import { Button, Form, Col, Row, Navbar } from 'react-bootstrap';
+import NavBar from '../../NavBar';
 
 export default function CoLogin ( {company, setCompany} ) {
     
@@ -29,7 +30,8 @@ export default function CoLogin ( {company, setCompany} ) {
 
         return (
             <>
-                <h1>Company Login</h1>
+                <NavBar />
+                <h1>Company login</h1>
                 <Form onSubmit={handleSubmit}>
                     <Row className="justify-content-center">
                         <Col xs={12} md={7} style={{ width: '60%' }}>

@@ -13,7 +13,7 @@ export default function CoLogout ( { company, setCompany } ) {
 
     if (!company) {
         return (
-            <Navigate to='/'/>
+            <Navigate to="/"/>
         )}
 
     return null
