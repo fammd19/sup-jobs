@@ -24,7 +24,7 @@ export default function Login ( {candidate, setCandidate} ) {
             })
         }
 
-        // if (Object.keys(candidate)===0) {
+        // if (candidate) {
         //     return < Navigate to="/" />
         // }
 
