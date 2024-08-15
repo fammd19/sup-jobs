@@ -7,7 +7,7 @@ export default function JobsIndex ( { candidate }) {
     const [jobs, setJobs] = useState([])
 
     useEffect ( () => {
-        fetch('api/jobs/all')
+        fetch('/api/jobs/all')
         .then(res => res.json())
         .then(json => setJobs(json))
         .catch(error => console.log(error.message))

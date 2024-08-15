@@ -9,22 +9,22 @@ from controllers.companies_controller import CompanySignUp, CompanyLogin, Compan
 from controllers.jobs_controller import CreateJob, AllJobs, JobById, JobsByCompany
 from controllers.saved_jobs_controller import SaveJob, AllSavedJobs, SavedJobById
 
-# @app.before_request
-# def check_no_login():
-#     return print("Testing before request")
-#     restricted_endpoints = ['candidate_signup', 'candidate_login', 'company_signup', 'company_login']
-#     if request.endpoint in restricted_endpoints and ('candidate_id' in session or 'company_id' in session):
-#         return make_response({"error": "Unauthorised. User already logged in."}, 401)
+@app.before_request
+def check_no_login():
+    return print("Testing before request")
+    restricted_endpoints = ['candidate_signup', 'candidate_login', 'company_signup', 'company_login']
+    if request.endpoint in restricted_endpoints and ('candidate_id' in session or 'company_id' in session):
+        return make_response({"error": "Unauthorised. User already logged in."}, 401)
 
-# def check_company_login():
-#     restricted_endpoints = ['company_logout', 'company_account', 'create_job']
-#     if request.endpoint in restricted_endpoints and ('candidate_id' not in session or 'company_id' not in session):
-#         return make_response({"error": "Unauthorised. No user logged in."}, 401)
+def check_company_login():
+    restricted_endpoints = ['company_logout', 'company_account', 'create_job']
+    if request.endpoint in restricted_endpoints and ('candidate_id' not in session or 'company_id' not in session):
+        return make_response({"error": "Unauthorised. No user logged in."}, 401)
 
-# def check_candidate_login():
-#     restricted_endpoints = ['candidate_logout', 'candidate_account', 'save_job', 'saved_jobs', 'saved_job_by_id']
-#     if request.endpoint in restricted_endpoints and ('candidate_id' not in session or 'company_id' not in session):
-#         return make_response({"error": "Unauthorised. No user logged in."}, 401)
+def check_candidate_login():
+    restricted_endpoints = ['candidate_logout', 'candidate_account', 'save_job', 'saved_jobs', 'saved_job_by_id']
+    if request.endpoint in restricted_endpoints and ('candidate_id' not in session or 'company_id' not in session):
+        return make_response({"error": "Unauthorised. No user logged in."}, 401)
 
 
 @app.route('/')

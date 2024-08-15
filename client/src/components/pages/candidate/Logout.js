@@ -9,11 +9,11 @@ export default function Logout ( { candidate, setCandidate } ) {
             })
             .then(response => setCandidate(null))
         }, 
-        [candidate])
+        [setCandidate])
 
     if (!candidate) {
         return (
-            <Navigate to='login'/>
+            <Navigate to='/login'/>
         )}
 
     return null

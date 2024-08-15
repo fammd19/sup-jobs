@@ -73,7 +73,7 @@ def create_records():
         )
 
         # Add records to the session and commit
-        db.session.add_all([candidate2, candidate3,company2,company3])
+        db.session.add_all([candidate1, candidate2, candidate3, company1, company2, company3])
         db.session.commit()
 
         print("Records created successfully!")

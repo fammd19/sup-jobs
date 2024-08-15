@@ -15,7 +15,7 @@ import Logout from './components/pages/candidate/Logout';
 export default function App() {
 
   const [candidate, setCandidate] = useState({})
-  const [company, setCompany] = useState({})
+  // const [company, setCompany] = useState({})
 
 
   useEffect(() => {
@@ -44,8 +44,8 @@ export default function App() {
       <Routes>
         {/* <Route path="/" element={<Index candidate={candidate} company={company} />} /> */}
         <Route path="/" element={<Home candidate={candidate} />} />
-        <Route path='login' element={<Login candidate={candidate} setCandidate={setCandidate}/>}/>
-        <Route path='logout'elemt={<Logout candidate={candidate} setCandidate={setCandidate}/>}/>
+        <Route path='/login' element={<Login candidate={candidate} setCandidate={setCandidate}/>}/>
+        <Route path='/logout'element={<Logout candidate={candidate} setCandidate={setCandidate}/>}/>
         <Route path='/jobs' element={<Jobs candidate={candidate} />}>
           <Route index element={<JobsIndex/>}/>
           <Route path=":id" element={<JobPage/>}/>
