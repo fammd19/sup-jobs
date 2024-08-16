@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
-import { redirect, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Button, Form, Col, Row, Navbar } from 'react-bootstrap';
 import NavBar from '../../NavBar';
 
-export default function CoLogin ( {company, setCompany} ) {
+export default function CoLogin ( { company, setCompany } ) {
     
         const [admin_email, setEmail] = useState("")
         const [password, setPassword] = useState("")
 
         const navigate = useNavigate();
+
+        if (company) {
+            navigate("/")
+        }
 
         function handleSubmit(e) {
             e.preventDefault()
@@ -20,13 +24,24 @@ export default function CoLogin ( {company, setCompany} ) {
                 },
                 body: JSON.stringify({admin_email,password})
             })
-            .then(response=>response.json())
-            .then(json=> {
-                setCompany(json)
-                navigate("/")
+            .then(response => {
+                if (!response.ok) {
+                    console.log("Login unsuccessful");
+                }
+                return response.json();
+            })
+            .then(json => {
+                if (json.id) {
+                    setCompany(json);
+                    navigate("/");
+                } else {
+                    console.log("Login unsuccessful: No ID in response");
+                    setCompany(null);
+                }
             })
             .catch(err => {
                 console.log("Login failed:", err.message);
+                setCompany(null);
             });
         }
 

@@ -47,7 +47,7 @@ class CandidateLogin(Resource):
 
             if candidate and candidate.authenticate(password):
                 session['candidate_id'] = candidate.id
-                return make_response({"message":f"Candidate {candidate.first_name} is logged in"})
+                return make_response(candidate.to_dict(), 200)
 
             else:
                 return make_response({"error":"Unauthorised. Email or password incorrect."}, 401)

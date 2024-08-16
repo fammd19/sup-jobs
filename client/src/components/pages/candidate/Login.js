@@ -3,33 +3,46 @@ import { useNavigate, Link } from 'react-router-dom'
 import { Button, Form, Col, Row } from 'react-bootstrap';
 import NavBar from '../../NavBar';
 
-export default function Login ( {candidate, setCandidate} ) {
+export default function Login ( { candidate, setCandidate } ) {
     
         const [email, setEmail] = useState("")
         const [password, setPassword] = useState("")
         const navigate = useNavigate();
 
+        if (candidate) {
+            navigate("/")
+        }
 
         function handleSubmit(e) {
-            e.preventDefault()
-
-            fetch('/api/candidate/login',{
+            e.preventDefault();
+    
+            fetch('/api/candidate/login', {
                 method: "POST",
                 headers: {
-                    "Content-Type":"application/json"
+                    "Content-Type": "application/json"
                 },
-                body: JSON.stringify({email,password})
+                body: JSON.stringify({ email, password })
             })
-            .then(response=>response.json())
-            .then(json=> {
-                setCandidate(json)
-                navigate("/")
+            .then(response => {
+                if (!response.ok) {
+                    console.log("Login unsuccessful");
+                }
+                return response.json();
+            })
+            .then(json => {
+                if (json.id) {
+                    setCandidate(json);
+                    navigate("/");
+                } else {
+                    console.log("Login unsuccessful: No ID in response");
+                    setCandidate(null);
+                }
             })
             .catch(err => {
                 console.log("Login failed:", err.message);
+                setCandidate(null);
             });
         }
-
 
 
 
