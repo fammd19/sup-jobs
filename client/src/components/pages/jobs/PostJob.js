@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
+import NavBar from "../../NavBar";
 
 export default function PostJob ( {company} ) {
 
@@ -25,17 +26,15 @@ export default function PostJob ( {company} ) {
     //     setJob({...job, company_id: company.id})
     // }
 
-    function handleDateChange (e) {
-        const [day, month, year] = (e.target.value).split('/');
-        const formattedDate = `${year}-${month}-${day}`;
-        setJob({...job, date: formattedDate})
-
-    return formattedDate;
-    }
+    // function handleDateChange (e) {
+    //     const [day, month, year] = (e.target.value).split('/');
+    //     const formattedDate = `${year}-${month}-${day}`;
+    //     setJob({...job, closing_date: formattedDate})
+    // }
     
     function handleSubmit (e) {
         e.preventDefault();
-        fetch("/jobs/create", {
+        fetch("api/jobs/create", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -49,6 +48,7 @@ export default function PostJob ( {company} ) {
 
     return (
         <>
+            <NavBar company={company}/>
             <Form className="mt-3" onSubmit={handleSubmit}>
                  
                 <Form.Group className="my-3">
@@ -144,7 +144,7 @@ export default function PostJob ( {company} ) {
                             <Form.Label>Closing date</Form.Label>
                         </Col>
                         <Col sm={6} md={5} lg={4}>
-                            <Form.Control type="date" value={job.closing_date} onChange={handleDateChange} />
+                            <Form.Control type="date" value={job.closing_date} onChange={(e)=>setJob({...job, closing_date: e.target.value})} />
                         </Col>
                     </Row>
                 </Form.Group>
