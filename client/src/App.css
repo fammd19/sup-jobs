@@ -15,17 +15,19 @@ body {
   max-width: 70%;
 }
 
-/*===NavBar Canidate===*/
+/*===NavBar===*/
 .bg-body-tertiary {
     background-color: #B6FFBB !important;
     color:black;
 }
 
-/*===NavBar Company===*/
-/* .bg-body-tertiary {
-  background-color: #1F935B !important;
-  color:white;
-} */
+.navbar-nav {
+  --bs-nav-link-padding-y: 0;
+}
+
+.navbar {
+  --bs-navbar-padding-y: 0;
+}
 
 .btn-primary {
   --bs-btn-bg: #B6FFBB;
@@ -45,7 +47,6 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
 
 .App {
   text-align: center;
@@ -95,18 +96,5 @@ body {
 
 
 /* @media (min-width: 992px) {
-
-  .navbar,
-  .navbar-default {
-      background-image: linear-gradient(to right, #B6FFBB 70%, #1F935B 80%);
-  }
 } */
 
-
-/* @media (max-width: 991px) {
-
-  .navbar,
-  .navbar-default {
-      background-image: linear-gradient(to bottom, #B6FFBB 80%, #1F935B 90%);
-  }
-} */

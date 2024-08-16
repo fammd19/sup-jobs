@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { Form, Button, Col, Row } from "react-bootstrap";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import NavBar from "../../NavBar";
 
 export default function PostJob ( {company} ) {
 
+    const navigate = useNavigate();
 
+    if (!company) {
+        navigate("/")
+    }
 
     const [job, setJob] = useState({
       title: "",
@@ -20,17 +24,6 @@ export default function PostJob ( {company} ) {
       closing_date:""
     })
 
-    // if (!company) {
-    //     return < Navigate to="/company-login" />
-    // } else {
-    //     setJob({...job, company_id: company.id})
-    // }
-
-    // function handleDateChange (e) {
-    //     const [day, month, year] = (e.target.value).split('/');
-    //     const formattedDate = `${year}-${month}-${day}`;
-    //     setJob({...job, closing_date: formattedDate})
-    // }
     
     function handleSubmit (e) {
         e.preventDefault();
@@ -42,7 +35,7 @@ export default function PostJob ( {company} ) {
             body: JSON.stringify(job),
           })
           .then(response => response.json())
-          .then(json => Navigate(`/jobs/${json.id}`))
+          .then(json => navigate(`/jobs/${json.id}`))
           .catch(error => console.log(error.message))
     }
 
@@ -76,7 +69,7 @@ export default function PostJob ( {company} ) {
                         <option>Type</option>
                         <option value="full-time">Full-Time</option>
                         <option value="part-time">Part-Time</option>
-                        <option value="contractor">Contractor</option>
+                        <option value="contract">Contract</option>
                         <option value="freelance">Freelance</option>
                         <option value="intern">Intern</option>
                         <option value="co-founder">Co-Founder</option>
