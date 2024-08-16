@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button, Form, Col, Row, Navbar } from 'react-bootstrap';
+import { Button, Form, Col, Row } from 'react-bootstrap';
 import NavBar from '../../NavBar';
 
-export default function CoLogin ( { company, setCompany } ) {
+export default function CoLogin ( { candidate, company, setCompany } ) {
     
         const [admin_email, setEmail] = useState("")
         const [password, setPassword] = useState("")
 
         const navigate = useNavigate();
 
-        if (company) {
+        if (company || candidate) {
             navigate("/")
         }
 

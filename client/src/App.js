@@ -70,7 +70,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home candidate={candidate} company={company}/>} />
-        <Route path='/login' element={<Login candidate={candidate} setCandidate={setCandidate}/>}/>
+        <Route path='/login' element={<Login candidate={candidate} setCandidate={setCandidate} company={company} />}/>
         <Route path='/logout'element={<Logout candidate={candidate} setCandidate={setCandidate}/>}/>
         
         <Route path='/jobs' element={<Jobs candidate={candidate} company={company}/>}>
@@ -79,7 +79,7 @@ export default function App() {
         </Route>
 
         <Route path="/post-job" element={<PostJob company={company} />} />
-        <Route path='/company-login' element={<CoLogin company={company} setCompany={setCompany}/>}/>
+        <Route path='/company-login' element={<CoLogin candidate={candidate} company={company} setCompany={setCompany}/>}/>
         <Route path='/company-logout' element={<CoLogout company={company} setCompany={setCompany}/>}/>
       </Routes>
     </Router>

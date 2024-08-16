@@ -3,13 +3,13 @@ import { useNavigate, Link } from 'react-router-dom'
 import { Button, Form, Col, Row } from 'react-bootstrap';
 import NavBar from '../../NavBar';
 
-export default function Login ( { candidate, setCandidate } ) {
+export default function Login ( { candidate, setCandidate, company } ) {
     
         const [email, setEmail] = useState("")
         const [password, setPassword] = useState("")
         const navigate = useNavigate();
 
-        if (candidate) {
+        if (candidate || company) {
             navigate("/")
         }
 
