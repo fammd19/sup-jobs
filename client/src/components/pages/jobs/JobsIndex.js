@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Card, Col, Container, Button } from 'react-bootstrap'
 import { Link } from "react-router-dom"
-import NavBar from '../../NavBar'
 
-export default function JobsIndex ( { candidate }) {
+export default function JobsIndex ( { candidate, company }) {
     const [jobs, setJobs] = useState([])
 
     useEffect ( () => {
@@ -13,18 +12,28 @@ export default function JobsIndex ( { candidate }) {
         .catch(error => console.log(error.message))
     },[])
 
+    let numJobs
+    if (!candidate) {
+        numJobs = 10
+    }
+
     return (
 
         <Container>
-            {/* <NavBar candidate={candidate}/> 
-            Issue with passing candidate*/}
             {
                 jobs.length>0
                 ?
                 <>
+                    {
+                        !candidate && !company
+                        ?
+                        <p>Please login to view all jobs</p>
+                        :
+                        null
+                    }
                     <Col>
                         {
-                            jobs.map((job)=> {
+                            jobs.slice(0, numJobs).map((job)=> {
                                 return(
                                 <Card  className="my-3" key={job.id}>
                                     <Card.Body>

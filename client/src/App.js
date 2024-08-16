@@ -31,8 +31,8 @@ export default function App() {
           } 
         })}
     ,[])
-    
-    useEffect(() => {
+
+  useEffect(() => {
     fetch('/api/company/account')
       .then(response=> response.json())
       .then(json=> {
@@ -42,6 +42,29 @@ export default function App() {
         })}
     ,[])
 
+    
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const candidateResponse = await fetch('/api/candidate/account');
+  //       const candidateJson = await candidateResponse.json();
+  //       if (candidateJson.id) {
+  //         setCandidate(candidateJson);
+  //       }
+
+  //       const companyResponse = await fetch('/api/company/account');
+  //       const companyJson = await companyResponse.json();
+  //       if (companyJson.id) {
+  //         setCompany(companyJson);
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
+
+  //   fetchData(); 
+  // }, []);
+
 
   return (
     <Router>
@@ -50,8 +73,8 @@ export default function App() {
         <Route path='/login' element={<Login candidate={candidate} setCandidate={setCandidate}/>}/>
         <Route path='/logout'element={<Logout candidate={candidate} setCandidate={setCandidate}/>}/>
         
-        <Route path='/jobs' element={<Jobs candidate={candidate} />}>
-          <Route index element={<JobsIndex/>}/>
+        <Route path='/jobs' element={<Jobs candidate={candidate} company={company}/>}>
+          <Route index element={<JobsIndex candidate={candidate} company={company}/>}/>
           <Route path=":id" element={<JobPage/>}/>
         </Route>
 

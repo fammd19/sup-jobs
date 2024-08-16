@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Navigate, Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { Button, Form, Col, Row } from 'react-bootstrap';
 import NavBar from '../../NavBar';
 
@@ -7,6 +7,8 @@ export default function Login ( {candidate, setCandidate} ) {
     
         const [email, setEmail] = useState("")
         const [password, setPassword] = useState("")
+        const navigate = useNavigate();
+
 
         function handleSubmit(e) {
             e.preventDefault()
@@ -20,18 +22,16 @@ export default function Login ( {candidate, setCandidate} ) {
             })
             .then(response=>response.json())
             .then(json=> {
-                if (json.id) {
-                    setCandidate(json)
-                } else {
-                    console.log("Login unsuccessful")
-                }
-                
+                setCandidate(json)
+                navigate("/")
             })
+            .catch(err => {
+                console.log("Login failed:", err.message);
+            });
         }
 
-        if (candidate) {
-            return < Navigate to="/" />
-        }
+
+
 
         return (
             <>

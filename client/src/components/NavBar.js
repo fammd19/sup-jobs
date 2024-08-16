@@ -19,25 +19,22 @@ export default function NavBar ({ candidate, company } ) {
                 <Nav.Link href="#">Company Profiles</Nav.Link>
                 <Nav.Link href="#">Account</Nav.Link>
                 <Nav.Link href="/logout">Logout</Nav.Link>
-                <Nav.Link href="/company-login"><Button className="btn-secondary">For Companies</Button></Nav.Link>
             </Nav>
             :
             company
               ?
               <Nav className="me-auto">
                 <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/jobs">Jobs</Nav.Link>
                 <Nav.Link href="#">Post Jobs</Nav.Link>
                 <Nav.Link href="#">Account</Nav.Link>
                 <Nav.Link href="/company-logout">Logout</Nav.Link>
-                <Nav.Link href="/"><Button className="btn-secondary">For Candidates</Button></Nav.Link>
               </Nav>
               :
               <Nav className="me-auto">
                   <Nav.Link href="/">Home</Nav.Link>
                   <Nav.Link href="/jobs">Jobs</Nav.Link>
-                  <Nav.Link href="#">Company Profiles</Nav.Link>
-                  <Nav.Link href="/login">Login</Nav.Link>
-                  <Nav.Link href="#">Signup</Nav.Link>
+                  <Nav.Link href="/login">Login/ Signup</Nav.Link>
                   <Nav.Link href="/company-login"><Button className="btn-secondary">For Companies</Button></Nav.Link>
               </Nav>
         }

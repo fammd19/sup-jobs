@@ -1,10 +1,12 @@
 import { Outlet } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { Button, Col, Row } from 'react-bootstrap';
+import NavBar from '../../NavBar'
 
-export default function Jobs () {
+export default function Jobs ( {candidate, company} ) {
     return (
         <>
+        <NavBar candidate={candidate} company={company}/> 
             <Row  className="my-3">
                 <Col sm={10} md={8} lg={6}>
                     <Outlet/>

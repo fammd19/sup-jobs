@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { redirect, useNavigate } from 'react-router-dom'
 import { Button, Form, Col, Row, Navbar } from 'react-bootstrap';
 import NavBar from '../../NavBar';
 
@@ -7,6 +7,8 @@ export default function CoLogin ( {company, setCompany} ) {
     
         const [admin_email, setEmail] = useState("")
         const [password, setPassword] = useState("")
+
+        const navigate = useNavigate();
 
         function handleSubmit(e) {
             e.preventDefault()
@@ -21,12 +23,13 @@ export default function CoLogin ( {company, setCompany} ) {
             .then(response=>response.json())
             .then(json=> {
                 setCompany(json)
+                navigate("/")
             })
+            .catch(err => {
+                console.log("Login failed:", err.message);
+            });
         }
 
-        if (company) {
-            return < Navigate to="/" />
-        }
 
         return (
             <>
