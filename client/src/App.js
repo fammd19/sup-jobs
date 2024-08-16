@@ -73,7 +73,7 @@ export default function App() {
         <Route path="/" element={<Home candidate={candidate} company={company}/>} />
         <Route path='/login' element={<Login candidate={candidate} setCandidate={setCandidate} company={company} />}/>
         <Route path='/logout'element={<Logout candidate={candidate} setCandidate={setCandidate}/>}/>
-        <Route path='/signup'element={<Signup candidate={candidate} setCandidate={setCandidate}/>}/>
+        <Route path='/signup'element={<Signup candidate={candidate} />}/>
         
         <Route path='/jobs' element={<Jobs candidate={candidate} company={company}/>}>
           <Route index element={<JobsIndex candidate={candidate} company={company}/>}/>

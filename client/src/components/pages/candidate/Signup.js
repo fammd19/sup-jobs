@@ -3,7 +3,7 @@ import { Form, Button, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../NavBar";
 
-export default function Signup ( { candidate, setCandidate } ) {
+export default function Signup ( { candidate } ) {
 
     const navigate = useNavigate();
 
