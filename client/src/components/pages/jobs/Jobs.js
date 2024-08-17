@@ -7,7 +7,7 @@ export default function Jobs ( {candidate, company} ) {
     return (
         <>
         <NavBar candidate={candidate} company={company}/> 
-            <Row  className="my-3">
+            <Row  className="my-3 justify-content-center">
                 <Col sm={10} md={8} lg={6}>
                     <Outlet/>
                 </Col>

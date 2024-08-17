@@ -26,7 +26,9 @@ export default function SampleJobs ( {number} ) {
                                 return(
                                     <Col>
                                 <Card className="my-3" key={job.id}>
-                                    <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+                                    <Row className="justify-content-center mt-2">
+                                        <Card.Img variant="top" src={`${job.company.logo}`} />
+                                    </Row >
                                     <Card.Body>
                                             <Card.Title>{`${job.title}`}</Card.Title>
                                             <Card.Subtitle>{`${job.company.name}`}</Card.Subtitle>

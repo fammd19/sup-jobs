@@ -49,6 +49,7 @@ export default function Login ( { candidate, setCandidate, company } ) {
         return (
             <>
             <NavBar />
+                <a href="/signup"><Button className="btn-secondary signup-btn my-4">Signup</Button></a>
                 <h1>Candidate login</h1>
                 <Form onSubmit={handleSubmit}>
                     <Row className="justify-content-center">
@@ -65,7 +66,10 @@ export default function Login ( { candidate, setCandidate, company } ) {
                         </Col>           
                     </Row>
                 </Form>
-                <Link to="/company-login">Company login</Link>
+
+                <div className="my-4">
+                    <a href="/company-login">Company login</a>
+                </div>
             </>
     )
 }

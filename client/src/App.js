@@ -13,6 +13,7 @@ import PostJob from './components/pages/jobs/PostJob';
 import Login from './components/pages/candidate/Login';
 import Logout from './components/pages/candidate/Logout';
 import Signup from './components/pages/candidate/Signup';
+import Account from './components/pages/candidate/Account';
 
 import CoLogin from './components/pages/company/CoLogin';
 import CoLogout from './components/pages/company/CoLogout';
@@ -74,6 +75,8 @@ export default function App() {
         <Route path='/login' element={<Login candidate={candidate} setCandidate={setCandidate} company={company} />}/>
         <Route path='/logout'element={<Logout candidate={candidate} setCandidate={setCandidate}/>}/>
         <Route path='/signup'element={<Signup candidate={candidate} />}/>
+        <Route path='/account'element={<Account candidate={candidate} setCandidate={setCandidate} />}/>
+
         
         <Route path='/jobs' element={<Jobs candidate={candidate} company={company}/>}>
           <Route index element={<JobsIndex candidate={candidate} company={company}/>}/>

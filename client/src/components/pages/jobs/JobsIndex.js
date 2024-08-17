@@ -38,21 +38,26 @@ export default function JobsIndex ( { candidate, company }) {
                                 <Card  className="my-3" key={job.id}>
                                     <Card.Body>
                                         <Row>
-                                        <Col>
-                                            <Card.Title>{`${job.title}`}</Card.Title>
-                                            <Card.Subtitle>{`${job.company.name}`}</Card.Subtitle>
-                                            <Card.Text>${`${job.salary}`}</Card.Text>
-                                            <Card.Text>{`${job.location}`}</Card.Text>
-                                        </Col>
-                                        <Col>
-                                            <Card.Text>{`${job.job_type}`}</Card.Text>
-                                            { job.closing_date
-                                            ?
-                                            <Card.Text>{`${job.closing_date}`}</Card.Text>
-                                        :
-                                        null}
-                                            <Link to={`/jobs/${job.id}`}><Button variant="primary">More details</Button></Link>
-                                        </Col>
+                                            <Col>
+                                                <Row className="justify-content-center mt-2">
+                                                    <Card.Img src={`${job.company.logo}`} />
+                                                </Row >
+                                            </Col>
+                                            <Col className="col-5">
+                                                <Card.Title>{`${job.title}`}</Card.Title>
+                                                <Card.Subtitle>{`${job.company.name}`}</Card.Subtitle>
+                                                <Card.Text>${`${job.salary}`}</Card.Text>
+                                                <Card.Text>{`${job.location}`}</Card.Text>
+                                            </Col>
+                                            <Col className="col-5">
+                                                <Card.Text>{`${job.job_type}`}</Card.Text>
+                                                { job.closing_date
+                                                ?
+                                                <Card.Text>{`${job.closing_date}`}</Card.Text>
+                                            :
+                                            null}
+                                                <Link to={`/jobs/${job.id}`}><Button variant="primary">More details</Button></Link>
+                                            </Col>
                                         </Row>
                                     </Card.Body>
                                 </Card>

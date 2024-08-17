@@ -1,14 +1,30 @@
-import React, { useState } from 'react'
-import { Navigate } from 'react-router-dom'
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Button } from 'react-bootstrap';
+import UpdateForm from '../../UpdateForm';
 
 export default function Account ( {candidate, setCandidate} ) {
         
+    const navigate = useNavigate();
 
-        if (!candidate) {
-            return < Navigate to="/login" />
-        }
+    if ( !candidate ) {
+        navigate("/")
+    }
+
+        const [candidateDetails, setCandidateDetails] = useState({
+            first_name: "",
+            last_name: "",
+            email:"",
+            password:"",
+            preferred_department:"",
+            preferred_industry:"",
+          })
+
+        useEffect(()=> {
+            fetch("/api/candidate/account")
+            .then(response=>response.json())
+            .then(json=>setCandidateDetails(json))
+        })
 
         function displayAccountUpdateForm () {
             const formDiv = document.getElementById("account-update-form");
@@ -25,39 +41,20 @@ export default function Account ( {candidate, setCandidate} ) {
         return (
             <>
                 <h1>Account</h1>
-                <p>{candidate.first_name}</p>
 
                 <div>
-                    <p>Name: {candidate.first_name} {candidate.last_name}</p>
-                    <p>Email: {candidate.email}</p>
-                    <p>Password: {candidate.password}</p>
-                    <p>Preferred industry: {candidate.preferred_industry}</p>
-                    <p>Preferred department: {candidate.preferred_department}</p>
+                    <p>First name: {candidateDetails.first_name} </p>
+                    <p>Last name: {candidateDetails.last_name}</p>
+                    <p>Email: {candidateDetails.email}</p>
+                    <p>Password: {candidateDetails.password}</p>
+                    <p>Preferred industry: {candidateDetails.preferred_industry}</p>
+                    <p>Preferred department: {candidateDetails.preferred_department}</p>
                 </div>
 
                 <Button className="mx-1" id="update-account-btn" variant="warning" onClick={displayAccountUpdateForm}>Update details</Button>
                 
-                <div id="account-upate-form" className="hide">
-                    <Form>
-                        <Form.Group>
-                            <Form.Label>First Name</Form.Label>
-                            <Form.Control type="text" value={first_name} onChange={(e) => setEmail(e.target.value)} />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Last Name</Form.Label>
-                            <Form.Control type="text" value={last_name} onChange={(e) => setEmail(e.target.value)} />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                        </Form.Group> 
-                        <Button type="submit">Login</Button>  
-                    </Form>
-                </div>
+                <UpdateForm candidateDetails={candidateDetails} setCandidateDetails={setCandidateDetails}/>
+
             </>
     )
 }

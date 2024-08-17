@@ -17,7 +17,7 @@ export default function NavBar ({ candidate, company } ) {
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/jobs">Jobs</Nav.Link>
                 <Nav.Link href="#">Company Profiles</Nav.Link>
-                <Nav.Link href="#">Account</Nav.Link>
+                <Nav.Link href="/account">Account</Nav.Link>
                 <Nav.Link href="/logout">Logout</Nav.Link>
             </Nav>
             :
@@ -26,7 +26,7 @@ export default function NavBar ({ candidate, company } ) {
               <Nav className="ms-auto">
                 <Nav.Link  href="/">Home</Nav.Link>
                 <Nav.Link href="/jobs">Jobs</Nav.Link>
-                <Nav.Link href="#">Post Jobs</Nav.Link>
+                <Nav.Link href="/post-job">Post Jobs</Nav.Link>
                 <Nav.Link href="#">Account</Nav.Link>
                 <Nav.Link href="/company-logout">Logout</Nav.Link>
               </Nav>
@@ -35,7 +35,7 @@ export default function NavBar ({ candidate, company } ) {
                   <Nav.Link className="nav-item" href="/">Home</Nav.Link>
                   <Nav.Link className="nav-item" href="/jobs">Jobs</Nav.Link>
                   <Nav.Link className="nav-item" href="/login">Login/ Signup</Nav.Link>
-                  <Nav.Link href="/company-login" className="ms-auto"><Button className="btn-secondary">For Companies</Button></Nav.Link>
+                  <Nav.Link href="/company-login"><Button className="btn-secondary">For Companies</Button></Nav.Link>
               </Nav>
         }
       </Navbar.Collapse>

@@ -29,6 +29,8 @@ body {
   --bs-navbar-padding-y: 0;
 }
 
+/*===Bbbotstrap overrides===*/
+
 .btn-primary {
   --bs-btn-bg: #B6FFBB;
   --bs-btn-color: black;
@@ -47,6 +49,27 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.card-img, .card-img-bottom, .card-img-top {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.card-body {
+  background-color: #fbfbfb;
+}
+
+/*===Indiivudal styling===*/
+
+.signup-btn {
+  --bs-btn-padding-x: 1.5rem;
+  --bs-btn-padding-y: 1rem;
+
+}
+
+
+/*===Bootstrap overrides===*/
+
 
 .App {
   text-align: center;
