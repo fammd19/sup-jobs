@@ -33,7 +33,7 @@ body {
   --bs-navbar-padding-y: 0;
 }
 
-/*===Bbbotstrap overrides===*/
+/*===Bootstrap overrides===*/
 
 .btn-primary {
   --bs-btn-bg: #B6FFBB;
@@ -47,6 +47,20 @@ body {
   --bs-btn-bg: #1F935B;
   --bs-btn-color: white;
   --bs-btn-border-color: None;
+}
+
+/* .disabled {
+  --bs-btn-bg: #B6FFBB;
+  background-color:#B6FFBB;
+  --bs-btn-color: black;
+  opacity: 0.6;
+  cursor: not-allowed;
+} */
+.btn.disabled {
+  --bs-btn-bg: #B6FFBB;
+  --bs-btn-disabled-color: black;
+  --bs-btn-disabled-bg: #B6FFBB;
+  --bs-btn-color: black;
 }
 
 .container {
@@ -70,6 +84,15 @@ body {
   --bs-btn-padding-y: 1rem;
 
 }
+
+.job-logo {
+  height: 200px
+}
+
+.job-title {
+  vertical-align: middle;
+}
+
 
 
 /*===Bootstrap overrides===*/

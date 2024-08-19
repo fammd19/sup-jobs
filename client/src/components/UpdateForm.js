@@ -58,6 +58,7 @@ export default function UpdateForm ( {candidateDetails, setCandidateDetails, dis
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="text" value={updatedCandidateDetails.email} onChange={(e)=>setUpdatedCandidateDetails({...updatedCandidateDetails, email: e.target.value})}/>
             </Form.Group> 
+            {/* Password update not working */}
             <Form.Group>
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" value={updatedCandidateDetails.password} onChange={(e)=>setUpdatedCandidateDetails({...updatedCandidateDetails, password: e.target.value})}/>

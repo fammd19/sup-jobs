@@ -55,13 +55,14 @@ export default function Signup ( { candidate } ) {
         <>
             <NavBar />
             <Form className="mt-3" onSubmit={handleSubmit}>
-                 
+            <Row className="justify-content-center">
+            <Col xs={12} md={7} style={{ width: '50%' }}>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={2} md={2} lg={2}>
+                        <Col  sm={4} md={4} lg={2}>
                             <Form.Label>First Name</Form.Label>
                         </Col>
-                        <Col sm={6} md={5} lg={4}>
+                        <Col sm={10} md={9} lg={8}>
                             <Form.Control type="text" value={newCandidate.first_name} onChange={(e)=>setNewCandidate({...newCandidate, first_name: e.target.value})} />
                         </Col>
                     </Row>
@@ -128,8 +129,10 @@ export default function Signup ( { candidate } ) {
                         <option value="technology">Technology</option>
                     </Form.Select>
                 </Col>
-
                 <Button type="submit">Submit</Button>
+
+                </Col>
+                </Row>
             </Form>
         </>
                   )

@@ -1,15 +1,20 @@
-import { Navigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 
 export default function Logout ( { candidate, setCandidate } ) {
+
+    const navigate = useNavigate();
 
     useEffect (()=> {
         fetch('/api/candidate/logout', {
             method: "DELETE"
             })
-            .then(response => setCandidate(null))
-        }, 
-        [setCandidate])
+            .then(response => {
+                setCandidate(null)
+                navigate("/");
+            }
+    )}, 
+        [setCandidate, candidate])
 
     if (!candidate) {
         return (

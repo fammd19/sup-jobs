@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Row, Card, Col, Container, Button } from 'react-bootstrap'
+import { Row, Card, Col, Container, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 
 export default function JobsIndex ( { candidate, company }) {
     const [jobs, setJobs] = useState([])
+
 
     useEffect ( () => {
         fetch('/api/jobs/all')
@@ -44,19 +45,31 @@ export default function JobsIndex ( { candidate, company }) {
                                                 </Row >
                                             </Col>
                                             <Col className="col-5">
-                                                <Card.Title>{`${job.title}`}</Card.Title>
-                                                <Card.Subtitle>{`${job.company.name}`}</Card.Subtitle>
-                                                <Card.Text>${`${job.salary}`}</Card.Text>
-                                                <Card.Text>{`${job.location}`}</Card.Text>
+                                                <Card.Title className="mt-2"><b>{`${job.title}`}</b></Card.Title>
+                                                <Card.Subtitle><b>{`${job.company.name}`}</b></Card.Subtitle>
+                                                <Card.Text className="mt-4">${`${job.salary}`}</Card.Text>
+                                                
                                             </Col>
                                             <Col className="col-5">
-                                                <Card.Text>{`${job.job_type}`}</Card.Text>
-                                                { job.closing_date
-                                                ?
-                                                <Card.Text>{`${job.closing_date}`}</Card.Text>
-                                            :
-                                            null}
-                                                <Link to={`/jobs/${job.id}`}><Button variant="primary">More details</Button></Link>
+                                                <Card.Text className="mt-2">{`${job.job_type}`}</Card.Text>
+                                                <Card.Text>{`${job.location}`}</Card.Text>
+                                                {
+                                                    candidate
+                                                    ?
+                                                    <Link to={`/jobs/${job.id}`}><Button variant="primary">More details</Button></Link>
+                                                    :
+                                                    <OverlayTrigger
+                                                    placement="bottom"
+                                                    overlay={<Tooltip id="button-tooltip">You must be logged in to view job details</Tooltip>}
+                                                  >
+                                                    <span className="d-inline-block">
+                                                      <Button variant="primary  disabled" disabled style={{ pointerEvents: 'none' }}>
+                                                        More details
+                                                      </Button>
+                                                    </span>
+                                                  </OverlayTrigger>
+                                                    
+                                                }
                                             </Col>
                                         </Row>
                                     </Card.Body>

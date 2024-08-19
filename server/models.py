@@ -121,19 +121,19 @@ class Company (db.Model, SerializerMixin):
 
         return size
 
-    @validates('abn')
-    def validate_abn(self, key, abn):
+    # @validates('abn')
+    # def validate_abn(self, key, abn):
         
-        if not abn or not isinstance(abn, (int,)):
-            raise ValueError("ABN is a required field and must be a number")
+    #     if not abn or not isinstance(abn, (int,)):
+    #         raise ValueError("ABN is a required field and must be a number")
 
-        if not len(str(abn)) == 11:
-            raise ValueError("ABN should have 11 digits")
+    #     if not len(str(abn)) == 11:
+    #         raise ValueError("ABN should have 11 digits")
 
-        if Company.query.filter(Company.abn == abn).first():
-            raise ValueError("ABN registered to an existing company")
+    #     if Company.query.filter(Company.abn == abn).first():
+    #         raise ValueError("ABN registered to an existing company")
 
-        return abn
+    #     return abn
 
     @validates('industry')
     def validate_industry(self, key, industry):

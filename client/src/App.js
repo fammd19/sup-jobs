@@ -17,6 +17,7 @@ import Account from './components/pages/candidate/Account';
 
 import CoLogin from './components/pages/company/CoLogin';
 import CoLogout from './components/pages/company/CoLogout';
+import CoSignup from './components/pages/company/CoSignup';
 
 export default function App() {
 
@@ -44,29 +45,6 @@ export default function App() {
         })}
     ,[])
 
-    
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const candidateResponse = await fetch('/api/candidate/account');
-  //       const candidateJson = await candidateResponse.json();
-  //       if (candidateJson.id) {
-  //         setCandidate(candidateJson);
-  //       }
-
-  //       const companyResponse = await fetch('/api/company/account');
-  //       const companyJson = await companyResponse.json();
-  //       if (companyJson.id) {
-  //         setCompany(companyJson);
-  //       }
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-
-  //   fetchData(); 
-  // }, []);
-
 
   return (
     <Router>
@@ -80,12 +58,14 @@ export default function App() {
         
         <Route path='/jobs' element={<Jobs candidate={candidate} company={company}/>}>
           <Route index element={<JobsIndex candidate={candidate} company={company}/>}/>
-          <Route path=":id" element={<JobPage/>}/>
+          <Route path=":id" element={<JobPage candidate={candidate} /> }/>
         </Route>
 
         <Route path="/post-job" element={<PostJob company={company} />} />
         <Route path='/company-login' element={<CoLogin candidate={candidate} company={company} setCompany={setCompany}/>}/>
         <Route path='/company-logout' element={<CoLogout company={company} setCompany={setCompany}/>}/>
+        <Route path='/company-signup' element={<CoSignup company={company} setCompany={setCompany}/>}/>
+
       </Routes>
     </Router>
   );
