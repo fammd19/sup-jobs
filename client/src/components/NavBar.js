@@ -1,4 +1,5 @@
 import { Nav, Navbar, Button, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 export default function NavBar ({ candidate, company } ) {
@@ -14,28 +15,28 @@ export default function NavBar ({ candidate, company } ) {
             candidate
             ?
             <Nav className="ms-auto">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/jobs">Jobs</Nav.Link>
-                <Nav.Link href="#">Company Profiles</Nav.Link>
-                <Nav.Link href="/account">Account</Nav.Link>
-                <Nav.Link href="/logout">Logout</Nav.Link>
+                <Link to="/">Home</Link>
+                <Link to="/jobs">Jobs</Link>
+                <Link to="#">Company Profiles</Link>
+                <Link to="/account">Account</Link>
+                <Link to="/logout">Logout</Link>
             </Nav>
             :
             company
               ?
               <Nav className="ms-auto">
-                <Nav.Link  href="/">Home</Nav.Link>
-                <Nav.Link href="/jobs">Jobs</Nav.Link>
-                <Nav.Link href="/post-job">Post Jobs</Nav.Link>
-                <Nav.Link href="#">Account</Nav.Link>
-                <Nav.Link href="/company-logout">Logout</Nav.Link>
+                <Link  to="/">Home</Link>
+                <Link to="/jobs">Jobs</Link>
+                <Link to="/post-job">Post Jobs</Link>
+                <Link to="#">Account</Link>
+                <Link to="/company-logout">Logout</Link>
               </Nav>
               :
               <Nav className="ms-auto">
-                  <Nav.Link className="nav-item" href="/">Home</Nav.Link>
-                  <Nav.Link className="nav-item" href="/jobs">Jobs</Nav.Link>
-                  <Nav.Link className="nav-item" href="/login">Login/ Signup</Nav.Link>
-                  <Nav.Link href="/company-login"><Button className="btn-secondary">For Companies</Button></Nav.Link>
+                  <Link className="nav-item" to="/">Home</Link>
+                  <Link className="nav-item" to="/jobs">Jobs</Link>
+                  <Link className="nav-item" to="/login">Login/ Signup</Link>
+                  <Link to="/company-login"><Button className="btn-secondary">For Companies</Button></Link>
               </Nav>
         }
       </Navbar.Collapse>

@@ -11,10 +11,10 @@ export default function Logout ( { candidate, setCandidate } ) {
             })
             .then(response => {
                 setCandidate(null)
-                navigate("/");
+                // navigate("/");
             }
     )}, 
-        [setCandidate, candidate])
+        [])
 
     if (!candidate) {
         return (
