@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from 'react-bootstrap';
 import UpdateForm from '../../UpdateForm';
+import NavBar from '../../NavBar';
 
 export default function Account ( {candidate, setCandidate} ) {
         
     const navigate = useNavigate();
 
-    if ( !candidate ) {
-        navigate("/")
-    }
+    // if ( !candidate ) {
+    //     navigate("/")
+    // }
 
         const [candidateDetails, setCandidateDetails] = useState({
             first_name: "",
@@ -24,7 +25,7 @@ export default function Account ( {candidate, setCandidate} ) {
             fetch("/api/candidate/account")
             .then(response=>response.json())
             .then(json=>setCandidateDetails(json))
-        })
+        },[])
 
         function displayAccountUpdateForm () {
             const formDiv = document.getElementById("account-update-form");
@@ -34,26 +35,30 @@ export default function Account ( {candidate, setCandidate} ) {
                 showBtn.textContent="Cancel update"
             } else {
                 formDiv.classList.add("hide")
-                showBtn.textContent="Update listing"   
+                showBtn.textContent="Update details"   
             }
         }
 
         return (
             <>
+                <NavBar candidate={candidate}/>
                 <h1>Account</h1>
 
                 <div>
                     <p>First name: {candidateDetails.first_name} </p>
                     <p>Last name: {candidateDetails.last_name}</p>
                     <p>Email: {candidateDetails.email}</p>
-                    <p>Password: {candidateDetails.password}</p>
+                    <p>Password: *******</p>
                     <p>Preferred industry: {candidateDetails.preferred_industry}</p>
                     <p>Preferred department: {candidateDetails.preferred_department}</p>
                 </div>
 
                 <Button className="mx-1" id="update-account-btn" variant="warning" onClick={displayAccountUpdateForm}>Update details</Button>
-                
-                <UpdateForm candidateDetails={candidateDetails} setCandidateDetails={setCandidateDetails}/>
+                <div id="account-update-form" className="hide">
+                    <UpdateForm candidateDetails={candidateDetails} setCandidateDetails={setCandidateDetails} displayAccountUpdateForm={displayAccountUpdateForm} />
+                </div>
+
+                <Button type="submit">Login</Button> 
 
             </>
     )

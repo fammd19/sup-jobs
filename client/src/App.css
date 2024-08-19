@@ -15,6 +15,10 @@ body {
   max-width: 70%;
 }
 
+.hide {
+  display:none;
+}
+
 /*===NavBar===*/
 .bg-body-tertiary {
     background-color: #B6FFBB !important;

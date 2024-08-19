@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 import { Link } from "react-router-dom"
-import { Button, Col, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import NavBar from '../../NavBar'
 
 export default function Jobs ( {candidate, company} ) {
