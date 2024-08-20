@@ -100,33 +100,29 @@ export default function Signup ( { candidate } ) {
                 </Form.Group>
                 <Col sm={6} md={5} lg={4}>
                     <Form.Select onChange={(e)=>setNewCandidate({...newCandidate, preferred_industry: e.target.value})}>      
-                        <option>Industry</option>
-                        <option value="agriculture, forestry & fishing">Agriculture, Forestry & Fishing</option>
-                        <option value="construction">Construction</option>
-                        <option value="consumer goods & services">Consumer Goods & Services</option>
-                        <option value="education">Education</option>
-                        <option value="health">Health</option>
-                        <option value="hospitality, travel & lesiure">Hospitality, Travel & Leisure</option>
-                        <option value="legal & financial services">Legal & Financial Servicer</option>
-                        <option value="media & telecommunications">Media & Telecomms</option>
-                        <option value="manufacturing">Manufacturing</option>
-                        <option value="mining">Mining</option>
-                        <option value="technology & software">Technology & Software</option>
+                    <option value="">Industry</option>
+                            <option value="agriculture">Agriculture, Forestry & Fishing</option>
+                            <option value="construction">Construction</option>
+                            <option value="cgs">Consumer Goods & Services</option>
+                            <option value="education">Education</option>
+                            <option value="health">Health</option>
+                            <option value="hospitality">Hospitality, Travel & Leisure</option>
+                            <option value="legal">Legal & Financial Services</option>
+                            <option value="media">Media & Telecomms</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="mining">Mining</option>
+                            <option value="technology">Technology & Software</option>
                     </Form.Select>
                 </Col>
                 <Col sm={6} md={5} lg={4}>
                     <Form.Select onChange={(e)=>setNewCandidate({...newCandidate, preferred_department: e.target.value})}>    
                         <option>Department</option>
                         <option value="co-founder">Co-Founder</option>
-                        <option value="customer services">Customer Services</option>
-                        <option value="data & analytics">Data & Analytics</option>
                         <option value="design">Design</option>
                         <option value="finance">Finance</option>
-                        <option value="human resources">Human Resources</option>
-                        <option value="legal">Legal</option>
+                        <option value="human resources">Ops & HR</option>
                         <option value="marketing">Marketing</option>
-                        <option value="sales">Sales</option>
-                        <option value="technology">Technology</option>
+                        <option value="technology">Tech & Data</option>
                     </Form.Select>
                 </Col>
                 <Button type="submit">Submit</Button>

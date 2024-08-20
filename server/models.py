@@ -46,7 +46,7 @@ class Candidate (db.Model, SerializerMixin):
 
     @validates('preferred_industry')
     def validate_preferred_industry(self, key, preferred_industry):
-        industries = ["agriculture, forestry & fishing","construction","consumer goods & services","education","health","hospitality, travel & lesiure","legal & financial services","media & telecommunications","manufacturing","mining","technology & software"]
+        industries = ["agriculture","construction","cgs","education","health","hospitality","legal","media","manufacturing","mining","technology"]
 
         if preferred_industry.lower() not in industries:
             raise ValueError("Industry must be from the predefined list")
@@ -55,7 +55,7 @@ class Candidate (db.Model, SerializerMixin):
 
     @validates('preferred_department')
     def validate_preferred_department(self, key, preferred_department):
-        departments = ["co-founder","customer services","data & analytics","design","finance","human resources","legal","marketing","operations","sales","technology"]
+        departments = ["co-founder","design","finance","marketing","operations","technology"]
 
         if preferred_department.lower() not in departments:
             raise ValueError("Department must be from the predefined list")
@@ -137,7 +137,7 @@ class Company (db.Model, SerializerMixin):
 
     @validates('industry')
     def validate_industry(self, key, industry):
-        industries = ["agriculture, forestry & fishing","construction","consumer goods & services","education","health","hospitality, travel & lesiure","legal & financial services","media & telecommunications","manufacturing","mining","technology & software"]
+        industries = ["agriculture","construction","cgs","education","health","hospitality","legal","media","manufacturing","mining","technology"]
 
         if industry.lower() not in industries:
             raise ValueError("Industry must be from the predefined list")
@@ -209,7 +209,7 @@ class Job (db.Model, SerializerMixin):
 
     @validates('department')
     def validate_department(self, key, department):
-        departments = ["co-founder","customer services","data & analytics","design","finance","human resources","legal","marketing","operations","sales","technology"]
+        departments = ["co-founder","design","finance","marketing","operations","technology"]
 
         if department.lower() not in departments:
             raise ValueError("Department must be from the predefined list")

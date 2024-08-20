@@ -79,15 +79,11 @@ export default function PostJob ( {company} ) {
                     <Form.Select onChange={(e)=>setJob({...job, department: e.target.value})}>    
                         <option>Department</option>
                         <option value="co-founder">Co-Founder</option>
-                        <option value="customer services">Customer Services</option>
-                        <option value="data & analytics">Data & Analytics</option>
                         <option value="design">Design</option>
                         <option value="finance">Finance</option>
-                        <option value="human resources">Human Resources</option>
-                        <option value="legal">Legal</option>
+                        <option value="human resources">Ops & HR</option>
                         <option value="marketing">Marketing</option>
-                        <option value="sales">Sales</option>
-                        <option value="technology">Technology</option>
+                        <option value="technology">Tech & Data</option>
                     </Form.Select>
                 </Col>
                 <Form.Group className="my-3">

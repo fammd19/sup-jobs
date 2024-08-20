@@ -1,17 +1,38 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Card, Col, Container, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
+import Filter from '../../Filter'
 
 export default function JobsIndex ( { candidate, company }) {
     const [jobs, setJobs] = useState([])
+    const [url, setUrl] = useState("/api/jobs/all")
 
+    const location = useLocation();
+
+
+
+    useEffect(() => {
+        // Parse query parameters from the URL
+        const queryParams = new URLSearchParams(location.search);
+        const dep = queryParams.get('dep');
+
+        if (dep) {
+            setUrl(`/api/jobs/filter?department=${dep}`)
+        }
+})
+    // useEffect ( () => {
+    //     fetch('/api/jobs/all')
+    //     .then(res => res.json())
+    //     .then(json => setJobs(json))
+    //     .catch(error => console.log(error.message))
+    // },[])
 
     useEffect ( () => {
-        fetch('/api/jobs/all')
+        fetch(url)
         .then(res => res.json())
         .then(json => setJobs(json))
         .catch(error => console.log(error.message))
-    },[])
+    },[url])
 
     let numJobs
     if (!candidate) {
@@ -32,6 +53,7 @@ export default function JobsIndex ( { candidate, company }) {
                         :
                         null
                     }
+                    <Filter setUrl={setUrl}/>
                     <Col>
                         {
                             jobs.slice(0, numJobs).map((job)=> {

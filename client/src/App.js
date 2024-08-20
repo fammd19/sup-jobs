@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Routes, Route, json} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -57,7 +57,7 @@ export default function App() {
 
         
         <Route path='/jobs' element={<Jobs candidate={candidate} company={company}/>}>
-          <Route index element={<JobsIndex candidate={candidate} company={company}/>}/>
+          <Route index element={<JobsIndex candidate={candidate} company={company} />}/>
           <Route path=":id" element={<JobPage candidate={candidate} /> }/>
         </Route>
 

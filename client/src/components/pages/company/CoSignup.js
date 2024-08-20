@@ -141,18 +141,18 @@ export default function CoSignup ( { company, candidate, setCompany } ) {
                 </Form.Group>
                 <Col >
                     <Form.Select onChange={(e)=>setNewCompany({...newCompany, industry: e.target.value})}>      
-                        <option>Industry</option>
-                        <option value="agriculture, forestry & fishing">Agriculture, Forestry & Fishing</option>
-                        <option value="construction">Construction</option>
-                        <option value="consumer goods & services">Consumer Goods & Services</option>
-                        <option value="education">Education</option>
-                        <option value="health">Health</option>
-                        <option value="hospitality, travel & lesiure">Hospitality, Travel & Leisure</option>
-                        <option value="legal & financial services">Legal & Financial Servicer</option>
-                        <option value="media & telecommunications">Media & Telecomms</option>
-                        <option value="manufacturing">Manufacturing</option>
-                        <option value="mining">Mining</option>
-                        <option value="technology & software">Technology & Software</option>
+                    <option value="">Industry</option>
+                            <option value="agriculture">Agriculture, Forestry & Fishing</option>
+                            <option value="construction">Construction</option>
+                            <option value="cgs">Consumer Goods & Services</option>
+                            <option value="education">Education</option>
+                            <option value="health">Health</option>
+                            <option value="hospitality">Hospitality, Travel & Leisure</option>
+                            <option value="legal">Legal & Financial Services</option>
+                            <option value="media">Media & Telecomms</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="mining">Mining</option>
+                            <option value="technology">Technology & Software</option>
                     </Form.Select>
                 </Col>
                 <Form.Group className="my-3">
