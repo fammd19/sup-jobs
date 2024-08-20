@@ -103,7 +103,10 @@ export default function JobsIndex ( { candidate, company }) {
                 </Col>
                 </>
                 :
-                <p>No jobs found</p>
+                <>
+                    <p>No jobs found</p>
+                    <Button onClick={()=>setUrl("/api/jobs/all")}>Search again</Button>
+                </>
             }
         </Container>
     )

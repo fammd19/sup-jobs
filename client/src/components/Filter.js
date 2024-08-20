@@ -27,6 +27,10 @@ export default function Filter({ setUrl }) {
             url = `${url}&industry=${industry}`;
         }
 
+        if (location) {  
+            url = `${url}&location=${location}`;
+        }
+
         setUrl(url);
     }
 
