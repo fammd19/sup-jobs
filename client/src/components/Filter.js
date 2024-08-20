@@ -5,6 +5,8 @@ import { Form, Col, Row, Button } from "react-bootstrap";
 export default function Filter({ setUrl }) {
     const [department, setDepartment] = useState("");
     const [salary, setSalary] = useState("");
+    const [industry, setIndustry] = useState("");
+    const [location, setLocation] = useState("");
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -19,6 +21,10 @@ export default function Filter({ setUrl }) {
 
         if (department) {  
             url = `${url}&department=${department}`;
+        }
+
+        if (industry) {  
+            url = `${url}&industry=${industry}`;
         }
 
         setUrl(url);
@@ -41,7 +47,24 @@ export default function Filter({ setUrl }) {
                         </Form.Group>
                     </Col>
                     <Col sm={5} md={4} lg={3} className="mb-2">
-                        <p>Location</p>
+                        <Form.Select name="location-filter" onChange={(e) => setLocation(e.target.value)}>
+                            <option value="">All locations</option>
+                            <option value="remote">Remote</option>
+                            <option value="act">ACT</option>
+                            <option value="nsw-sydney">Sydney</option>
+                            <option value="nsw-newcastle">Newcastle</option>                            <option value="nsw">All NSW</option>
+                            <option value="nt-darwin">Darwin</option>
+                            <option value="nt">All NT</option>
+                            <option value="qld-brisbane">Brisbane</option>
+                            <option value="qld">QLD Other</option>
+                            <option value="sa-adelaide">Adelaide</option>
+                            <option value="sa">All SA</option>
+                            <option value="tas">Tasmania</option>
+                            <option value="vic-melbourne">Melbourne</option>
+                            <option value="vic">All Victoria</option>
+                            <option value="wa-perth">Perth</option>
+                            <option value="wa">All WA</option>
+                        </Form.Select>
                     </Col>
                     <Col sm={5} md={4} lg={3} className="mb-2">
                         <Form.Select name="department-filter" onChange={(e) => setDepartment(e.target.value)}>
@@ -55,7 +78,7 @@ export default function Filter({ setUrl }) {
                         </Form.Select>
                     </Col>
                     <Col sm={5} md={4} lg={3} className="mb-2">
-                        <Form.Select name="industry-filter">
+                        <Form.Select name="industry-filter" onChange={(e) => setIndustry(e.target.value)}>
                             <option value="">All industries</option>
                             <option value="agriculture">Agriculture, Forestry & Fishing</option>
                             <option value="construction">Construction</option>

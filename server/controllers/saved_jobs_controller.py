@@ -34,7 +34,6 @@ class SaveJob (Resource):
 
             
 
-
 class AllSavedJobs (Resource):
 
     def get(self):

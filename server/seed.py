@@ -10,7 +10,7 @@ def create_records():
             email="janesmith@gmail.com",
             first_name="Jane",
             last_name="Smith",
-            preferred_industry="consumer goods & services",
+            preferred_industry="cgs",
             preferred_department="technology",
             _hashed_password=bcrypt.generate_password_hash("1234abcde").decode('utf-8')  # Hash the password
         )
@@ -29,7 +29,7 @@ def create_records():
             hashed_password="a1b2c3d4e5",
             first_name="James",
             last_name="Allen",
-            preferred_industry="hospitality, travel & lesiure",
+            preferred_industry="hospitality",
             preferred_department="finance"
         )
 

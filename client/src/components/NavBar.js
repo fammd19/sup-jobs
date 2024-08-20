@@ -15,27 +15,27 @@ export default function NavBar ({ candidate, company } ) {
             candidate
             ?
             <Nav className="ms-auto">
-                <Link to="/">Home</Link>
-                <Link to="/jobs">Jobs</Link>
-                <Link to="#">Company Profiles</Link>
-                <Link to="/account">Account</Link>
-                <Link to="/logout">Logout</Link>
+                <Link className="nav-item nav-link" to="/">Home</Link>
+                <Link className="nav-item nav-link" to="/jobs">Jobs</Link>
+                <Link className="nav-item nav-link" to="#">Company Profiles</Link>
+                <Link className="nav-item nav-link" to="/account">Account</Link>
+                <Link className="nav-item nav-link" to="/logout">Logout</Link>
             </Nav>
             :
             company
               ?
               <Nav className="ms-auto">
-                <Link  to="/">Home</Link>
-                <Link to="/jobs">Jobs</Link>
-                <Link to="/post-job">Post Jobs</Link>
-                <Link to="#">Account</Link>
-                <Link to="/company-logout">Logout</Link>
+                <Link className="nav-item nav-link" to="/">Home</Link>
+                <Link className="nav-item nav-link" to="/jobs">Jobs</Link>
+                <Link className="nav-item nav-link" to="/post-job">Post Jobs</Link>
+                <Link className="nav-item nav-link" to="#">Account</Link>
+                <Link className="nav-item nav-link" to="/company-logout">Logout</Link>
               </Nav>
               :
               <Nav className="ms-auto">
-                  <Link className="nav-item" to="/">Home</Link>
-                  <Link className="nav-item" to="/jobs">Jobs</Link>
-                  <Link className="nav-item" to="/login">Login/ Signup</Link>
+                  <Link className="nav-item nav-link" to="/">Home</Link>
+                  <Link className="nav-item nav-link" to="/jobs">Jobs</Link>
+                  <Link className="nav-item nav-link" to="/login">Login/ Signup</Link>
                   <Link to="/company-login"><Button className="btn-secondary">For Companies</Button></Link>
               </Nav>
         }

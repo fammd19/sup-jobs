@@ -2,7 +2,7 @@ from config import db, bcrypt
 from flask import make_response, request, session
 from flask_restful import Resource
 from datetime import datetime, date
-from models import Job
+from models import Job, Company
 from sqlalchemy import and_
 
 
@@ -141,6 +141,7 @@ class FilterJobs (Resource):
         industry = request.args.get('industry')
         salary = request.args.get('salary')
         department = request.args.get('department')
+        location = request.args.get('location')
 
         # #convert integers from args & set defaults
         # if min_size:
@@ -168,9 +169,15 @@ class FilterJobs (Resource):
         
         if industry:
             if industry.lower() == 'null':
-                jobs = jobs.filter(Job.company.industry.is_(None))
+                jobs = jobs.join(Job.company).filter(Company.industry.is_(None))
             else:
-                jobs = jobs.filter(Job.company.industry == industry)
+                jobs = jobs.join(Job.company).filter(Company.industry == industry)
+
+        if location:
+            if location.lower() == 'null':
+                jobs = jobs.filter(Job.location.is_(None))
+            else:
+                jobs = jobs.filter(Job.location == location)
 
         jobs = jobs.filter(
             and_(
