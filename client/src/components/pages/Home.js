@@ -18,7 +18,9 @@ export default function Home ({ candidate, company }) {
                     <Welcome />
                     <Row xs={12} md={7} style={{ width: '60%' }}>
                         <Col><Link to="/post-job"><Button className="btn-primary">Post a new job</Button></Link></Col>
-                        <Col><Link to="/jobs"><Button className="btn-primary">View {company.name} jobs</Button></Link></Col>
+                        {/* Needs updating */}
+                        <Col><Link to="/jobs"><Button className="btn-primary">View your jobs</Button></Link></Col>
+                        <Col><Link to="/jobs"><Button className="btn-primary">View all jobs</Button></Link></Col>
                     </Row>
                     
                 </>

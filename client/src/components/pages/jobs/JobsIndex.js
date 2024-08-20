@@ -11,23 +11,30 @@ export default function JobsIndex ( { candidate, company }) {
 
 
 
-    useEffect(() => {
-        // Parse query parameters from the URL
+//     useEffect(() => {
+//         // Parse query parameters from the URL
+//         const queryParams = new URLSearchParams(location.search);
+//         const dep = queryParams.get('dep');
+
+//         if (dep) {
+//             setUrl(`/api/jobs/filter?department=${dep}`)
+//         }
+// })
+//     // useEffect ( () => {
+//     //     fetch('/api/jobs/all')
+//     //     .then(res => res.json())
+//     //     .then(json => setJobs(json))
+//     //     .catch(error => console.log(error.message))
+//     // },[])
+
+    useEffect ( () => {
         const queryParams = new URLSearchParams(location.search);
         const dep = queryParams.get('dep');
 
         if (dep) {
             setUrl(`/api/jobs/filter?department=${dep}`)
         }
-})
-    // useEffect ( () => {
-    //     fetch('/api/jobs/all')
-    //     .then(res => res.json())
-    //     .then(json => setJobs(json))
-    //     .catch(error => console.log(error.message))
-    // },[])
 
-    useEffect ( () => {
         fetch(url)
         .then(res => res.json())
         .then(json => setJobs(json))
@@ -35,13 +42,14 @@ export default function JobsIndex ( { candidate, company }) {
     },[url])
 
     let numJobs
-    if (!candidate) {
+    if (!candidate && !company) {
         numJobs = 10
     }
 
     return (
 
         <Container>
+            <h1>Startup & small company jobs</h1>
             {
                 jobs.length>0
                 ?
@@ -101,6 +109,7 @@ export default function JobsIndex ( { candidate, company }) {
                     }
 
                 </Col>
+                <Button onClick={()=>setUrl("/api/jobs/all")}>Clear filters</Button>
                 </>
                 :
                 <>

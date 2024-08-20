@@ -65,6 +65,7 @@ export default function App() {
         <Route path='/company-login' element={<CoLogin candidate={candidate} company={company} setCompany={setCompany}/>}/>
         <Route path='/company-logout' element={<CoLogout company={company} setCompany={setCompany}/>}/>
         <Route path='/company-signup' element={<CoSignup company={company} setCompany={setCompany}/>}/>
+        
 
       </Routes>
     </Router>
