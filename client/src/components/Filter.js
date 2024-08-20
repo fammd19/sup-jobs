@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Form, Col, Row, Button } from "react-bootstrap";
+import { Form, Col, Row, Button, Dropdown } from "react-bootstrap";
 
 export default function Filter({ setUrl }) {
     const [department, setDepartment] = useState("");
@@ -50,20 +50,28 @@ export default function Filter({ setUrl }) {
                         <Form.Select name="location-filter" onChange={(e) => setLocation(e.target.value)}>
                             <option value="">All locations</option>
                             <option value="remote">Remote</option>
+                            <Dropdown.Divider />
                             <option value="act">ACT</option>
-                            <option value="nsw-sydney">Sydney</option>
-                            <option value="nsw-newcastle">Newcastle</option>                            <option value="nsw">All NSW</option>
-                            <option value="nt-darwin">Darwin</option>
-                            <option value="nt">All NT</option>
-                            <option value="qld-brisbane">Brisbane</option>
-                            <option value="qld">QLD Other</option>
-                            <option value="sa-adelaide">Adelaide</option>
-                            <option value="sa">All SA</option>
+                            <Dropdown.Divider />
+                            <option value="nsw">NSW</option>
+                            <option value="nsw-sydney"> &gt; Sydney</option>
+                            <option value="nsw-newcastle"> &gt; Newcastle</option> 
+                            <Dropdown.Divider />                       
+                            <option value="nt">NT</option>
+                            <Dropdown.Divider />
+                            <option value="qld">Queensland</option>
+                            <option value="qld-brisbane"> &gt; Brisbane</option>
+                            <Dropdown.Divider />
+                            <option value="sa">South Australia</option>
+                            <option value="sa-adelaide"> &gt; Adelaide</option>
+                            <Dropdown.Divider />
                             <option value="tas">Tasmania</option>
-                            <option value="vic-melbourne">Melbourne</option>
-                            <option value="vic">All Victoria</option>
-                            <option value="wa-perth">Perth</option>
-                            <option value="wa">All WA</option>
+                            <Dropdown.Divider />
+                            <option value="vic">Victoria</option>
+                            <option value="vic-melbourne"> &gt; Melbourne</option>
+                            <Dropdown.Divider />
+                            <option value="wa">Western Australia</option>
+                            <option value="wa-perth"> -&gt; Perth</option>
                         </Form.Select>
                     </Col>
                     <Col sm={5} md={4} lg={3} className="mb-2">
