@@ -26,7 +26,7 @@ export default function Home ({ candidate, company }) {
                 <>
                     <NavBar candidate={candidate} company={company}/>
                     <Welcome />
-                    <SampleJobs number={3}/>
+                    <SampleJobs number={3} candidate={candidate} company={company}/>
                     <Link to="/jobs"><Button>View more jobs</Button></Link>
                     <FilterByDep />
                 </>

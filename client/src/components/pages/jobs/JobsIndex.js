@@ -76,7 +76,7 @@ export default function JobsIndex ( { candidate, company }) {
                                                 <Card.Text className="mt-2">{`${job.job_type}`}</Card.Text>
                                                 <Card.Text>{`${job.location}`}</Card.Text>
                                                 {
-                                                    candidate
+                                                    candidate || company
                                                     ?
                                                     <Link to={`/jobs/${job.id}`}><Button variant="primary">More details</Button></Link>
                                                     :

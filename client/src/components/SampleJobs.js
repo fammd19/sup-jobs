@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Container, Col, Card, Row, Button } from 'react-bootstrap';
+import { Container, Col, Card, Row, OverlayTrigger, Button, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
 
-export default function SampleJobs ( {number} ) {
+export default function SampleJobs ( {number, candidate, company} ) {
 
     const [jobs, setJobs] = useState([])
 
@@ -35,12 +35,31 @@ export default function SampleJobs ( {number} ) {
                                             <Card.Text>${`${job.salary}`}</Card.Text>
                                             <Card.Text>{`${job.location}`}</Card.Text>
                                             <Card.Text>{`${job.job_type}`}</Card.Text>
-                                            { job.closing_date
-                                            ?
-                                            <Card.Text>{`${job.closing_date}`}</Card.Text>
-                                        :
-                                        null}
-                                            <Link to={`/jobs/${job.id}`}><Button variant="primary">More details</Button></Link>
+                                            { 
+                                                job.closing_date
+                                                ?
+                                                <Card.Text>{`${job.closing_date}`}</Card.Text>
+                                                :
+                                                null
+                                            }
+                                            {
+                                                    candidate || company
+                                                    ?
+                                                    <Link to={`/jobs/${job.id}`}><Button variant="primary">More details</Button></Link>
+                                                    :
+                                                    <OverlayTrigger
+                                                    placement="bottom"
+                                                    overlay={<Tooltip id="button-tooltip">You must be logged in to view job details</Tooltip>}
+                                                  >
+                                                    <span className="d-inline-block">
+                                                      <Button variant="primary  disabled" disabled style={{ pointerEvents: 'none' }}>
+                                                        More details
+                                                      </Button>
+                                                    </span>
+                                                  </OverlayTrigger>
+                                                    
+                                                }
+                                            {/* <Link to={`/jobs/${job.id}`}><Button variant="primary">More details</Button></Link> */}
                                     </Card.Body>
                                 </Card>
                                 </Col>
