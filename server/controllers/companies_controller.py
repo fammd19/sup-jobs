@@ -129,3 +129,16 @@ class CompanyById(Resource):
             
         else:
             return make_response({"message": "No company found with this ID"}, 404)
+
+
+class AllCompanies(Resource):
+
+    def get(self):
+        companies = Company.query.all()
+
+        if len(companies) > 0:
+            companies_dict = [company.to_dict() for company in companies]
+            return make_response(companies_dict, 200)
+        else:
+            return make_response({"message": "No companies available"}, 200)
+

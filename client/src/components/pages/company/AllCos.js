@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom"
 import { Col, Row } from 'react-bootstrap';
 import NavBar from '../../NavBar'
 
-export default function Jobs ( {candidate, company} ) {
+export default function AllCos ( {candidate, company} ) {
     return (
         <>
         <NavBar candidate={candidate} company={company}/> 

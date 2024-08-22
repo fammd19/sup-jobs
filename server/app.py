@@ -5,7 +5,7 @@ from models import db
 
 
 from controllers.candidates_controller import CandidateSignUp, CandidateLogin, CandidateLogout, CandidateAccount
-from controllers.companies_controller import CompanySignUp, CompanyLogin, CompanyLogout, CompanyAccount, CompanyById
+from controllers.companies_controller import CompanySignUp, CompanyLogin, CompanyLogout, CompanyAccount, CompanyById, AllCompanies
 from controllers.jobs_controller import CreateJob, AllJobs, JobById, JobsByCompany, FilterJobs
 from controllers.saved_jobs_controller import SaveJob, AllSavedJobs, SavedJobById
 
@@ -44,6 +44,7 @@ api.add_resource(CompanyLogin, '/company/login', endpoint='company_login')
 api.add_resource(CompanyLogout, '/company/logout', endpoint='company_logout')
 api.add_resource(CompanyAccount, '/company/account', endpoint='company_account')
 api.add_resource(CompanyById, '/company/<int:id>', endpoint='company_by_id')
+api.add_resource(AllCompanies, '/companies/all', endpoint='companies')
 
 #jobs
 api.add_resource(CreateJob, '/jobs/create', endpoint='create_job')
