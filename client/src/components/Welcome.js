@@ -1,15 +1,21 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
-export default function Welcome () {
+export default function Welcome ( {candidate, company} ) {
     return (
-        <Container className="mt-2 text-container" >
+        <Container className="mt-5 text-container home-container" >
             <Row>
                 <h2>
-                    Small Co's Where You Can Make A World Of Difference
+                    {
+                    !company
+                    ?
+                    <h2>Small Co's Where You Can Make A World Of Difference</h2>
+                    :
+                    <h2>Find Talent Who Can Make A World Of Difference</h2>
+                    }
                 </h2>
             </Row>
-            <Row>
+            <Row className="mt-3">
                 <p>
                     We're passionate about start-ups and small businesses which is why you'll only find companies with less than 200 employees on our site. This is the place for candidates who love getting their hands dirty and want to experience life in a start-up.
                 </p>

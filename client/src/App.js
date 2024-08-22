@@ -18,6 +18,7 @@ import Account from './components/pages/candidate/Account';
 import CoLogin from './components/pages/company/CoLogin';
 import CoLogout from './components/pages/company/CoLogout';
 import CoSignup from './components/pages/company/CoSignup';
+import CoJobs from './components/pages/company/CoJobs';
 
 export default function App() {
 
@@ -58,9 +59,11 @@ export default function App() {
         
         <Route path='/jobs' element={<Jobs candidate={candidate} company={company}/>}>
           <Route index element={<JobsIndex candidate={candidate} company={company} />}/>
-          <Route path=":id" element={<JobPage candidate={candidate} /> }/>
+          <Route path=":id" element={<JobPage candidate={candidate} company={company}/> }/>
+          <Route path='company' element={<CoJobs candidate={candidate} company={company}/>}/>
         </Route>
 
+        
         <Route path="/post-job" element={<PostJob company={company} />} />
         <Route path='/company-login' element={<CoLogin candidate={candidate} company={company} setCompany={setCompany}/>}/>
         <Route path='/company-logout' element={<CoLogout company={company} setCompany={setCompany}/>}/>

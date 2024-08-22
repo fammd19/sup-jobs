@@ -1,55 +1,40 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Card, Col, Container, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
-import { Link, useLocation } from "react-router-dom"
-import Filter from '../../Filter'
+import { Link, useNavigate, useLocation } from "react-router-dom"
+import NavBar from '../../NavBar'
 
-export default function JobsIndex ( { candidate, company }) {
+export default function CoJobs ( { candidate, company }) {
     const [jobs, setJobs] = useState([])
-    const [url, setUrl] = useState("/api/jobs/all")
-
+    const navigate = useNavigate()
     const location = useLocation();
 
+    const queryParams = new URLSearchParams(location.search);
+    const company_id = queryParams.get('company_id');
+
     useEffect ( () => {
-
-        const queryParams = new URLSearchParams(location.search);
-        const dep = queryParams.get('dep');
-        if (dep) {
-            setUrl(`/api/jobs/filter?department=${dep}`)
-        }
-
-        fetch(url)
+        fetch(`/api/jobs/company/${company_id}`)
         .then(res => res.json())
         .then(json => setJobs(json))
         .catch(error => console.log(error.message))
-    },[url])
+    },[])
 
-
-    let numJobs
-    if (!candidate && !company) {
-        numJobs = 10
-    }
+     if (!company) {
+        navigate("/jobs")
+     }
 
     return (
-
+        <>
         <Container>
-            <h1>Startup & small company jobs</h1>
+            <h1>{company.name} jobs</h1>
             {
                 jobs.length>0
                 ?
                 <>
-                    {
-                        !candidate && !company
-                        ?
-                        <p>Please login to view all jobs</p>
-                        :
-                        null
-                    }
-
-                    <Filter/>
+                <Button onClick={()=>navigate("/jobs")}>Jobs from all companies</Button>
                     
                     <Col>
                         {
-                            jobs.slice(0, numJobs).map((job)=> {
+                            jobs.map((job)=> {
                                 return(
                                 <Card  className="my-3" key={job.id}>
                                     <Card.Body>
@@ -94,14 +79,15 @@ export default function JobsIndex ( { candidate, company }) {
                     }
 
                 </Col>
-                <Button onClick={()=>setUrl("/api/jobs/all")}>Clear filters</Button>
+                <Button onClick={()=>navigate("/jobs")}>All jobs</Button>
                 </>
                 :
                 <>
                     <p>No jobs found</p>
-                    <Button onClick={()=>setUrl("/api/jobs/all")}>Search again</Button>
+                    <Button onClick={()=>navigate("/jobs")}>Search again</Button>
                 </>
             }
         </Container>
+        </>
     )
 }

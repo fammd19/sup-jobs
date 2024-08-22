@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Row, Card, Col, Container, Button } from 'react-bootstrap'
 
 
-export default function JobPage ( {candidate} ) {
+export default function JobPage ( {candidate, company} ) {
 
     const {id} = useParams();
+    const navigate = useNavigate();
     const [job, setJob] = useState (null)
 
 
@@ -39,9 +40,24 @@ export default function JobPage ( {candidate} ) {
         //need to display a prompt here
     }
     
+    function handleDelete () {
+        fetch(`/api/jobs/${id}`, {
+            method: "DELETE"
+            })
+            .then(response => {
+                if (response.okay) {
+                    setJob(null)
+                    navigate('/jobs')
+                }
+                else {
+                    console.log(response.error)
+                }
+        })
+    }
 
     return (
-        <>
+        <>  
+            <p id="prompt" className="hide">Job successfully saved</p>
             {
                 job
                 ?
@@ -92,7 +108,14 @@ export default function JobPage ( {candidate} ) {
                             ?
                             <Button className="mx-1" onClick={handleSave}>Save job</Button>
                             :
-                            null
+                            company
+                                ?
+                                <Row>
+                                    <Col><Button className="mx-1">Update job</Button></Col>
+                                    <Col><Button className="mx-1" onClick={handleDelete}>Delete job</Button></Col>
+                                </Row>
+                                :
+                                null
                         }
                         </div>
 
@@ -104,7 +127,9 @@ export default function JobPage ( {candidate} ) {
                 :
                 <p>No job details found</p>
             }
+            <Link to="/jobs"><Button>Back to jobs</Button></Link>
         </>
+
     )
 }
 

@@ -142,6 +142,7 @@ class FilterJobs (Resource):
         salary = request.args.get('salary')
         department = request.args.get('department')
         location = request.args.get('location')
+        company_id = request.args.get('company_id')
 
         # #convert integers from args & set defaults
         # if min_size:
@@ -178,6 +179,12 @@ class FilterJobs (Resource):
                 jobs = jobs.filter(Job.location.is_(None))
             else:
                 jobs = jobs.filter(Job.location == location)
+
+        if company_id:
+            if company_id == 'null':
+                jobs = jobs.filter(Job.company_id.is_(None))
+            else:
+                jobs = jobs.filter(Job.company_id == company_id)
 
         jobs = jobs.filter(
             and_(

@@ -2,11 +2,16 @@
 import React, { useState } from "react";
 import { Form, Col, Row, Button, Dropdown } from "react-bootstrap";
 
-export default function Filter({ setUrl }) {
+export default function Filter({ setUrl, company_id }) {
     const [department, setDepartment] = useState("");
     const [salary, setSalary] = useState("");
     const [industry, setIndustry] = useState("");
     const [location, setLocation] = useState("");
+    // const [companyId, setCompanyId] = useState("");
+
+    // if (company_id) {
+    //     setCompanyId(company_id)
+    // }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -30,6 +35,10 @@ export default function Filter({ setUrl }) {
         if (location) {  
             url = `${url}&location=${location}`;
         }
+
+        // if (companyId) {  
+        //     url = `${url}&company_id=${companyId}`;
+        // }
 
         setUrl(url);
     }

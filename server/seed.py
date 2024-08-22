@@ -12,7 +12,7 @@ def create_records():
             last_name="Smith",
             preferred_industry="cgs",
             preferred_department="technology",
-            _hashed_password=bcrypt.generate_password_hash("1234abcde").decode('utf-8')  # Hash the password
+            _hashed_password=bcrypt.generate_password_hash("1234abcde").decode('utf-8') 
         )
 
         candidate2=Candidate(
