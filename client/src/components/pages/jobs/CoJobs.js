@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Card, Col, Container, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { Link, useNavigate, useLocation } from "react-router-dom"
-import NavBar from '../../NavBar'
 
 export default function CoJobs ( { candidate, company }) {
     const [jobs, setJobs] = useState([])

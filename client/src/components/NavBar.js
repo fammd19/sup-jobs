@@ -28,7 +28,7 @@ export default function NavBar ({ candidate, company } ) {
                 <Link className="nav-item nav-link" to="/">Home</Link>
                 <Link className="nav-item nav-link" to="/jobs">Jobs</Link>
                 <Link className="nav-item nav-link" to="/post-job">Post Jobs</Link>
-                <Link className="nav-item nav-link" to="#">Account</Link>
+                <Link className="nav-item nav-link" to="/company-account">Account</Link>
                 <Link className="nav-item nav-link" to="/company-logout">Logout</Link>
               </Nav>
               :

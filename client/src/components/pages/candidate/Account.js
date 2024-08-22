@@ -6,11 +6,11 @@ import NavBar from '../../NavBar';
 
 export default function Account ( {candidate, setCandidate} ) {
         
-    const navigate = useNavigate();
+        const navigate = useNavigate();
 
-    // if ( !candidate ) {
-    //     navigate("/")
-    // }
+        // if ( !candidate ) {
+        //     navigate("/")
+        // }
 
         const [candidateDetails, setCandidateDetails] = useState({
             first_name: "",
@@ -57,8 +57,6 @@ export default function Account ( {candidate, setCandidate} ) {
                 <div id="account-update-form" className="hide">
                     <UpdateForm candidateDetails={candidateDetails} setCandidateDetails={setCandidateDetails} displayAccountUpdateForm={displayAccountUpdateForm} />
                 </div>
-
-                <Button type="submit">Login</Button> 
 
             </>
     )

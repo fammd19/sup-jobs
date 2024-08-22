@@ -5,10 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import Home from './components/pages/Home';
+
 import Jobs from './components/pages/jobs/Jobs';
 import JobsIndex from './components/pages/jobs/JobsIndex';
 import JobPage from './components/pages/jobs/JobPage';
 import PostJob from './components/pages/jobs/PostJob';
+import CoJobs from './components/pages/jobs/CoJobs';
 
 import Login from './components/pages/candidate/Login';
 import Logout from './components/pages/candidate/Logout';
@@ -18,7 +20,7 @@ import Account from './components/pages/candidate/Account';
 import CoLogin from './components/pages/company/CoLogin';
 import CoLogout from './components/pages/company/CoLogout';
 import CoSignup from './components/pages/company/CoSignup';
-import CoJobs from './components/pages/company/CoJobs';
+import CoAccount from './components/pages/company/CoAccount';
 
 export default function App() {
 
@@ -68,6 +70,7 @@ export default function App() {
         <Route path='/company-login' element={<CoLogin candidate={candidate} company={company} setCompany={setCompany}/>}/>
         <Route path='/company-logout' element={<CoLogout company={company} setCompany={setCompany}/>}/>
         <Route path='/company-signup' element={<CoSignup company={company} setCompany={setCompany}/>}/>
+        <Route path='/company-account' element={<CoAccount company={company} setCompany={setCompany}/>}/>
         
 
       </Routes>
