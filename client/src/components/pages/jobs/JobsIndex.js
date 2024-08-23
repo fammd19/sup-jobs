@@ -45,7 +45,7 @@ export default function JobsIndex ( { candidate, company }) {
                         null
                     }
 
-                    <Filter/>
+                    <Filter setUrl={setUrl}/>
                     
                     <Col>
                         {

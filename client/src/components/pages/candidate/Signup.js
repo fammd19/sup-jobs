@@ -100,7 +100,7 @@ export default function Signup ( { candidate } ) {
                 </Form.Group>
                 <Col sm={6} md={5} lg={4}>
                     <Form.Select onChange={(e)=>setNewCandidate({...newCandidate, preferred_industry: e.target.value})}>      
-                    <option value="">Industry</option>
+                    <option value="">Preferred industry</option>
                             <option value="agriculture">Agriculture, Forestry & Fishing</option>
                             <option value="construction">Construction</option>
                             <option value="cgs">Consumer Goods & Services</option>
@@ -116,7 +116,7 @@ export default function Signup ( { candidate } ) {
                 </Col>
                 <Col sm={6} md={5} lg={4}>
                     <Form.Select onChange={(e)=>setNewCandidate({...newCandidate, preferred_department: e.target.value})}>    
-                        <option>Department</option>
+                        <option>Preferrd department</option>
                         <option value="co-founder">Co-Founder</option>
                         <option value="design">Design</option>
                         <option value="finance">Finance</option>
