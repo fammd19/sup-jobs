@@ -50,7 +50,7 @@ export default function Login ( { candidate, setCandidate, company } ) {
             <>
             <NavBar />
                 <h1>Candidate login</h1>
-                <h5><a href="/candidate-signup">Candidate signup</a></h5>
+                <h5><a href="/signup">Candidate signup</a></h5>
 
                 <Form onSubmit={handleSubmit}>
                     <Row className="justify-content-center">
