@@ -19,7 +19,13 @@ export default function PostJob ( {company} ) {
       location:"",
       job_type:"",
       role_description:"",
-      experience:"",
+      key_responsibility_1:"",
+      key_responsibility_2:"",
+      key_responsibility_3:"",
+      key_responsibility_4:"",
+      key_responsibility_5:"",
+      essential_experience:"",
+      optional_experience:"",
       application_link:"",
       closing_date:""
     })
@@ -42,13 +48,15 @@ export default function PostJob ( {company} ) {
     return (
         <>
             <NavBar company={company}/>
-            <Form className="mt-3" onSubmit={handleSubmit}>
+            <Form className="mt-3 text-start mx-3" onSubmit={handleSubmit}>
                  
                 <Form.Group className="my-3">
                     <Row>
                         <Col sm={2} md={2} lg={2}>
                             <Form.Label>Title</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control type="text" value={job.title} onChange={(e)=>setJob({...job, title: e.target.value})} />
                         </Col>
@@ -59,6 +67,8 @@ export default function PostJob ( {company} ) {
                         <Col sm={2} md={2} lg={2}>
                             <Form.Label>Salary</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control type="text" value={job.salary} onChange={(e)=>setJob({...job, salary: e.target.value})} />
                         </Col>
@@ -130,6 +140,8 @@ export default function PostJob ( {company} ) {
                         <Col sm={2} md={2} lg={2}>
                             <Form.Label>Description</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control type="text" value={job.description} onChange={(e)=>setJob({...job, description: e.target.value})} />
                         </Col>
@@ -137,9 +149,31 @@ export default function PostJob ( {company} ) {
                 </Form.Group>
                 <Form.Group className="my-3">
                     <Row>
+                        <Form.Label>Key responsibilities</Form.Label>
+                        <Row>
+                        <Col sm={6} md={5} lg={4}><Form.Control placeholder="1" type="text" value={job.key_responsibility_1} onChange={(e)=>setJob({...job, key_responsibility_1: e.target.value})} /></Col>
+                        </Row>
+                        <Row>
+                        <Col sm={6} md={5} lg={4}><Form.Control placeholder="2" type="text" value={job.key_responsibility_2} onChange={(e)=>setJob({...job, key_responsibility_2: e.target.value})} /></Col>
+                        </Row>
+                        <Row>
+                        <Col sm={6} md={5} lg={4}><Form.Control placeholder="3" type="text" value={job.key_responsibility_3} onChange={(e)=>setJob({...job, key_responsibility_3: e.target.value})} /></Col>
+                        </Row>
+                        <Row>
+                        <Col sm={6} md={5} lg={4}><Form.Control placeholder="4" type="text" value={job.key_responsibility_4} onChange={(e)=>setJob({...job, key_responsibility_4: e.target.value})} /></Col>
+                        </Row>
+                        <Row>
+                        <Col sm={6} md={5} lg={4}><Form.Control placeholder="5" type="text" value={job.key_responsibility_5} onChange={(e)=>setJob({...job, key_responsibility_5: e.target.value})} /></Col>
+                        </Row>
+                    </Row>
+                </Form.Group>
+                <Form.Group className="my-3">
+                    <Row>
                         <Col sm={2} md={2} lg={2}>
                             <Form.Label>Experience</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control type="text" value={job.experience} onChange={(e)=>setJob({...job, experience: e.target.value})} />
                         </Col>
@@ -150,6 +184,8 @@ export default function PostJob ( {company} ) {
                         <Col sm={2} md={2} lg={2}>
                             <Form.Label>Application link</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control type="text" value={job.application_link} onChange={(e)=>setJob({...job, application_link: e.target.value})} />
                         </Col>
@@ -160,6 +196,8 @@ export default function PostJob ( {company} ) {
                         <Col sm={2} md={2} lg={2}>
                             <Form.Label>Closing date</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control type="date" value={job.closing_date} onChange={(e)=>setJob({...job, closing_date: e.target.value})} />
                         </Col>

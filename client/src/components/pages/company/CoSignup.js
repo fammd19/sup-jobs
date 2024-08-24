@@ -17,6 +17,7 @@ export default function CoSignup ( { company, candidate, setCompany } ) {
       size: 0,
       industry:"",
       about:"",
+      mission_statement:"",
       website_link:"",
       facebook_link:"",
       instagram_link:"",
@@ -161,7 +162,17 @@ export default function CoSignup ( { company, candidate, setCompany } ) {
                             <Form.Label>About</Form.Label>
                         </Col>
                         <Col >
-                            <Form.Control as="textarea" rows={3} value={newCompany.about} onChange={(e)=>setNewCompany({...newCompany, about: e.target.value})} />
+                            <Form.Control as="textarea" rows={4} value={newCompany.about} onChange={(e)=>setNewCompany({...newCompany, about: e.target.value})} />
+                        </Col>
+                    </Row>
+                </Form.Group>
+                <Form.Group className="my-3">
+                    <Row>
+                        <Col sm={4} md={4} lg={3}>
+                            <Form.Label>Mission statement</Form.Label>
+                        </Col>
+                        <Col >
+                            <Form.Control as="textarea" rows={2} value={newCompany.mission_statement} onChange={(e)=>setNewCompany({...newCompany, mission_statement: e.target.value})} />
                         </Col>
                     </Row>
                 </Form.Group>

@@ -89,6 +89,7 @@ class Company (db.Model, SerializerMixin):
     abn = db.Column(db.Integer, unique=True)
     size = db.Column(db.Integer, nullable=False)
     industry = db.Column(db.String, nullable=False)
+    mission_statement = db.Column(db.String)
     about = db.Column(db.String, nullable=False)
     website_link = db.Column(db.String, nullable=False)
     facebook_link = db.Column(db.String)

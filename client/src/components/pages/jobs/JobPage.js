@@ -87,7 +87,7 @@ export default function JobPage ( {candidate, company} ) {
                         <Row className="mt-3 text-start">
 
                                 <div>
-                                    <p><b>Our mission</b>: {`${job.company.about}`}</p>
+                                    <p><b>About us</b>: {`${job.company.about}`}</p>
                                     <p><b>The role</b>: {`${job.role_description}`}</p>
                                 </div>
 
@@ -164,6 +164,8 @@ export default function JobPage ( {candidate, company} ) {
                                     :
                                     null
                                 }
+                                <h4>Apply</h4>
+                                <p><a href="">{`${job.application_link}`}</a></p>
                                 
                             </Row>
                             <div>
