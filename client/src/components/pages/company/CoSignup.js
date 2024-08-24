@@ -61,25 +61,30 @@ export default function CoSignup ( { company, candidate, setCompany } ) {
     return (
         <>
             <NavBar />
-            <Form className="mt-3" onSubmit={handleSubmit}>
+            <h1 className="mt-5">Company signup</h1>
+            <Form className="mt-3 text-start" onSubmit={handleSubmit}>
             <Row className="justify-content-center">
+
             <Col xs={12} sm={10} md={7} style={{ width: '40%' }}>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={4} md={4} lg={3}>
+                        <Col>
                         <Form.Label>Name</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col>
-                        
                             <Form.Control type="text" value={newCompany.name} onChange={(e)=>setNewCompany({...newCompany, name: e.target.value})} />
                         </Col>
                     </Row>
                 </Form.Group>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={4} md={4} lg={3}>
+                        <Col>
                             <Form.Label>Admin email</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col>
                             <Form.Control type="email" value={newCompany.admin_email} onChange={(e)=>setNewCompany({...newCompany, admin_email: e.target.value})} />
                         </Col>
@@ -87,9 +92,11 @@ export default function CoSignup ( { company, candidate, setCompany } ) {
                 </Form.Group>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={4} md={4} lg={3}>
+                        <Col>
                             <Form.Label>Password</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col>
                             <Form.Control type="password" value={newCompany.password} onChange={(e)=>setNewCompany({...newCompany, password: e.target.value})} />
                         </Col>
@@ -97,9 +104,11 @@ export default function CoSignup ( { company, candidate, setCompany } ) {
                 </Form.Group>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={4} md={4} lg={3}>
+                        <Col>
                             <Form.Label>ABN</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col >
                             <Form.Control type="text" value={newCompany.abn} onChange={(e)=>setNewCompany({...newCompany, abn: e.target.value})} />
                         </Col>
@@ -107,9 +116,11 @@ export default function CoSignup ( { company, candidate, setCompany } ) {
                 </Form.Group>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={4} md={4} lg={3}>
+                        <Col>
                             <Form.Label>Logo link</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col >
                             <Form.Control type="text" value={newCompany.logo} onChange={(e)=>setNewCompany({...newCompany, logo: e.target.value})} />
                         </Col>
@@ -117,9 +128,11 @@ export default function CoSignup ( { company, candidate, setCompany } ) {
                 </Form.Group>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={4} md={4} lg={3}>
+                        <Col>
                             <Form.Label>Number of employees</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col >
                             <Form.Control type="number" value={newCompany.size} 
                               onChange={(e) => {
@@ -132,9 +145,11 @@ export default function CoSignup ( { company, candidate, setCompany } ) {
                 </Form.Group>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={4} md={4} lg={3}>
+                        <Col>
                             <Form.Label>Website link</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col >
                             <Form.Control type="text" value={newCompany.website_link} onChange={(e)=>setNewCompany({...newCompany, website_link: e.target.value})} />
                         </Col>
@@ -158,9 +173,11 @@ export default function CoSignup ( { company, candidate, setCompany } ) {
                 </Col>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={4} md={4} lg={3}>
+                        <Col>
                             <Form.Label>About</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col >
                             <Form.Control as="textarea" rows={4} value={newCompany.about} onChange={(e)=>setNewCompany({...newCompany, about: e.target.value})} />
                         </Col>
@@ -168,20 +185,24 @@ export default function CoSignup ( { company, candidate, setCompany } ) {
                 </Form.Group>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={4} md={4} lg={3}>
+                        <Col>
                             <Form.Label>Mission statement</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col >
                             <Form.Control as="textarea" rows={2} value={newCompany.mission_statement} onChange={(e)=>setNewCompany({...newCompany, mission_statement: e.target.value})} />
                         </Col>
                     </Row>
                 </Form.Group>
-                <p>Social links</p>
+                <p><b>Social links</b></p>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={4} md={4} lg={3}>
+                        <Col>
                             <Form.Label>LinkedIn</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col >
                             <Form.Control type="text" value={newCompany.linkedin_link} onChange={(e)=>setNewCompany({...newCompany, linkedin_link: e.target.value})} />
                         </Col>
@@ -189,9 +210,11 @@ export default function CoSignup ( { company, candidate, setCompany } ) {
                 </Form.Group>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={4} md={4} lg={3}>
+                        <Col>
                             <Form.Label>Meta (Facebook)</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col >
                             <Form.Control type="text" value={newCompany.facebook_link} onChange={(e)=>setNewCompany({...newCompany, facebook_link: e.target.value})} />
                         </Col>
@@ -199,9 +222,11 @@ export default function CoSignup ( { company, candidate, setCompany } ) {
                 </Form.Group>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={4} md={4} lg={3}>
+                        <Col>
                             <Form.Label>Instagram</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col >
                             <Form.Control type="text" value={newCompany.instagram_link} onChange={(e)=>setNewCompany({...newCompany, instagram_link: e.target.value})} />
                         </Col>

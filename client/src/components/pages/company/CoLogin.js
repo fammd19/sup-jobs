@@ -50,6 +50,7 @@ export default function CoLogin ( { candidate, company, setCompany } ) {
             <>
                 <NavBar />
                 <h1>Company login</h1>
+                <h5><a href="/company-signup">Company Signup</a></h5>
                 <Form onSubmit={handleSubmit}>
                     <Row className="justify-content-center">
                         <Col xs={12} md={7} style={{ width: '60%' }}>

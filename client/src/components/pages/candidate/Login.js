@@ -49,8 +49,9 @@ export default function Login ( { candidate, setCandidate, company } ) {
         return (
             <>
             <NavBar />
-                <a href="/signup"><Button className="btn-secondary signup-btn my-4">Signup</Button></a>
                 <h1>Candidate login</h1>
+                <h5><a href="/candidate-signup">Candidate signup</a></h5>
+
                 <Form onSubmit={handleSubmit}>
                     <Row className="justify-content-center">
                         <Col xs={12} md={7} style={{ width: '60%' }}>

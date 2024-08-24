@@ -54,25 +54,30 @@ export default function Signup ( { candidate } ) {
     return (
         <>
             <NavBar />
-            <Form className="mt-3" onSubmit={handleSubmit}>
+            <h1 className="mt-5">Candidate signup</h1>
+            <Form className="mt-3 text-start" onSubmit={handleSubmit}>
             <Row className="justify-content-center">
-            <Col xs={12} md={7} style={{ width: '50%' }}>
+            <Col xs={12} sm={10} md={7} style={{ width: '40%' }}>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col  sm={4} md={4} lg={2}>
+                        <Col>
                             <Form.Label>First Name</Form.Label>
                         </Col>
-                        <Col sm={10} md={9} lg={8}>
+                        </Row>
+                        <Row>
+                        <Col>
                             <Form.Control type="text" value={newCandidate.first_name} onChange={(e)=>setNewCandidate({...newCandidate, first_name: e.target.value})} />
                         </Col>
                     </Row>
                 </Form.Group>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={2} md={2} lg={2}>
+                        <Col>
                             <Form.Label>Last Name</Form.Label>
                         </Col>
-                        <Col sm={6} md={5} lg={4}>
+                        </Row>
+                        <Row>
+                        <Col>
                             <Form.Control type="text" value={newCandidate.last_name} onChange={(e)=>setNewCandidate({...newCandidate, last_name: e.target.value})} />
                         </Col>
                     </Row>
@@ -80,25 +85,29 @@ export default function Signup ( { candidate } ) {
                 
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={2} md={2} lg={2}>
+                    <Col>
                             <Form.Label>Email</Form.Label>
                         </Col>
-                        <Col sm={6} md={5} lg={4}>
+                        </Row>
+                        <Row>
+                        <Col>
                             <Form.Control type="email" value={newCandidate.email} onChange={(e)=>setNewCandidate({...newCandidate, email: e.target.value})} />
                         </Col>
                     </Row>
                 </Form.Group>
                 <Form.Group className="my-3">
                     <Row>
-                        <Col sm={2} md={2} lg={2}>
+                        <Col>
                             <Form.Label>Password</Form.Label>
                         </Col>
-                        <Col sm={6} md={5} lg={4}>
+                        </Row>
+                        <Row>
+                        <Col>
                             <Form.Control type="password" value={newCandidate.password} onChange={(e)=>setNewCandidate({...newCandidate, password: e.target.value})} />
                         </Col>
                     </Row>
                 </Form.Group>
-                <Col sm={6} md={5} lg={4}>
+                <Col className="my-3">
                     <Form.Select onChange={(e)=>setNewCandidate({...newCandidate, preferred_industry: e.target.value})}>      
                     <option value="">Preferred industry</option>
                             <option value="agriculture">Agriculture, Forestry & Fishing</option>
@@ -114,7 +123,7 @@ export default function Signup ( { candidate } ) {
                             <option value="technology">Technology & Software</option>
                     </Form.Select>
                 </Col>
-                <Col sm={6} md={5} lg={4}>
+                <Col className="my-3">
                     <Form.Select onChange={(e)=>setNewCandidate({...newCandidate, preferred_department: e.target.value})}>    
                         <option>Preferrd department</option>
                         <option value="co-founder">Co-Founder</option>
