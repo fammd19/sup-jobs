@@ -25,7 +25,7 @@ export default function JobPage ( {candidate, company} ) {
       }
     
     function handleSave () {
-        //Issue with proxy due to using index. See how can resolve
+        //Issue with proxy due to using index. See how can resolve - using full url works
         fetch(`http://localhost:3000/api/jobs/${job.id}/save`, {
             method: "POST",
             headers: {
@@ -71,32 +71,96 @@ export default function JobPage ( {candidate, company} ) {
                             </Col>
                             <Col className="job-title col-8">
                                 <Row clsssName="mt-2">
-                                    <h1>{`${job.title}`}</h1>
-                                    <h2>{`${job.company.name}`}</h2>
+                                    <h1 className="mb-0">{`${job.title}`}</h1>
+                                    <h2 className="mb-2">{`${job.company.name}`}</h2>
+                                    <p className="mb-0">${`${job.salary}`}</p>
+                                <p className="mb-0">{`${job.location}`}</p>
+                                <p className="mb-0">{`${job.job_type}`}</p>
+                                    { job.closing_date
+                                    ?
+                                    <p className="mb-0">{`${job.closing_date}`}</p>
+                                    :
+                                    null}
                                 </Row>
                             </Col>
                         </Row>
-                        <Row>
-                            <Col className="col-5">
-                                <Card.Text>${`${job.salary}`}</Card.Text>
-                                <Card.Text>{`${job.location}`}</Card.Text>
-                            </Col>
-                            <Col className="col-5">
+                        <Row className="mt-3 text-start">
 
-                                <Card.Text>{`${job.job_type}`}</Card.Text>
-                                    { job.closing_date
-                                    ?
-                                    <Card.Text>{`${job.closing_date}`}</Card.Text>
-                                    :
-                                    null}
-                            </Col>
-                        </Row>
-                        <Row>
-                                <Card.Text>{`${job.role_description}`}</Card.Text>
+                                <div>
+                                    <p><b>Our mission</b>: {`${job.company.about}`}</p>
+                                    <p><b>The role</b>: {`${job.role_description}`}</p>
+                                </div>
+
+                                <ul>
+                                    {
+                                        job.key_responsibility_1
+                                        ?
+                                        <li>{`${job.key_responsibility_1}`}
+                                        </li>
+                                        :
+                                        null
+                                    }
+                                
+                                </ul>
+                                <ul>
+                                    {
+                                        job.key_responsibility_2
+                                        ?
+                                        <li>{`${job.key_responsibility_2}`}
+                                        </li>
+                                        :
+                                        null
+                                    }
+                                </ul>
+                                <ul>
+                                    {
+                                        job.key_responsibility_3
+                                        ?
+                                        <li>{`${job.key_responsibility_3}`}
+                                        </li>
+                                        :
+                                        null
+                                    }
+                                
+                                </ul>
+                                <ul>
+                                    {
+                                        job.key_responsibility_4
+                                        ?
+                                        <li>{`${job.key_responsibility_4}`}
+                                        </li>
+                                        :
+                                        null
+                                    }
+                                </ul>
+                                <ul>
+                                    {
+                                        job.key_responsibility_5
+                                        ?
+                                        <li>{`${job.key_responsibility_5}`}
+                                        </li>
+                                        :
+                                        null
+                                    }
+                                </ul>
+
                                 {
-                                    job.experience
+                                    job.essential_experience
                                     ?
-                                    <Card.Text>{`${job.experience}`}</Card.Text>
+                                    <div>
+                                        <h4>Essential</h4>
+                                        <p>{`${job.essential_experience}`}</p>
+                                    </div>
+                                    :
+                                    null
+                                }
+                                {
+                                    job.optional_experience
+                                    ?
+                                    <div>
+                                        <h4>Nice to haves</h4>
+                                        <p>{`${job.optional_experience}`}</p>
+                                    </div>
                                     :
                                     null
                                 }
