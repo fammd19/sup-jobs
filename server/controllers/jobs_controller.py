@@ -33,6 +33,7 @@ class CreateJob (Resource):
                 role_description = request.json.get('role_description'),
                 application_link = request.json.get('application_link'),
                 location = request.json.get('location'),
+                postcode = request.json.get('postcode'),
                 essential_experience = request.json.get('essential_experience'),
                 optional_experience = request.json.get('optional_experience'),
                 key_responsibility_1 = request.json.get('key_responsibility_1'),

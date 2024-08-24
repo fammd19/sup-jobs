@@ -197,6 +197,7 @@ class Job (db.Model, SerializerMixin):
     role_description = db.Column(db.String, nullable=False)
     application_link = db.Column(db.String, nullable=False)
     location = db.Column(db.String, nullable=False)
+    postcode = db.Column(db.Integer)
     essential_experience = db.Column(db.String)
     optional_experience = db.Column(db.String)
     job_type = db.Column(db.String, nullable=False)

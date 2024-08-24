@@ -26,6 +26,7 @@ export default function PostJob ( {company} ) {
       key_responsibility_5:"",
       essential_experience:"",
       optional_experience:"",
+      postcode:"",
       application_link:"",
       closing_date:""
     })
@@ -100,41 +101,28 @@ export default function PostJob ( {company} ) {
                     <Form.Select onChange={(e)=>setJob({...job, location: e.target.value})}>
                             <option value="">All locations</option>
                             <option value="remote">Remote</option>
-                            <Dropdown.Divider />
                             <option value="act">ACT</option>
-                            <Dropdown.Divider />
-                            <option value="nsw">NSW</option>
-                            <option value="nsw-sydney"> &gt; Sydney</option>
-                            <option value="nsw-newcastle"> &gt; Newcastle</option> 
-                            <Dropdown.Divider />                       
-                            <option value="nt">NT</option>
-                            <Dropdown.Divider />
+                            <option value="nsw">New South Wales</option>                    
+                            <option value="nt">Northern Territory</option>
                             <option value="qld">Queensland</option>
-                            <option value="qld-brisbane"> &gt; Brisbane</option>
-                            <Dropdown.Divider />
                             <option value="sa">South Australia</option>
-                            <option value="sa-adelaide"> &gt; Adelaide</option>
-                            <Dropdown.Divider />
                             <option value="tas">Tasmania</option>
-                            <Dropdown.Divider />
                             <option value="vic">Victoria</option>
-                            <option value="vic-melbourne"> &gt; Melbourne</option>
-                            <Dropdown.Divider />
                             <option value="wa">Western Australia</option>
-                            <option value="wa-perth"> -&gt; Perth</option>
                         </Form.Select>
                 </Col>
-                {/* <Form.Group className="my-3">
+                <Form.Group className="my-3">
                     <Row>
                         <Col sm={2} md={2} lg={2}>
-                            <Form.Label>Location</Form.Label>
+                            <Form.Label>Postcode</Form.Label>
                         </Col>
+                        </Row>
+                        <Row>
                         <Col sm={6} md={5} lg={4}>
-                            <Form.Control type="text" value={job.location} onChange={(e)=>setJob({...job, location: e.target.value})} />
+                            <Form.Control type="text" value={job.postcode} onChange={(e)=>setJob({...job, postcode: e.target.value})} />
                         </Col>
                     </Row>
-                </Form.Group> */}
-                
+                </Form.Group>    
                 <Form.Group className="my-3">
                     <Row>
                         <Col sm={2} md={2} lg={2}>
@@ -170,12 +158,24 @@ export default function PostJob ( {company} ) {
                 <Form.Group className="my-3">
                     <Row>
                         <Col sm={2} md={2} lg={2}>
-                            <Form.Label>Experience</Form.Label>
+                            <Form.Label>Required experience</Form.Label>
                         </Col>
                         </Row>
                         <Row>
                         <Col sm={6} md={5} lg={4}>
-                            <Form.Control type="text" value={job.experience} onChange={(e)=>setJob({...job, experience: e.target.value})} />
+                            <Form.Control type="text" value={job.essential_experience} onChange={(e)=>setJob({...job, essential_experience: e.target.value})} />
+                        </Col>
+                    </Row>
+                </Form.Group>
+                <Form.Group className="my-3">
+                    <Row>
+                        <Col sm={2} md={2} lg={2}>
+                            <Form.Label>Optional experience</Form.Label>
+                        </Col>
+                        </Row>
+                        <Row>
+                        <Col sm={6} md={5} lg={4}>
+                            <Form.Control type="text" value={job.optional_experience} onChange={(e)=>setJob({...job, optional_experience: e.target.value})} />
                         </Col>
                     </Row>
                 </Form.Group>

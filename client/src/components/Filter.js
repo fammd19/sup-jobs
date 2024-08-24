@@ -63,28 +63,14 @@ export default function Filter({ setUrl, company_id }) {
                         <Form.Select name="location-filter" onChange={(e) => setLocation(e.target.value)}>
                             <option value="">All locations</option>
                             <option value="remote">Remote</option>
-                            <Dropdown.Divider />
                             <option value="act">ACT</option>
-                            <Dropdown.Divider />
-                            <option value="nsw">NSW</option>
-                            <option value="nsw-sydney"> &gt; Sydney</option>
-                            <option value="nsw-newcastle"> &gt; Newcastle</option> 
-                            <Dropdown.Divider />                       
-                            <option value="nt">NT</option>
-                            <Dropdown.Divider />
+                            <option value="nsw">New South Wales</option>                    
+                            <option value="nt">Northern Territory</option>
                             <option value="qld">Queensland</option>
-                            <option value="qld-brisbane"> &gt; Brisbane</option>
-                            <Dropdown.Divider />
                             <option value="sa">South Australia</option>
-                            <option value="sa-adelaide"> &gt; Adelaide</option>
-                            <Dropdown.Divider />
                             <option value="tas">Tasmania</option>
-                            <Dropdown.Divider />
                             <option value="vic">Victoria</option>
-                            <option value="vic-melbourne"> &gt; Melbourne</option>
-                            <Dropdown.Divider />
                             <option value="wa">Western Australia</option>
-                            <option value="wa-perth"> -&gt; Perth</option>
                         </Form.Select>
                     </Col>
                     <Col sm={5} md={4} lg={3} className="mb-2">
