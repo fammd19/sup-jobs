@@ -25,7 +25,7 @@ export default function JobsIndex ( { candidate, company }) {
 
 
     // //Condition to limit number of jobs to 10 if candidate not logged in
-    // let numJobs
+    let numJobs
     // if (!candidate && !company) {
     //     numJobs = 10
     // }
