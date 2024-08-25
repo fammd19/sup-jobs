@@ -71,7 +71,7 @@ class SavedJobById (Resource):
         if 'candidate_id' not in session:
             return make_response ({"error":"Unauthorised. No user logged in."}, 401)
 
-        saved_job = SavedJob.query.filter(SavedJob.candidate_id == session['candidate_id'], SavedJob.id == id).first()
+        saved_job = SavedJob.query.filter(SavedJob.candidate_id == session['candidate_id'], SavedJob.job_id == id).first()
 
         if saved_job:
             db.session.delete(saved_job)

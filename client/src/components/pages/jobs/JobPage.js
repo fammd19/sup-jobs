@@ -11,9 +11,6 @@ export default function JobPage ( {candidate, company} ) {
     const navigate = useNavigate();
     const [job, setJob] = useState (null)
     const [saved, setSaved] = useState (false)
-
-    
-
     
     useEffect(() => {
             fetch(`/api/jobs/saved`)
@@ -28,13 +25,13 @@ export default function JobPage ( {candidate, company} ) {
                         }
                     }
                 })
-    }, []);
+    }, [saved]);
 
     useEffect ( () => {
         fetch(`/api/jobs/${id}`)
         .then(res => res.json())
         .then(json => setJob(json))
-    }, [id])
+    }, [id, saved])
 
 
     function displayPrompt (id) {
@@ -59,6 +56,22 @@ export default function JobPage ( {candidate, company} ) {
         //need to display a prompt here
     }
     
+
+    function handleRemove () {
+        fetch(`/api/saved-jobs/${job.id}`, {
+            method: "DELETE",
+            })
+            .then(response => {
+                if (response.okay) {
+                    setSaved(false)
+                    console.log("DELETE")
+                }
+                else {
+                    console.log(response.error)
+                }
+            })
+    }
+
     function handleDelete () {
         fetch(`/api/jobs/${id}`, {
             method: "DELETE"
@@ -189,27 +202,19 @@ export default function JobPage ( {candidate, company} ) {
                             </Row>
                             <div>
                                 {
-                                    saved === true
+                                    candidate && saved===true
                                     ?
-                                    <Button className="mx-1" onClick={handleSave}>Remove job</Button>
+                                    <Button className="mx-1" onClick={handleRemove}>Remove job</Button>
                                     :
                                     <div>
                                         {
                                         candidate
                                         ?
-                                        <Button className="mx-1" onClick={handleSave}>
-                                            {
-                                                console.log(saved)
-                                            }
-                                            {
-                                                saved
-                                                ?
-                                                "Remove job"
-                                                :
-                                                "Save job"
-                                            }
-                                        </Button>
+                                        <Button className="mx-1" onClick={handleSave}>Save job</Button>
                                         :
+                                        null
+                                        }
+                                        {
                                         company && job.company.id === company.id
                                             ?
                                             <Row>
