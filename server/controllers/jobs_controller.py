@@ -211,4 +211,49 @@ class FilterJobs (Resource):
             return make_response({"message": "No jobs available for this filter"}, 404)
 
 
+class SeedJob (Resource):
+
+    def post(self):
+
+        closing_date_str = request.json.get('closing_date')
+        if closing_date_str:
+            closing_date = datetime.strptime(closing_date_str, '%Y-%m-%d')
+        else:
+            closing_date = None
+
+        job = Job(
+                title = request.json.get('title'),
+                salary = request.json.get('salary'),
+                salary_comments = request.json.get('salary_comments'),
+                department = request.json.get('department').lower(),
+                role_description = request.json.get('role_description'),
+                application_link = request.json.get('application_link'),
+                location = request.json.get('location'),
+                postcode = request.json.get('postcode'),
+                essential_experience = request.json.get('essential_experience'),
+                optional_experience = request.json.get('optional_experience'),
+                key_responsibility_1 = request.json.get('key_responsibility_1'),
+                key_responsibility_2 = request.json.get('key_responsibility_2'),
+                key_responsibility_3 = request.json.get('key_responsibility_3'),
+                key_responsibility_4 = request.json.get('key_responsibility_4'),
+                key_responsibility_5 = request.json.get('key_responsibility_5'),
+                job_type = request.json.get('job_type'),
+                closing_date = closing_date,
+                date_posted = date.today(),
+                company_id = request.json.get('company_id'),
+            )
+
+        db.session.add(job)
+        db.session.commit()
+
+        
+        if job.id:
+            return make_response(job.to_dict(), 201)
+
+        else:
+            return make_response({"error": "Unable to create job"}, 400)
+
+
+
+
 
