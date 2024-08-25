@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button } from 'react-bootstrap';
 import UpdateForm from '../../UpdateForm';
 import NavBar from '../../NavBar';
+import SampleJobs from '../../SampleJobs';
 
 export default function Account ( {candidate, setCandidate} ) {
         
@@ -52,6 +53,8 @@ export default function Account ( {candidate, setCandidate} ) {
                     <p>Preferred industry: {candidateDetails.preferred_industry}</p>
                     <p>Preferred department: {candidateDetails.preferred_department}</p>
                 </div>
+                <h4 className="mt-3">Saved jobs</h4>
+                <SampleJobs candidate={candidate} selection={"saved"}/>
 
                 <Button className="mx-1" id="update-account-btn" variant="warning" onClick={displayAccountUpdateForm}>Update details</Button>
                 <div id="account-update-form" className="hide">

@@ -57,7 +57,7 @@ api.add_resource(FilterJobs, '/jobs/filter', endpoint='filter_jobs')
 
 
 #saved jobs
-api.add_resource(AllSavedJobs, '/saved-jobs', endpoint='saved_jobs')
+api.add_resource(AllSavedJobs, '/jobs/saved', endpoint='saved_jobs')
 api.add_resource(SavedJobById, '/saved-jobs/<int:id>', endpoint='saved_job_by_id')
 
 

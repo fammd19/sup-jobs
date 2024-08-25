@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Row, Card, Col, Container, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { Link, useNavigate } from "react-router-dom"
 
-api.add_resource(AllSavedJobs, '/saved-jobs', endpoint='saved_jobs')
-
-
-export default function CoJobs ( { candidate, company }) {
+export default function SavedJobs ( { candidate }) {
     const [jobs, setJobs] = useState([])
     const navigate = useNavigate()
 
     useEffect ( () => {
-        fetch(`/api/saved-jobs`)
+        fetch(`/api/jobs/saved`)
         .then(res => res.json())
         .then(json => setJobs(json))
         .catch(error => console.log(error.message))
@@ -23,7 +20,7 @@ export default function CoJobs ( { candidate, company }) {
     return (
         <>
         <Container>
-            <h1>{candidate.name}'s jobs</h1>
+            <h1>Saved jobs</h1>
             {
                 jobs.length>0
                 ?
@@ -59,7 +56,7 @@ export default function CoJobs ( { candidate, company }) {
                     }
 
                 </Col>
-                <Button onClick={()=>navigate("/jobs")}>All jobs</Button>
+                <Button onClick={()=>navigate("/jobs")}>Save more jobs</Button>
                 </>
                 :
                 <>

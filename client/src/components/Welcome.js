@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row';
 
 export default function Welcome ( {candidate, company} ) {
     return (
-        <Container className="mt-5 text-container home-container" >
+        <Container className="mt-5 mb-5 text-container home-container" >
             <Row>
                 <h2>
                     {

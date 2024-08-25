@@ -1,31 +1,33 @@
 import { useState, useEffect } from 'react';
 import { Container, Col, Card, Row, OverlayTrigger, Button, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import SavedJobs from './pages/jobs/SavedJobs';
 
 
 
-export default function SampleJobs ( {number, candidate, company} ) {
+export default function SampleJobs ( {number, candidate, company, selection} ) {
 
     const [jobs, setJobs] = useState([])
 
+    console.log(selection)
 
     useEffect ( () => {
-        fetch('/api/jobs/all')
+        fetch("/api/jobs/"+selection)
         .then(res => res.json())
         .then(json => setJobs(json))
         .catch(error => console.log(error.message))
     },[])
     return (
-    <Container>
+    <Container className="mb-5">
             {
                 jobs.length>0
                 ?
-                <Row>
+                <Row className="mb-2">
                         {
                             jobs.slice(0, number).map((job)=> {
                                 return(
                                     <Col>
-                                <Card className="my-3" key={job.id}>
+                                <Card key={job.id}>
                                     <Row className="justify-content-center mt-2">
                                         <Card.Img variant="top" src={`${job.company.logo}`} />
                                     </Row >
@@ -63,14 +65,24 @@ export default function SampleJobs ( {number, candidate, company} ) {
                                     </Card.Body>
                                 </Card>
                                 </Col>
+                                
                         )
                     })
                     }
 
                 </Row>
                 :
-                <p>No jobs found</p>
+                null
             }
+            {
+                selection ==="saved"
+                ?
+                <Link to="/jobs/saved"><Button>View all saved jobs</Button></Link>
+                :
+                <Link to="/jobs"><Button>View more jobs</Button></Link>
+
+            }
+
         </Container>
     )
 }

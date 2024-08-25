@@ -41,10 +41,10 @@ class AllSavedJobs (Resource):
         if 'candidate_id' not in session:
             return make_response ({"error":"Unauthorised. No user logged in."}, 401)
 
-        jobs = SavedJob.query.filter(SavedJob.candidate_id == session['candidate_id']).all()
+        saved_list = SavedJob.query.filter(SavedJob.candidate_id == session['candidate_id']).all()
 
-        if jobs:
-            saved_jobs = [ job.to_dict() for job in jobs ]
+        if saved_list:
+            saved_jobs = [ saved.job.to_dict() for saved in saved_list ]
             return make_response (saved_jobs, 200)
 
         else:

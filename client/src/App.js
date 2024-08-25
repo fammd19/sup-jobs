@@ -24,6 +24,7 @@ import CoAccount from './components/pages/company/CoAccount';
 import AllCos from './components/pages/company/AllCos';
 import AllCosIndex from './components/pages/company/AllCosIndex';
 import ACoProfile from './components/pages/company/ACoProfile';
+import SavedJobs from './components/pages/jobs/SavedJobs';
 
 export default function App() {
 
@@ -66,6 +67,7 @@ export default function App() {
           <Route index element={<JobsIndex candidate={candidate} company={company} />}/>
           <Route path=':id' element={<JobPage candidate={candidate} company={company}/> }/>
           <Route path='company' element={<CoJobs candidate={candidate} company={company}/>}/>
+          <Route path='saved' element={<SavedJobs candidate={candidate}/>}/>
         </Route>
 
         <Route path='/companies' element={<AllCos candidate={candidate} company={company}/>}>

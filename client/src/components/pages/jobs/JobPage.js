@@ -7,9 +7,28 @@ import { Row, Card, Col, Container, Button } from 'react-bootstrap'
 export default function JobPage ( {candidate, company} ) {
 
     const {id} = useParams();
+    console.log(id)
     const navigate = useNavigate();
     const [job, setJob] = useState (null)
+    const [saved, setSaved] = useState (false)
 
+    
+
+    
+    useEffect(() => {
+            fetch(`/api/jobs/saved`)
+                .then(res => res.json())
+                .then(json => {
+                    for (const saved_job of json) {
+                        console.log(saved_job.id)
+                        if (saved_job.id === parseInt(id)) {
+                            setSaved(true)
+                            console.log(saved)
+                            return saved
+                        }
+                    }
+                })
+    }, []);
 
     useEffect ( () => {
         fetch(`/api/jobs/${id}`)
@@ -169,21 +188,42 @@ export default function JobPage ( {candidate, company} ) {
                                 
                             </Row>
                             <div>
-                            {
-                            candidate
-                            ?
-                            <Button className="mx-1" onClick={handleSave}>Save job</Button>
-                            :
-                            company
-                                ?
-                                <Row>
-                                    <Col><Button className="mx-1">Update job</Button></Col>
-                                    <Col><Button className="mx-1" onClick={handleDelete}>Delete job</Button></Col>
-                                </Row>
-                                :
-                                null
-                        }
-                        </div>
+                                {
+                                    saved === true
+                                    ?
+                                    <Button className="mx-1" onClick={handleSave}>Remove job</Button>
+                                    :
+                                    <div>
+                                        {
+                                        candidate
+                                        ?
+                                        <Button className="mx-1" onClick={handleSave}>
+                                            {
+                                                console.log(saved)
+                                            }
+                                            {
+                                                saved
+                                                ?
+                                                "Remove job"
+                                                :
+                                                "Save job"
+                                            }
+                                        </Button>
+                                        :
+                                        company && job.company.id === company.id
+                                            ?
+                                            <Row>
+                                                <Col><Button className="mx-1">Update job</Button></Col>
+                                                <Col><Button className="mx-1" onClick={handleDelete}>Delete job</Button></Col>
+                                            </Row>
+                                            :
+                                            null
+                                        }
+                                </div>
+
+                                }
+
+                            </div>
 
                         </div>
                         
@@ -198,14 +238,3 @@ export default function JobPage ( {candidate, company} ) {
 
     )
 }
-
-
-{/* <h1>{`${job.title}`}</h1>
-<h2>{`${job.company.name}`}</h2>
-<img src={`${job.company.logo}`} />
-<p>${`${job.salary}`}</p>
-<p>{`${job.location}`}</p>
-<p>{`${job.job_type}`}</p>
-<p>{`${job.date_posted}`}</p>
-<p>{`${job.closing_date}`}</p>
-<div> */}

@@ -29,8 +29,8 @@ export default function Home ({ candidate, company }) {
                 <>
                     <NavBar candidate={candidate} company={company}/>
                     <Welcome />
-                    <SampleJobs number={3} candidate={candidate} company={company}/>
-                    <Link to="/jobs"><Button>View more jobs</Button></Link>
+                    <SampleJobs number={3} candidate={candidate} company={company} selection={"all"}/>
+                    {/* <Link to="/jobs"><Button>View more jobs</Button></Link> */}
                     <FilterByDep />
                 </>
             }
