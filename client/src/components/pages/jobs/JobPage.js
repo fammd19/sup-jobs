@@ -52,7 +52,10 @@ export default function JobPage ( {candidate, company} ) {
                 candidateId: candidate.id
             })
         })
-        .then(response=>response.json())
+        .then(response=>{
+            response.json()
+            setSaved(true)
+    })
         //need to display a prompt here
     }
     
@@ -62,9 +65,8 @@ export default function JobPage ( {candidate, company} ) {
             method: "DELETE",
             })
             .then(response => {
+                setSaved(false)
                 if (response.okay) {
-                    setSaved(false)
-                    console.log("DELETE")
                 }
                 else {
                     console.log(response.error)
