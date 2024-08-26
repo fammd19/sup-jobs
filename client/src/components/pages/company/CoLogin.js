@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, Col, Row } from 'react-bootstrap';
+import { Button, Form, Col, Row, Alert } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import NavBar from '../../NavBar';
@@ -14,8 +14,8 @@ export default function Login({ company, setCompany, candidate }) {
 
     const formik = useFormik({
         initialValues: {
-            admin_email: '',
-            password: ''
+            admin_email: "",
+            password: ""
         },
         validationSchema: Yup.object({
             admin_email: Yup.string()
@@ -24,7 +24,7 @@ export default function Login({ company, setCompany, candidate }) {
             password: Yup.string()
                 .required('Password is required')
         }),
-        onSubmit: (values) => {
+        onSubmit: (values, { setErrors, setStatus }) => {
             fetch('/api/company/login', {
                 method: "POST",
                 headers: {
@@ -34,8 +34,11 @@ export default function Login({ company, setCompany, candidate }) {
             })
             .then(response => {
                 if (!response.ok) {
-                    console.log("Login unsuccessful");
-                }
+                    return response.json().then((error) => {
+                        setStatus({ general: "Login unsuccessful. Please check your username & password then try again. For candidates, please head to the candidate login page." });
+                    
+                })
+            }
                 return response.json();
             })
             .then(json => {
@@ -45,11 +48,15 @@ export default function Login({ company, setCompany, candidate }) {
                 } else {
                     console.log("Login unsuccessful: No ID in response");
                     setCompany(null);
+                    setStatus({ general: "Login unsuccessful. Please check your username & password then try again. For candidates, please head to the candidate login page." });
+
                 }
             })
             .catch(err => {
                 console.log("Login failed:", err.message);
                 setCompany(null);
+                setStatus({ general: "Login unsuccessful. Please check your username & password then try again. For candidates, please head to the candidate login page." });
+
             });
         }
     });
@@ -92,6 +99,11 @@ export default function Login({ company, setCompany, candidate }) {
                             </Form.Control.Feedback>
                         </Form.Group>
                         <Button type="submit">Login</Button>
+                        {formik.status?.general && (
+                            <Alert variant="danger">
+                                {formik.status.general}
+                            </Alert>
+                        )}
                     </Col>
                 </Row>
             </Form>
