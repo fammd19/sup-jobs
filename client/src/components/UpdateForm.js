@@ -6,14 +6,17 @@ export default function UpdateForm ( {candidateDetails, setCandidateDetails, dis
     const [updatedCandidateDetails, setUpdatedCandidateDetails] = useState({
         first_name: "",
         last_name: "",
-        password: "",
+        hashed_password: "",
         email:""
     })
 
     useEffect(()=>  {
         fetch("/api/candidate/account")
         .then(response=>response.json())
-        .then(json=>setUpdatedCandidateDetails(json))
+        .then(json=>{
+            setUpdatedCandidateDetails(json);
+        }
+        )
     },[])
 
     function handleSubmit(e) {
@@ -58,11 +61,10 @@ export default function UpdateForm ( {candidateDetails, setCandidateDetails, dis
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="text" value={updatedCandidateDetails.email} onChange={(e)=>setUpdatedCandidateDetails({...updatedCandidateDetails, email: e.target.value})}/>
             </Form.Group> 
-            {/* Password update not working - due to naming in API. If pass as hashed_password it works */}
-            <Form.Group>
+            {/* <Form.Group>
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" value={updatedCandidateDetails.password} onChange={(e)=>setUpdatedCandidateDetails({...updatedCandidateDetails, password: e.target.value})}/>
-            </Form.Group> 
+                <Form.Control type="password" value={updatedCandidateDetails.hashed_password} onChange={(e)=>setUpdatedCandidateDetails({...updatedCandidateDetails, hashed_password: e.target.value})}/>
+            </Form.Group>  */}
             <Button type="submit">Submit update</Button>  
         </Form>
     )

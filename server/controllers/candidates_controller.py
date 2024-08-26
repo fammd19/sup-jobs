@@ -87,7 +87,7 @@ class CandidateAccount (Resource):
     def patch(self):
 
         if 'candidate_id' not in session:
-            return make_response({"error": "Unauthorized. No candidate logged in."}, 401)
+            return make_response({"error": "Unauthorised. No candidate logged in."}, 401)
 
         candidate = Candidate.query.filter(Candidate.id == session['candidate_id']).first()
 
@@ -101,7 +101,7 @@ class CandidateAccount (Resource):
 
             return make_response(candidate.to_dict(), 200)
         else:
-            return make_response({"error": "Candidate not found."}, 404)
+            return make_response({"error": "Candidate not updated."}, 404)
 
 
     def delete(self):

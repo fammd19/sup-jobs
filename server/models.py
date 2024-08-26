@@ -100,7 +100,7 @@ class Company (db.Model, SerializerMixin):
 
     jobs = db.relationship('Job', back_populates='company', cascade='all,delete-orphan')
 
-    serialize_rules = ('-jobs.company','-_hashed_password')
+    serialize_rules = ('-jobs','-_hashed_password',)
 
     @validates('name')
     def validate_name(self, key, name):

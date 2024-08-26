@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from 'react-bootstrap';
-import UpdateForm from '../../UpdateForm';
+import CoUpdateForm from '../../CoUpdateForm';
 import NavBar from '../../NavBar';
 
 export default function CoAccount ( {company, setCompany} ) {
@@ -14,10 +14,11 @@ export default function CoAccount ( {company, setCompany} ) {
 
         const [companyDetails, setCompanyDetails] = useState({
             name: "",
-            abn: 0,
-            size: 0,
+            abn: "",
+            size: "",
             industry:"",
             about:"",
+            mission_statement:"",
             website_link:"",
             facebook_link:"",
             instagram_link:"",
@@ -56,10 +57,29 @@ export default function CoAccount ( {company, setCompany} ) {
                     <p>Size: {companyDetails.size}</p>
                     <p>Industry: {companyDetails.industry}</p>
                     <p>About: {companyDetails.about}</p>
+                    <p>Mission statement: {companyDetails.mission_statement}</p>
                     <p>Website: {companyDetails.website_link}</p>
-                    <p>LinkedIn: {companyDetails.linkedin_link}</p>
-                    <p>Facebook: {companyDetails.facebook_link}</p>
-                    <p>Instagram: {companyDetails.instagram_link}</p>
+                    {
+                        companyDetails.linkedin_link
+                        ?
+                        <p>LinkedIn: {companyDetails.linkedin_link}</p>
+                        :
+                        null
+                    }
+                    {
+                        companyDetails.facebook_link
+                        ?
+                        <p>Facebook: {companyDetails.facebook_link}</p>
+                        :
+                        null
+                    }
+                    {
+                        companyDetails.instagram_link
+                        ?
+                        <p>Instagram: {companyDetails.instagram_link}</p>
+                        :
+                        null
+                    }
                     <p>Email: {companyDetails.admin_email}</p>
                     <p>Password: *******</p>
                     
@@ -67,7 +87,7 @@ export default function CoAccount ( {company, setCompany} ) {
 
                 <Button className="mx-1" id="update-account-btn" variant="warning" onClick={displayAccountUpdateForm}>Update details</Button>
                 <div id="account-update-form" className="hide">
-                    {/* <UpdateForm candidateDetails={candidateDetails} setCandidateDetails={setCandidateDetails} displayAccountUpdateForm={displayAccountUpdateForm} /> */}
+                    <CoUpdateForm companyDetails={companyDetails} setCompanyDetails={setCompanyDetails} displayAccountUpdateForm={displayAccountUpdateForm} />
                 </div>
 
             </>

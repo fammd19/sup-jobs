@@ -95,10 +95,16 @@ class CompanyAccount(Resource):
 
         if company:
             for attr in request.json:
+                if attr == 'admin_email' and request.json[attr] == company.admin_email:
+                    continue
                 setattr(company, attr, request.json[attr])
                 
             db.session.commit()
             return make_response(company.to_dict(), 200)
+
+        else:
+            return make_response({"error": "Company not updated."}, 404)
+
 
     def delete(self):
 
