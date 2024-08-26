@@ -35,9 +35,7 @@ export default function AllCosIndex ( { candidate, company }) {
                                             </Col>
                                             <Col className="col-5">
                                                 <Card.Title className="mt-2"><b>{`${co.name}`}</b></Card.Title>
-                                                <Card.Subtitle><b>{`${co.industry}`}</b></Card.Subtitle>
-                                                <Card.Text className="mt-4">{`${co.size}`}</Card.Text>
-                                                
+                                                <Card.Subtitle><b>{`${co.industry}`}</b></Card.Subtitle>                                                
                                             </Col>
                                             <Col className="col-5">
                                                 {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Button } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 
 export default function ACoProfile () {
     
@@ -40,14 +40,49 @@ export default function ACoProfile () {
                 <h1>{companyDetails.name}</h1>
 
                 <div>
-                    <p>Logo: {companyDetails.logo}</p>
-                    <p>Size: {companyDetails.size}</p>
-                    <p>Industry: {companyDetails.industry}</p>
-                    <p>About: {companyDetails.about}</p>
-                    <p>Website: {companyDetails.website_link}</p>
-                    <p>LinkedIn: {companyDetails.linkedin_link}</p>
-                    <p>Facebook: {companyDetails.facebook_link}</p>
-                    <p>Instagram: {companyDetails.instagram_link}</p>                   
+                    <img className="co-logo mb-4" src={`${companyDetails.logo}`} />
+                    <p><b>Size:</b> {companyDetails.size}</p>
+                    <p><b>Industry:</b> {companyDetails.industry}</p>
+                    {
+                        companyDetails.mission_statement
+                        ?
+                        <p><b>Mission:</b> {companyDetails.mission_statement}</p>
+                        :
+                        null
+                    }
+                    <p><b>About:</b> {companyDetails.about}</p>
+                    <Row className="mb-4">
+                        <a href={`${companyDetails.website_link}`}>{companyDetails.website_link}</a>
+                    </Row>
+                    <Row className="mx-5">
+                        <Col>
+                        {
+                            companyDetails.linkedin_link
+                            ?
+                            <a href={`${companyDetails.linkedin_link}`}><img className="small-icon clickable" src="../../../assets/linkedin.svg"/></a>
+                            :
+                            null
+                        }
+                        </Col>
+                        <Col>
+                        {
+                            companyDetails.facebook_link
+                            ?
+                            <a href={`${companyDetails.facebook_link}`}><img className="small-icon clickable" src="../../../assets/facebook.svg"/></a>
+                            :
+                            null
+                        }
+                        </Col>
+                        <Col>
+                        {
+                            companyDetails.instagram_link
+                            ?
+                            <a href={`${companyDetails.instagram_link}`}><img className="small-icon clickable" src="../../../assets/instagram.svg"/></a>
+                            :
+                            null
+                        }  
+                        </Col>
+                    </Row>               
                 </div>
 
                 {/* <Button className="mx-1">View jobs</Button> */}

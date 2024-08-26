@@ -10,6 +10,11 @@ body {
   min-height: 80px;
 }
 
+.small-icon {
+  max-width: 30px;
+  min-height: 30px;
+}
+
 
 .text-container {
   max-width: 70%;
@@ -102,7 +107,7 @@ h1 {
 
 }
 
-.job-logo {
+.job-logo, .co-logo {
   height: 150px;
   border-radius: 50%;
 }

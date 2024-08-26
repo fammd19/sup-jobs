@@ -27,6 +27,7 @@ export default function NavBar ({ candidate, company } ) {
               <Nav className="ms-auto">
                 <Link className="nav-item nav-link" to="/">Home</Link>
                 <Link className="nav-item nav-link" to="/jobs">Jobs</Link>
+                <Link className="nav-item nav-link" to="/companies">Company Profiles</Link>
                 <Link className="nav-item nav-link" to="/post-job">Post Jobs</Link>
                 <Link className="nav-item nav-link" to="/company-account">Account</Link>
                 <Link className="nav-item nav-link" to="/company-logout">Logout</Link>
@@ -35,6 +36,7 @@ export default function NavBar ({ candidate, company } ) {
               <Nav className="ms-auto">
                   <Link className="nav-item nav-link" to="/">Home</Link>
                   <Link className="nav-item nav-link" to="/jobs">Jobs</Link>
+                  <Link className="nav-item nav-link" to="/companies">Company Profiles</Link>
                   <Link className="nav-item nav-link" to="/login">Login/ Signup</Link>
                   <Link to="/company-login"><Button className="btn-secondary">For Companies</Button></Link>
               </Nav>

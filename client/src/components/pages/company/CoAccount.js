@@ -53,12 +53,17 @@ export default function CoAccount ( {company, setCompany} ) {
 
                 <div>
                     <p>Company name: {companyDetails.name} </p>
-                    <p>Logo: {companyDetails.logo}</p>
+                    <img className="co-logo" src={`${companyDetails.logo}`} />
                     <p>Size: {companyDetails.size}</p>
                     <p>Industry: {companyDetails.industry}</p>
                     <p>About: {companyDetails.about}</p>
-                    <p>Mission statement: {companyDetails.mission_statement}</p>
-                    <p>Website: {companyDetails.website_link}</p>
+                    {
+                        companyDetails.mission_statement
+                        ?
+                        <p>Mission: {companyDetails.mission_statement}</p>
+                        :
+                        null
+                    }                    <p>Website: {companyDetails.website_link}</p>
                     {
                         companyDetails.linkedin_link
                         ?
