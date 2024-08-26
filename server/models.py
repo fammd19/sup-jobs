@@ -21,7 +21,7 @@ class Candidate (db.Model, SerializerMixin):
     saved_jobs = db.relationship('SavedJob', back_populates='candidate', cascade='all,delete-orphan')
     jobs = association_proxy('saved_jobs', 'job', creator=lambda j:SavedJob(job=j))
 
-    serialize_rules = ('-saved_jobs.candidate', '-saved_jobs.candidate_id', '-jobs.saved_jobs','-_hashed_password','-abn')
+    serialize_rules = ('-saved_jobs.candidate', '-saved_jobs.candidate_id', '-jobs.saved_jobs','-abn')
     
     @validates('first_name', 'last_name')
     def validate_name(self, key, value):

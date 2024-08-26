@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Card, Col, Container, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import Filter from '../../Filter'
 
 export default function JobsIndex ( { candidate, company }) {
@@ -8,6 +8,7 @@ export default function JobsIndex ( { candidate, company }) {
     const [url, setUrl] = useState("/api/jobs/all")
 
     const location = useLocation();
+    const navigate = useNavigate()
 
     useEffect ( () => {
 
@@ -47,6 +48,14 @@ export default function JobsIndex ( { candidate, company }) {
                     }
 
                     <Filter setUrl={setUrl}/>
+
+                    {
+                        company
+                        ?
+                        <Col onClick={() => navigate(`/jobs/company?company_id=${company.id}`)}><Button className="btn-primary">Or view your jobs</Button></Col>
+                        :
+                        null
+                    }
                     
                     <Col>
                         {

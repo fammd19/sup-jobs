@@ -13,6 +13,7 @@ export default function JobPage ( {candidate, company} ) {
     const [saved, setSaved] = useState (false)
     
     useEffect(() => {
+        if (candidate) {
             fetch(`/api/jobs/saved`)
                 .then(res => res.json())
                 .then(json => {
@@ -25,13 +26,16 @@ export default function JobPage ( {candidate, company} ) {
                         }
                     }
                 })
-    }, [saved]);
+            }
+        }, [saved]
+    );
 
     useEffect ( () => {
-        fetch(`/api/jobs/${id}`)
-        .then(res => res.json())
-        .then(json => setJob(json))
-    }, [id, saved])
+            fetch(`/api/jobs/${id}`)
+            .then(res => res.json())
+            .then(json => setJob(json))
+        }, [id, saved]
+    )
 
 
     function displayPrompt (id) {
