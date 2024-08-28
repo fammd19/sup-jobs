@@ -8,30 +8,37 @@ import JobUpdateForm from "./JobUpdateForm";
 export default function JobPage ( {candidate, company} ) {
 
     const {id} = useParams();
-    console.log(id)
     const navigate = useNavigate();
     const [job, setJob] = useState (null)
     const [saved, setSaved] = useState (false)
 
 
-    
-    useEffect(() => {
+    useEffect (()=> {
         if (candidate) {
-            fetch(`/api/jobs/saved`)
-                .then(res => res.json())
-                .then(json => {
-                    for (const saved_job of json) {
-                        console.log(saved_job.id)
-                        if (saved_job.id === parseInt(id)) {
-                            setSaved(true)
-                            console.log(saved)
-                            return saved
-                        }
-                    }
-                })
-            }
-        }, [saved]
-    );
+            fetch('/api/jobs/saved') 
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(json => {
+              setSaved(json); 
+              let jobFound = false;
+              for (const saved_job of json) {
+                if (saved_job.id === parseInt(id)) {
+                  jobFound = true;
+                  break; 
+                }
+              }
+      
+              setSaved(jobFound);
+            })
+            .catch(error => {
+              setSaved(false); 
+            });
+        }}, [id])
+    
 
     useEffect ( () => {
             fetch(`/api/jobs/${id}`)

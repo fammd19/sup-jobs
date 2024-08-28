@@ -11,7 +11,6 @@ export default function Logout ( { candidate, setCandidate } ) {
             })
             .then(response => {
                 setCandidate(null)
-                // navigate("/");
             }
     )}, 
         [])

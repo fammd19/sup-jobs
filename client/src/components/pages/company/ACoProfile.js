@@ -9,10 +9,6 @@ export default function ACoProfile () {
 
     const navigate = useNavigate();
 
-    // if ( !company ) {
-    //     navigate("/")
-    // }
-
         const [companyDetails, setCompanyDetails] = useState({
             name: "",
             abn: 0,
@@ -84,8 +80,6 @@ export default function ACoProfile () {
                         </Col>
                     </Row>               
                 </div>
-
-                {/* <Button className="mx-1">View jobs</Button> */}
 
             </>
     )

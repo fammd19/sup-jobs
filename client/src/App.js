@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import Home from './components/pages/Home';
+import PageNotFound from './components/pages/PageNotFound';
 
 import Jobs from './components/pages/jobs/Jobs';
 import JobsIndex from './components/pages/jobs/JobsIndex';
@@ -25,6 +26,8 @@ import AllCos from './components/pages/company/AllCos';
 import AllCosIndex from './components/pages/company/AllCosIndex';
 import ACoProfile from './components/pages/company/ACoProfile';
 import SavedJobs from './components/pages/jobs/SavedJobs';
+
+import NavBar from './components/NavBar';
 
 export default function App() {
 
@@ -55,6 +58,7 @@ export default function App() {
 
   return (
     <Router>
+      <NavBar candidate={candidate} company={company}/>
       <Routes>
         <Route path="/" element={<Home candidate={candidate} company={company}/>} />
         <Route path='/login' element={<Login candidate={candidate} setCandidate={setCandidate} company={company} />}/>
@@ -66,10 +70,10 @@ export default function App() {
         <Route path='/jobs' element={<Jobs candidate={candidate} company={company}/>}>
           <Route index element={<JobsIndex candidate={candidate} company={company} />}/>
           <Route path=':id' element={<JobPage candidate={candidate} company={company}/> }/>
-          {/* <Route path='company' element={<CoJobs candidate={candidate} company={company}/>}/> */}
           <Route path='company/:id' element={<CoJobs candidate={candidate} company={company}/>}/>
           <Route path='saved' element={<SavedJobs candidate={candidate}/>}/>
         </Route>
+
 
         <Route path='/companies' element={<AllCos candidate={candidate} company={company}/>}>
           <Route index element={<AllCosIndex candidate={candidate} company={company} />}/>
@@ -82,6 +86,7 @@ export default function App() {
         <Route path='/company-signup' element={<CoSignup company={company} setCompany={setCompany}/>}/>
         <Route path='/company-account' element={<CoAccount company={company} setCompany={setCompany}/>}/>
         
+        <Route path='*' element={<PageNotFound />} />
 
       </Routes>
     </Router>

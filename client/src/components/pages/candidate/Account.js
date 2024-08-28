@@ -42,7 +42,7 @@ export default function Account ( {candidate, setCandidate} ) {
 
         return (
             <>
-                <NavBar candidate={candidate}/>
+                {/* <NavBar candidate={candidate}/> */}
                 <h1>Account</h1>
 
                 <div>

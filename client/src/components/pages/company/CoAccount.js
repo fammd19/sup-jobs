@@ -48,7 +48,6 @@ export default function CoAccount ( {company, setCompany} ) {
 
         return (
             <>
-                <NavBar company={company}/>
                 <h1>Account</h1>
 
                 <div>

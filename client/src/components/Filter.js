@@ -7,11 +7,6 @@ export default function Filter({ setUrl, company_id }) {
     const [salary, setSalary] = useState("");
     const [industry, setIndustry] = useState("");
     const [location, setLocation] = useState("");
-    // const [companyId, setCompanyId] = useState("");
-
-    // if (company_id) {
-    //     setCompanyId(company_id)
-    // }
 
     function handleSubmit(e) {
         e.preventDefault();

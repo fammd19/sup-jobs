@@ -3,24 +3,10 @@ import { Row, Card, Col, Container, Button, OverlayTrigger, Tooltip } from 'reac
 import { Link, useNavigate, useLocation, useParams } from "react-router-dom"
 
 export default function CoJobs ( { candidate, company }) {
-    // const [jobs, setJobs] = useState([])
-    
 
     const navigate = useNavigate()
-    // const location = useLocation();
 
-    // const queryParams = new URLSearchParams(location.search);
-    // const company_id = queryParams.get('company_id');
-
-    // useEffect ( () => {
-    //     console.log(company_id)
-    //     fetch(`/api/jobs/company/${company_id}`)
-    //     .then(res => res.json())
-    //     .then(json => setJobs(json))
-    //     .catch(error => console.log(error.message))
-    // },[])
-
-    const { id } = useParams(); // Extract the company ID from the URL
+    const { id } = useParams(); 
     const [jobs, setJobs] = useState([]);
 
     useEffect(() => {

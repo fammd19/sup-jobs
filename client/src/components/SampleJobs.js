@@ -1,15 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Container, Col, Card, Row, OverlayTrigger, Button, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import SavedJobs from './pages/jobs/SavedJobs';
-
 
 
 export default function SampleJobs ( {number, candidate, company, selection} ) {
 
     const [jobs, setJobs] = useState([])
-
-    console.log(selection)
 
     useEffect ( () => {
         fetch("/api/jobs/"+selection)
@@ -61,7 +57,6 @@ export default function SampleJobs ( {number, candidate, company, selection} ) {
                                                   </OverlayTrigger>
                                                     
                                                 }
-                                            {/* <Link to={`/jobs/${job.id}`}><Button variant="primary">More details</Button></Link> */}
                                     </Card.Body>
                                 </Card>
                                 </Col>
@@ -85,60 +80,3 @@ export default function SampleJobs ( {number, candidate, company, selection} ) {
         </Container>
     )
 }
-//     return (
-//         <Container className="mt-4">
-//             <h3>Latest jobs</h3>
-//             <Row>
-//                 <Col>
-//                     <Card>
-//                         <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-//                         <Card.Body>
-//                             <Card.Title>Card Title</Card.Title>
-//                             <Card.Text>
-//                                 Some quick example text to build on the card title and make up the
-//                                 bulk of the card's content.
-//                             </Card.Text>
-//                         </Card.Body>
-//                         <Card.Body>
-//                             <Card.Link href="#">Card Link</Card.Link>
-//                             <Card.Link href="#">Another Link</Card.Link>
-//                         </Card.Body>
-//                     </Card>
-//                 </Col>
-//                 <Col>
-//                     <Card>
-//                         <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-//                         <Card.Body>
-//                             <Card.Title>Card Title</Card.Title>
-//                             <Card.Text>
-//                                 Some quick example text to build on the card title and make up the
-//                                 bulk of the card's content.
-//                             </Card.Text>
-//                         </Card.Body>
-//                         <Card.Body>
-//                             <Card.Link href="#">Card Link</Card.Link>
-//                             <Card.Link href="#">Another Link</Card.Link>
-//                         </Card.Body>
-//                     </Card>
-//                 </Col>
-//                 <Col>
-//                     <Card>
-//                         <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-//                         <Card.Body>
-//                             <Card.Title>Card Title</Card.Title>
-//                             <Card.Text>
-//                                 Some quick example text to build on the card title and make up the
-//                                 bulk of the card's content.
-//                             </Card.Text>
-//                         </Card.Body>
-//                         <Card.Body>
-//                             <Card.Link href="#">Card Link</Card.Link>
-//                             <Card.Link href="#">Another Link</Card.Link>
-//                         </Card.Body>
-//                     </Card>
-//                 </Col>
-//             </Row>
-//         </Container>
-//     )
-// }
-

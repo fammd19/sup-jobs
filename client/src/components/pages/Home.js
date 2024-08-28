@@ -15,8 +15,7 @@ export default function Home ({ candidate, company }) {
                 company
                 ? 
                 <>     
-                    <NavBar candidate={candidate} company={company}/>  
-                    <Welcome candidate={candidate} company={company}/>
+                    <Welcome company={company}/>
                     <Row className="justify-content-center">
                         <Col xs="auto"><Link to="/post-job"><Button className="btn-primary">Post a new job</Button></Link></Col>
                         <Col  xs="auto"><Link to={`/jobs/company/${company.id}`}><Button variant="primary">View your jobs</Button></Link></Col>
@@ -26,10 +25,8 @@ export default function Home ({ candidate, company }) {
                 </>
                 :
                 <>
-                    <NavBar candidate={candidate} company={company}/>
                     <Welcome />
                     <SampleJobs number={3} candidate={candidate} company={company} selection={"all"}/>
-                    {/* <Link to="/jobs"><Button>View more jobs</Button></Link> */}
                     <FilterByDep />
                 </>
             }
