@@ -1,5 +1,5 @@
 from config import app, db, bcrypt
-from models import Candidate, Company
+from models import Candidate
 
 def create_records():
     with app.app_context():
@@ -33,50 +33,9 @@ def create_records():
             preferred_department="finance"
         )
 
-        company1= Company(
-            name="The Plant Exchange",
-            abn=11111111112,
-            size=2,
-            industry="Technology & software",
-            logo="https://picsum.photos/200",
-            mission_statement="Helping every plant find a home, and every home find a plant."
-            about="Ever wanted some simple pants but didnt want to play crazy money for it? The plant exchange is here. Our platform is solely for plants and you can find and sell cuttings, as well as 'second-hand' whole plants near you.",
-            website_link="https://plantex.com.au",
-            admin_email="alison@plantex.com.au",
-            hashed_password="1234abcd"
-        )
-
-        company2=Company(
-            name="Docs Online",
-            abn=11111111113,
-            size=120,
-            industry="health",
-            logo="https://picsum.photos/201",
-            about="Our first line triage service is like having a home call from a doctor, all online. Our Docs can answer your questions, give advice and, where possible, save a trip to the surgery.",
-            mission_statement="To make sure everyone is seen & heard, and to save in-person Doctor's appointments for those who truly need it"
-            website_link="https://docsonline.com.au",
-            linkedin_link="https://linkedin.com/docsonline",
-            admin_email="john@docsonline.com.au",
-            hashed_password="1234abcd"
-        )
-
-        company3=Company(
-            name="S'Up Jobs",
-            abn=11111111114,
-            size=120,
-            industry="technology & software",
-            logo="https://picsum.photos/202",
-            about="We're passionate about start-ups and small businesses which is why you'll only find companies with less than 200 employees on our site. This is the job board for candidates who love getting their hands dirty and for companies searching for talent to take their business to the next level.",
-            mission_statement="Connecting start-ups & small companies with talented candidates who want to help growing businesses achieve big things."
-            website_link="https://supjobs.com.au",
-            instagram_link="https://instagram.com/sup-jobs",
-            facebook_link="https://facebook.com/sup-jobs",
-            admin_email="hi@supjobs.com.au",
-            hashed_password="1234abcd"
-        )
 
         # Add records to the session and commit
-        db.session.add_all([candidate1, candidate2, candidate3, company1, company2, company3])
+        db.session.add_all([candidate1, candidate2, candidate3])
         db.session.commit()
 
         print("Records created successfully!")
