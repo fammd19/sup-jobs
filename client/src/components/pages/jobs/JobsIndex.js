@@ -5,7 +5,7 @@ import Filter from '../../Filter'
 
 export default function JobsIndex ( { candidate, company }) {
     const [jobs, setJobs] = useState([])
-    const [url, setUrl] = useState("/api/jobs/all")
+    const [url, setUrl] = useState("/api/jobs/live")
 
     const location = useLocation();
     const navigate = useNavigate()
@@ -52,7 +52,7 @@ export default function JobsIndex ( { candidate, company }) {
                     {
                         company
                         ?
-                        <Link to={`/jobs/company/${company.id}`}><Button variant="primary">View your jobs</Button></Link>
+                        <Link to={`/jobs/company/${company.id}`}><p className="my-2" variant="primary"><b>View your live jobs</b></p></Link>
                         :
                         null
                     }
@@ -104,12 +104,12 @@ export default function JobsIndex ( { candidate, company }) {
                     }
 
                 </Col>
-                <Button onClick={()=>setUrl("/api/jobs/all")}>Clear filters</Button>
+                <Button onClick={()=>setUrl("/api/jobs/live")}>Clear filters</Button>
                 </>
                 :
                 <>
                     <p>No jobs found</p>
-                    <Button onClick={()=>setUrl("/api/jobs/all")}>Search again</Button>
+                    <Button onClick={()=>setUrl("/api/jobs/live")}>Search again</Button>
                 </>
             }
         </Container>

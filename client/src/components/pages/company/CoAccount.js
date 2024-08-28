@@ -90,7 +90,7 @@ export default function CoAccount ( {company, setCompany} ) {
                     
                 </div>
 
-                <Link to={`/jobs/company/${company.id}`}><Button variant="primary">View your jobs</Button></Link>
+                <Link to={`/jobs/company/${company.id}`}><Button variant="primary">View posted jobs</Button></Link>
 
                 <Button className="mx-1" id="update-account-btn" onClick={displayAccountUpdateForm}>Update details</Button>
                 <div id="account-update-form" className="hide">

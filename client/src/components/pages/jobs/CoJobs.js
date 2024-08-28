@@ -42,6 +42,13 @@ export default function CoJobs ( { candidate, company }) {
                             jobs.map((job)=> {
                                 return(
                                 <Card  className="my-3" key={job.id}>
+                                    {
+                                        job.archived_job===true
+                                        ?
+                                        <p className="archived-banner">This job has been archived</p>
+                                        :
+                                        null
+                                    }
                                     <Card.Body>
                                         <Row>
                                             <Col>

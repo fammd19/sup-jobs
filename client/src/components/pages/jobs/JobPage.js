@@ -100,10 +100,15 @@ export default function JobPage ( {candidate, company} ) {
             })
     }
 
-    function handleDelete () {
+    function handleArchive () {
+
         fetch(`/api/jobs/${id}`, {
-            method: "DELETE"
-            })
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({archived_job:true}),
+        })
             .then(response => {
                 if (response.okay) {
                     setJob(null)
@@ -118,10 +123,18 @@ export default function JobPage ( {candidate, company} ) {
     return (
         <>  
             <p id="prompt" className="hide">Job successfully saved</p>
+
             {
                 job
                 ?
                 <main className="mx-5">
+                    {
+                        job.archived_job
+                        ?
+                        <h2 className="my-4 archived-banner">This job is no longer available</h2>
+                        :
+                        null
+                    }
                     <div  className="my-3" key={job.id}>
                         <Row>
                             <Col>
@@ -138,7 +151,7 @@ export default function JobPage ( {candidate, company} ) {
                                 <p className="mb-0">{`${job.job_type}`}</p>
                                     { job.closing_date
                                     ?
-                                    <p className="mb-0">{`${job.closing_date}`}</p>
+                                    <p className="mb-0">{`${job.closing_date.split(' ')[0]}`}</p>
                                     :
                                     null}
                                 </Row>
@@ -251,7 +264,7 @@ export default function JobPage ( {candidate, company} ) {
                                                 <div id="job-update-form" className="hide">
                                                     <JobUpdateForm job={job} setJob={setJob} displayJobUpdateForm={displayJobUpdateForm} />
                                                 </div>
-                                                <Col><Button className="mx-1" onClick={handleDelete}>Delete job</Button></Col>
+                                                <Col><Button className="mx-1" onClick={handleArchive}>Archive job</Button></Col>
                                             </Row>
                                             :
                                             null

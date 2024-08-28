@@ -478,6 +478,7 @@ export default function JobUpdateForm({ company, job, setJob, displayJobUpdateFo
             optional_experience: job.optional_experience || "",
             postcode: job.postcode || "",
             application_link: job.application_link || "",
+            archived_job: job.archived_job || "",
             closing_date: job.closing_date.split(' ')[0] || ""  // Ensure correct format
         },
         validationSchema: Yup.object({
@@ -531,6 +532,7 @@ export default function JobUpdateForm({ company, job, setJob, displayJobUpdateFo
                     optional_experience: json.optional_experience || "",
                     postcode: json.postcode || "",
                     application_link: json.application_link || "",
+                    archived_job: json.archived_job || "",
                     closing_date: json.closing_date.split(' ')[0] || ""
                 });
             })
@@ -877,14 +879,6 @@ export default function JobUpdateForm({ company, job, setJob, displayJobUpdateFo
                         </Col>
                     </Row>
                 </Form.Group>
-
-                <Form.Check
-                            inline
-                            label="Archive job?"
-                            name="group1"
-                            type="checkbox"
-                            id="inline-checbox"
-                        />
 
                 <div className="text-end my-4">
                     <Button

@@ -31,6 +31,13 @@ export default function SavedJobs ( { candidate }) {
                                 return(
                                 <Card  className="my-3" key={job.id}>
                                     <Card.Body>
+                                        {
+                                            job.archived_job===true
+                                            ?
+                                            <h2>This job is no longer available</h2>
+                                            :
+                                            null
+                                        }
                                         <Row>
                                             <Col>
                                                 <Row className="justify-content-center mt-2">

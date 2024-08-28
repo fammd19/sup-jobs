@@ -105,7 +105,7 @@ export default function Filter({ setUrl, company_id }) {
                     </Col>
                 </Row>
             </div>
-            <Button type="submit">Filter</Button><Button onClick={clearFilter}>Clear filter</Button>
+            <Button className="mx-2" type="submit">Filter</Button><Button className="mx-2" onClick={clearFilter}>Clear filter</Button>
         </Form>
     );
 }

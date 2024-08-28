@@ -36,7 +36,7 @@ export default function SampleJobs ( {number, candidate, company, selection} ) {
                                             { 
                                                 job.closing_date
                                                 ?
-                                                <Card.Text>{`${job.closing_date}`}</Card.Text>
+                                                <Card.Text>{`${job.closing_date.split(' ')[0]}`}</Card.Text>
                                                 :
                                                 null
                                             }
