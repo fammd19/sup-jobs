@@ -3,7 +3,6 @@ import { Form, Button, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import NavBar from "../../NavBar";
 
 export default function PostJob({ company }) {
     const navigate = useNavigate();

@@ -23,7 +23,7 @@ def create_records():
             key_responsibility_1="Create best-in-class design for user interfaces.",
             key_responsibility_2="Support cross-functional teams with design requests.",
             key_responsibility_3="Work with our Lead Designer to maintain brand design standards.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=10),
             date_posted=date.today(),
             company_id=3
@@ -43,7 +43,7 @@ def create_records():
             key_responsibility_1="Develop and maintain scalable software solutions.",
             key_responsibility_2="Collaborate in an agile environment.",
             key_responsibility_3="Implement best practices in software development.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=15),
             date_posted=date.today(),
             company_id=2
@@ -63,7 +63,7 @@ def create_records():
             key_responsibility_1="Plan and execute digital marketing campaigns.",
             key_responsibility_2="Manage content creation and social media.",
             key_responsibility_3="Analyze marketing metrics and adjust strategies.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=20),
             date_posted=date.today(),
             company_id=28
@@ -83,7 +83,7 @@ def create_records():
             key_responsibility_1="Manage and optimize operational processes.",
             key_responsibility_2="Lead cross-departmental operational initiatives.",
             key_responsibility_3="Ensure alignment with business objectives.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=30),
             date_posted=date.today(),
             company_id=5
@@ -103,7 +103,7 @@ def create_records():
             key_responsibility_1="Assist in budget preparation and monitoring.",
             key_responsibility_2="Process invoices and manage accounts payable.",
             key_responsibility_3="Prepare financial reports for management.",
-            job_type="Full-time",
+            job_type="internship",
             closing_date=date.today() + timedelta(days=25),
             date_posted=date.today(),
             company_id=6
@@ -112,7 +112,7 @@ def create_records():
         job6 = Job(
             title="Lead Developer",
             salary=120000,
-            salary_comments="Equity options available",
+            salary_comments="Generous equity & chance to come on as a co-founder",
             department="technology",
             role_description="Lead technical projects, mentor developers, and ensure high-quality software delivery.",
             application_link="https://example.com.au/careers",
@@ -123,7 +123,7 @@ def create_records():
             key_responsibility_1="Lead technical projects and teams.",
             key_responsibility_2="Ensure high-quality software delivery.",
             key_responsibility_3="Mentor junior developers and provide technical guidance.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=40),
             date_posted=date.today(),
             company_id=7
@@ -143,7 +143,7 @@ def create_records():
             key_responsibility_1="Design and prototype user experiences.",
             key_responsibility_2="Collaborate with product teams to implement designs.",
             key_responsibility_3="Conduct user research and testing.",
-            job_type="Full-time",
+            job_type="freelance",
             closing_date=date.today() + timedelta(days=15),
             date_posted=date.today(),
             company_id=8
@@ -163,7 +163,7 @@ def create_records():
             key_responsibility_1="Coordinate day-to-day operational tasks.",
             key_responsibility_2="Manage team schedules and timelines.",
             key_responsibility_3="Assist in process improvement initiatives.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=20),
             date_posted=date.today(),
             company_id=9
@@ -183,7 +183,7 @@ def create_records():
             key_responsibility_1="Analyze financial data and trends.",
             key_responsibility_2="Prepare detailed financial reports.",
             key_responsibility_3="Support budgeting and forecasting activities.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=25),
             date_posted=date.today(),
             company_id=10
@@ -203,7 +203,7 @@ def create_records():
             key_responsibility_1="Build and maintain user-facing features.",
             key_responsibility_2="Ensure responsiveness and performance across devices.",
             key_responsibility_3="Collaborate with designers and backend developers.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=30),
             date_posted=date.today(),
             company_id=11
@@ -223,7 +223,7 @@ def create_records():
             key_responsibility_1="Develop and execute digital marketing strategies.",
             key_responsibility_2="Manage and optimize online advertising campaigns.",
             key_responsibility_3="Analyze performance metrics and adjust strategies.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=20),
             date_posted=date.today(),
             company_id=12
@@ -243,7 +243,7 @@ def create_records():
             key_responsibility_1="Design and implement scalable backend systems.",
             key_responsibility_2="Ensure high performance and reliability.",
             key_responsibility_3="Collaborate with frontend developers and other teams.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=30),
             date_posted=date.today(),
             company_id=13
@@ -263,7 +263,7 @@ def create_records():
             key_responsibility_1="Design visual content for various platforms.",
             key_responsibility_2="Collaborate with marketing and design teams.",
             key_responsibility_3="Ensure consistency with brand guidelines.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=15),
             date_posted=date.today(),
             archived_job=True,
@@ -284,7 +284,7 @@ def create_records():
             key_responsibility_1="Analyze market trends and campaign performance.",
             key_responsibility_2="Support marketing strategy development.",
             key_responsibility_3="Prepare reports and present findings.",
-            job_type="Full-time",
+            job_type="part-time",
             closing_date=date.today() + timedelta(days=20),
             date_posted=date.today(),
             company_id=15
@@ -304,7 +304,7 @@ def create_records():
             key_responsibility_1="Manage financial planning and analysis.",
             key_responsibility_2="Prepare and oversee budgets.",
             key_responsibility_3="Ensure compliance with financial regulations.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=25),
             date_posted=date.today(),
             company_id=16
@@ -324,7 +324,7 @@ def create_records():
             key_responsibility_1="Lead UX design projects and initiatives.",
             key_responsibility_2="Develop user-centered design strategies.",
             key_responsibility_3="Collaborate with product teams to enhance user experience.",
-            job_type="Full-time",
+            job_type="part-time",
             closing_date=date.today() + timedelta(days=30),
             date_posted=date.today(),
             company_id=17
@@ -344,7 +344,7 @@ def create_records():
             key_responsibility_1="Oversee financial reporting and compliance.",
             key_responsibility_2="Prepare and manage financial budgets.",
             key_responsibility_3="Ensure accuracy in financial reporting.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=35),
             date_posted=date.today(),
             company_id=18
@@ -364,7 +364,7 @@ def create_records():
             key_responsibility_1="Develop and implement content marketing strategies.",
             key_responsibility_2="Write and manage engaging content.",
             key_responsibility_3="Analyze and report on content performance.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=15),
             date_posted=date.today(),
             company_id=19
@@ -384,7 +384,7 @@ def create_records():
             key_responsibility_1="Manage the product development lifecycle.",
             key_responsibility_2="Collaborate with engineering teams to align technical goals.",
             key_responsibility_3="Ensure product meets business objectives.",
-            job_type="Full-time",
+            job_type="contract",
             closing_date=date.today() + timedelta(days=20),
             date_posted=date.today(),
             archived_job=True,
@@ -405,7 +405,7 @@ def create_records():
             key_responsibility_1="Analyze operational processes and data.",
             key_responsibility_2="Prepare and present reports on process efficiency.",
             key_responsibility_3="Support process improvement initiatives.",
-            job_type="Full-time",
+            job_type="full-time",
             closing_date=date.today() + timedelta(days=25),
             date_posted=date.today(),
             company_id=21
@@ -426,7 +426,7 @@ def create_records():
             key_responsibility_1 = "Create best-in-class design for user interfaces.",
             key_responsibility_2 = "Support cross functional teams with design requests.",
             key_responsibility_3 = "Work with our Lead Designer to maintain brand design standards..",
-            job_type = "Full-time",
+            job_type = "full-time",
             closing_date = date.today() + timedelta(days=10),
             date_posted = date.today(),
             company_id=33

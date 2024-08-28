@@ -248,9 +248,9 @@ export default function JobPage ( {candidate, company} ) {
                                             ?
                                             <Row>
                                                 <Col><Button className="mx-1" id="update-job-btn" onClick={displayJobUpdateForm}>Update job</Button></Col>
-                                                {/* <div id="job-update-form" className="hide">
+                                                <div id="job-update-form" className="hide">
                                                     <JobUpdateForm job={job} setJob={setJob} displayJobUpdateForm={displayJobUpdateForm} />
-                                                </div> */}
+                                                </div>
                                                 <Col><Button className="mx-1" onClick={handleDelete}>Delete job</Button></Col>
                                             </Row>
                                             :

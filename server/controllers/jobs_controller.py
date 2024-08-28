@@ -101,23 +101,31 @@ class JobById (Resource):
 
     def patch(self, id):
 
+
         if 'company_id' not in session:
-            return make_response ({"error":"Unauthorised. No company logged in."}, 401)
+            return make_response({"error": "Unauthorized. No company logged in."}, 401)
 
         job = Job.query.filter(Job.id == id).first()
 
-        if job.company_id == session['company_id']:
-            for attr in request.json:
-                setattr(job, attr, request.json[attr])
-                
-            db.session.commit()
+        if job is None:
+            return make_response({"error": "Job not found."}, 404)
 
-            return make_response(job.to_dict(), 203)
+        if job.company_id != session['company_id']:
+            return make_response({"error": "Unauthorized. This job does not belong to the logged-in company."}, 403)
 
-        else:
-            return make_response({"error":"Unauthorised"}, 403)
+        data = request.json
+        if 'closing_date' in data:
+            try:
+                data['closing_date'] = datetime.strptime(data['closing_date'], '%Y-%m-%d').date()
+            except ValueError:
+                return make_response({"error": "Invalid date format. Use YYYY-MM-DD."}, 400)
 
+        for attr, value in data.items():
+            setattr(job, attr, value)
 
+        db.session.commit()
+
+        return make_response(job.to_dict(), 203)
 
     def delete(self, id):
         
