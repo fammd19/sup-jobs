@@ -56,7 +56,7 @@ export default function Account ( {candidate, setCandidate} ) {
                 <h4 className="mt-3">Saved jobs</h4>
                 <SampleJobs candidate={candidate} selection={"saved"}/>
 
-                <Button className="mx-1" id="update-account-btn" variant="warning" onClick={displayAccountUpdateForm}>Update details</Button>
+                <Button className="mx-1" id="update-account-btn" onClick={displayAccountUpdateForm}>Update details</Button>
                 <div id="account-update-form" className="hide">
                     <UpdateForm candidateDetails={candidateDetails} setCandidateDetails={setCandidateDetails} displayAccountUpdateForm={displayAccountUpdateForm} />
                 </div>

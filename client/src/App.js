@@ -31,7 +31,7 @@ export default function App() {
   const [candidate, setCandidate] = useState(null)
   const [company, setCompany] = useState(null)
 
-
+  
   useEffect(() => {
     fetch('/api/candidate/account')
       .then(response=> response.json())
@@ -59,14 +59,15 @@ export default function App() {
         <Route path="/" element={<Home candidate={candidate} company={company}/>} />
         <Route path='/login' element={<Login candidate={candidate} setCandidate={setCandidate} company={company} />}/>
         <Route path='/logout' element={<Logout candidate={candidate} setCandidate={setCandidate}/>}/>
-        <Route path='/signup' element={<Signup candidate={candidate} />}/>
+        <Route path='/signup' element={<Signup candidate={candidate} setCandidate={setCandidate}/>}/>
         <Route path='/account'element={<Account candidate={candidate} setCandidate={setCandidate} />}/>
 
         
         <Route path='/jobs' element={<Jobs candidate={candidate} company={company}/>}>
           <Route index element={<JobsIndex candidate={candidate} company={company} />}/>
           <Route path=':id' element={<JobPage candidate={candidate} company={company}/> }/>
-          <Route path='company' element={<CoJobs candidate={candidate} company={company}/>}/>
+          {/* <Route path='company' element={<CoJobs candidate={candidate} company={company}/>}/> */}
+          <Route path='company/:id' element={<CoJobs candidate={candidate} company={company}/>}/>
           <Route path='saved' element={<SavedJobs candidate={candidate}/>}/>
         </Route>
 

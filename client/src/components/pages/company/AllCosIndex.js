@@ -49,7 +49,7 @@ export default function AllCosIndex ( { candidate, company }) {
                                                   >
                                                     <span className="d-inline-block">
                                                       <Button variant="primary  disabled" disabled style={{ pointerEvents: 'none' }}>
-                                                        View company profile
+                                                        Signup to view company
                                                       </Button>
                                                     </span>
                                                   </OverlayTrigger>

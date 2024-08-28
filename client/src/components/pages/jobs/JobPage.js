@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { Link, useNavigate } from 'react-router-dom';
 import { Row, Card, Col, Container, Button } from 'react-bootstrap'
+import JobUpdateForm from "./JobUpdateForm";
 
 
 export default function JobPage ( {candidate, company} ) {
@@ -11,6 +12,8 @@ export default function JobPage ( {candidate, company} ) {
     const navigate = useNavigate();
     const [job, setJob] = useState (null)
     const [saved, setSaved] = useState (false)
+
+
     
     useEffect(() => {
         if (candidate) {
@@ -43,6 +46,18 @@ export default function JobPage ( {candidate, company} ) {
         prompt.classList.remove("hide");
         setTimeout(() => prompt.classList.add("hide"), 5000);
       }
+
+    function displayJobUpdateForm () {
+        const formDiv = document.getElementById("job-update-form");
+        const showBtn = document.getElementById("update-job-btn")
+        if (formDiv.classList.contains("hide")) {
+            formDiv.classList.remove("hide") 
+            showBtn.textContent="Cancel update"
+        } else {
+            formDiv.classList.add("hide")
+            showBtn.textContent="Update details"   
+        }
+    }
     
     function handleSave () {
         //Issue with proxy due to using index. See how can resolve - using full url works
@@ -128,7 +143,7 @@ export default function JobPage ( {candidate, company} ) {
                                     <p><b>About us</b>: {`${job.company.about}`}</p>
                                     <p><b>The role</b>: {`${job.role_description}`}</p>
                                 </div>
-
+                                <p><b>Key responsibilities</b></p>
                                 <ul>
                                     {
                                         job.key_responsibility_1
@@ -203,7 +218,8 @@ export default function JobPage ( {candidate, company} ) {
                                     null
                                 }
                                 <h4>Apply</h4>
-                                <p><a href="">{`${job.application_link}`}</a></p>
+                                {/* Need to fix link */}
+                                <p><a href={job.application_link}>{`${job.application_link}`}</a></p>
                                 
                             </Row>
                             <div>
@@ -224,7 +240,10 @@ export default function JobPage ( {candidate, company} ) {
                                         company && job.company.id === company.id
                                             ?
                                             <Row>
-                                                <Col><Button className="mx-1">Update job</Button></Col>
+                                                <Col><Button className="mx-1" id="update-job-btn" onClick={displayJobUpdateForm}>Update job</Button></Col>
+                                                {/* <div id="job-update-form" className="hide">
+                                                    <JobUpdateForm job={job} setJob={setJob} displayJobUpdateForm={displayJobUpdateForm} />
+                                                </div> */}
                                                 <Col><Button className="mx-1" onClick={handleDelete}>Delete job</Button></Col>
                                             </Row>
                                             :

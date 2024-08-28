@@ -5,7 +5,7 @@ import NavBar from "../../NavBar";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-export default function Signup({ candidate }) {
+export default function Signup({ candidate, setCandidate }) {
     const navigate = useNavigate();
 
     if (candidate) {
@@ -40,13 +40,16 @@ export default function Signup({ candidate }) {
                 .then(response => response.json())
                 .then(json => {
                     if (json.id) {
+                        setCandidate(json)
                         navigate("/");
                     } else {
                         console.log("Signup unsuccessful: No ID in response");
+                        setCandidate(null)
                     }
                 })
                 .catch(err => {
                     console.log("Signup failed:", err.message);
+                    setCandidate(null)
                 });
         }
     });
@@ -199,7 +202,7 @@ export default function Signup({ candidate }) {
                                         <option value="co-founder">Co-Founder</option>
                                         <option value="design">Design</option>
                                         <option value="finance">Finance</option>
-                                        <option value="human resources">Ops & HR</option>
+                                        <option value="operations">Ops & HR</option>
                                         <option value="marketing">Marketing</option>
                                         <option value="technology">Tech & Data</option>
                                     </Form.Select>

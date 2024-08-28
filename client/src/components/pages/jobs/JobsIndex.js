@@ -52,7 +52,8 @@ export default function JobsIndex ( { candidate, company }) {
                     {
                         company
                         ?
-                        <Col onClick={() => navigate(`/jobs/company?company_id=${company.id}`)}><Button className="btn-primary">Or view your jobs</Button></Col>
+                        // <Col onClick={() => navigate(`/jobs/company?company_id=${company.id}`)}><Button className="btn-primary">Or view your jobs</Button></Col>
+                        <Link to={`/jobs/company/${company.id}`}><Button variant="primary">View your jobs</Button></Link>
                         :
                         null
                     }
@@ -89,7 +90,7 @@ export default function JobsIndex ( { candidate, company }) {
                                                   >
                                                     <span className="d-inline-block">
                                                       <Button variant="primary  disabled" disabled style={{ pointerEvents: 'none' }}>
-                                                        More details
+                                                        Sign up to view details
                                                       </Button>
                                                     </span>
                                                   </OverlayTrigger>

@@ -61,7 +61,7 @@ class CreateJob (Resource):
 class AllJobs(Resource):
 
     def get(self):
-        jobs = Job.query.all()
+        jobs = Job.query.order_by(Job.date_posted).all()
 
         if len(jobs) > 0:
             jobs_dict = [job.to_dict() for job in jobs]

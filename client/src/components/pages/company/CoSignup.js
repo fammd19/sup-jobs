@@ -5,7 +5,7 @@ import NavBar from '../../NavBar';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-export default function CoSignup({ company, candidate, setCompany }) {
+export default function CoSignup({ company, setCompany }) {
     const navigate = useNavigate();
 
     if (company) {

@@ -43,6 +43,14 @@ export default function Filter({ setUrl, company_id }) {
         setUrl(url);
     }
 
+    function clearFilter () {
+        setDepartment("");
+        setSalary("");
+        setIndustry("");
+        setLocation("");
+        setUrl("/api/jobs/all")
+    }
+
     return (
         <Form onSubmit={handleSubmit}>
             <div className="filter">
@@ -102,7 +110,7 @@ export default function Filter({ setUrl, company_id }) {
                     </Col>
                 </Row>
             </div>
-            <Button type="submit">Filter</Button>
+            <Button type="submit">Filter</Button><Button onClick={clearFilter}>Clear filter</Button>
         </Form>
     );
 }

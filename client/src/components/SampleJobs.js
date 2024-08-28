@@ -55,7 +55,7 @@ export default function SampleJobs ( {number, candidate, company, selection} ) {
                                                   >
                                                     <span className="d-inline-block">
                                                       <Button variant="primary  disabled" disabled style={{ pointerEvents: 'none' }}>
-                                                        More details
+                                                        Signup to view details
                                                       </Button>
                                                     </span>
                                                   </OverlayTrigger>
@@ -80,7 +80,6 @@ export default function SampleJobs ( {number, candidate, company, selection} ) {
                 <Link to="/jobs/saved"><Button>View all saved jobs</Button></Link>
                 :
                 <Link to="/jobs"><Button>View more jobs</Button></Link>
-
             }
 
         </Container>

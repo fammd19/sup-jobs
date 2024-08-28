@@ -1,21 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Card, Col, Container, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
-import { Link, useNavigate, useLocation } from "react-router-dom"
+import { Link, useNavigate, useLocation, useParams } from "react-router-dom"
 
 export default function CoJobs ( { candidate, company }) {
-    const [jobs, setJobs] = useState([])
+    // const [jobs, setJobs] = useState([])
+    
+
     const navigate = useNavigate()
-    const location = useLocation();
+    // const location = useLocation();
 
-    const queryParams = new URLSearchParams(location.search);
-    const company_id = queryParams.get('company_id');
+    // const queryParams = new URLSearchParams(location.search);
+    // const company_id = queryParams.get('company_id');
 
-    useEffect ( () => {
-        fetch(`/api/jobs/company/${company_id}`)
-        .then(res => res.json())
-        .then(json => setJobs(json))
-        .catch(error => console.log(error.message))
-    },[])
+    // useEffect ( () => {
+    //     console.log(company_id)
+    //     fetch(`/api/jobs/company/${company_id}`)
+    //     .then(res => res.json())
+    //     .then(json => setJobs(json))
+    //     .catch(error => console.log(error.message))
+    // },[])
+
+    const { id } = useParams(); // Extract the company ID from the URL
+    const [jobs, setJobs] = useState([]);
+
+    useEffect(() => {
+        if (id) {
+            fetch(`/api/jobs/company/${id}`)
+                .then(res => res.json())
+                .then(json => setJobs(json))
+                .catch(error => console.log(error.message));
+        } 
+    }, [id]);
 
      if (!company) {
         navigate("/jobs")
@@ -24,7 +39,12 @@ export default function CoJobs ( { candidate, company }) {
     return (
         <>
         <Container>
+            {company
+            ?
             <h1>{company.name} jobs</h1>
+            :
+            null
+            }
             {
                 jobs.length>0
                 ?
