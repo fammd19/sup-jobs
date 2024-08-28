@@ -208,6 +208,7 @@ class Job (db.Model, SerializerMixin):
     key_responsibility_5 = db.Column(db.String)
     closing_date = db.Column(db.DateTime)
     date_posted = db.Column(db.DateTime)
+    archived_job = db.Column(db.Boolean)
 
     company_id = db.Column(db.Integer, db.ForeignKey('companies.id'))
     company = db.relationship('Company', back_populates='jobs')

@@ -264,18 +264,18 @@ def create_records():
         )
 
         company17=Company(
-            name="BuildMaster Construction",
+            name="BuildMaster",
             abn=12345678948,
             size=130,
-            industry="construction",
+            industry="cgs",
             logo="https://picsum.photos/229",
-            about="BuildMaster Construction is a trusted name in the construction industry, known for delivering high-quality residential and commercial projects. Our commitment to excellence and client satisfaction sets us apart in the competitive construction market.",
-            mission_statement="Building excellence and delivering quality in every project.",
-            website_link="https://buildmasterconstruction.com.au",
-            linkedin_link="https://linkedin.com/buildmaster-construction",
-            instagram_link="https://instagram.com/buildmasterconstruction",
-            facebook_link="https://facebook.com/buildmasterconstruction",
-            admin_email="info@buildmasterconstruction.com.au",
+            about="BuildMaster is a trusted name in the supply of ready made home offices, known for delivering high-quality units that are ideal for WFH. Our commitment to excellence and client satisfaction sets us apart.",
+            mission_statement="Building excellence and delivering quality in every office.",
+            website_link="https://buildmaster.com.au",
+            linkedin_link="https://linkedin.com/buildmaster",
+            instagram_link="https://instagram.com/buildmaster",
+            facebook_link="https://facebook.com/buildmaster",
+            admin_email="info@buildmaster.com.au",
             hashed_password="cdef3456"
         )
 
@@ -440,18 +440,18 @@ def create_records():
         )
 
         company28=Company(
-            name="Innovative Build Co.",
+            name="Innovative Clothing",
             abn=12345678959,
             size=175,
-            industry="construction",
+            industry="cgs",
             logo="https://picsum.photos/234",
-            about="Innovative Build Co. is a construction company focused on creating modern, sustainable buildings. We specialize in eco-friendly designs and materials that reduce environmental impact and provide energy-efficient solutions for residential and commercial properties.",
-            mission_statement="Building sustainable, modern structures with innovative designs and materials.",
-            website_link="https://innovativebuildco.com.au",
-            linkedin_link="https://linkedin.com/innovative-build-co",
-            instagram_link="https://instagram.com/innovativebuildco",
-            facebook_link="https://facebook.com/innovativebuildco",
-            admin_email="info@innovativebuildco.com.au",
+            about="Innovative Clothing is commited to redfining the boundaries of clothing in a sustainable way. If you have a clothing challenge, we're here for that",
+            mission_statement="Building sustainable, modern clothing with innovative designs and materials.",
+            website_link="https://innovativeclothing.com.au",
+            linkedin_link="https://linkedin.com/innovativeclothing",
+            instagram_link="https://instagram.com/innovativeclothing",
+            facebook_link="https://facebook.com/innovativeclothing",
+            admin_email="info@innovativeclothing.com.au",
             hashed_password="uvwx7890"
         )
 
