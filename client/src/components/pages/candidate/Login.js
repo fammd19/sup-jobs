@@ -61,7 +61,6 @@ export default function Login({ candidate, setCandidate, company }) {
     return (
         <>
             <h1>Candidate login</h1>
-            <h5><a href="/signup">Candidate signup</a></h5>
 
             <Form onSubmit={formik.handleSubmit}>
                 <Row className="justify-content-center">
@@ -103,9 +102,10 @@ export default function Login({ candidate, setCandidate, company }) {
                     </Col>
                 </Row>
             </Form>
+            <h5 className="my-4"><a href="/signup">Candidate signup</a></h5>
 
-            <div className="my-4">
-                <a href="/company-login">Company login</a>
+            <div className="my-2">
+                <p>Company? Head to <a href="/company-login">company login</a></p>
             </div>
         </>
     );

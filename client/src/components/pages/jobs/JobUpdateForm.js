@@ -56,6 +56,7 @@ export default function JobUpdateForm({ company, job, setJob, displayJobUpdateFo
                     navigate(`/jobs/${job.id}`)
                 })
                 .catch(error => console.log("API Error: ", error.message));
+                displayJobUpdateForm();
         }
     });
 
@@ -394,7 +395,7 @@ export default function JobUpdateForm({ company, job, setJob, displayJobUpdateFo
                 <Form.Group className="my-3">
                     <Row>
                         <Col sm={2} md={2} lg={2}>
-                            <Form.Label>Application link</Form.Label>
+                            <Form.Label>Application link or email</Form.Label>
                         </Col>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control

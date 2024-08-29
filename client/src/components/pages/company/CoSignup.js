@@ -12,6 +12,14 @@ export default function CoSignup({ company, setCompany }) {
         navigate("/");
     }
 
+    const emailSchema = Yup.string()
+        .email("Invalid email address")
+        .matches(
+            /^[A-Za-z0-9]+@[A-Za-z0-9.]+\.[A-Za-z]{2,7}$/,
+            "Please enter a valid email address"
+        )
+        .required("Email is required");
+
     const formik = useFormik({
         initialValues: {
             name: "",
@@ -35,7 +43,8 @@ export default function CoSignup({ company, setCompany }) {
             about: Yup.string().required("About field is required"),
             industry: Yup.string().required("Industry is required"),
             website_link: Yup.string().url("Invalid URL").notRequired(),
-            admin_email: Yup.string().email("Invalid email address").notRequired(),
+            // admin_email: Yup.string().email("Invalid email address").notRequired(),
+            admin_email: emailSchema,
             logo: Yup.string().url("Invalid URL").notRequired(),
             password: Yup.string().required("Password is required")
         }),

@@ -253,7 +253,7 @@ export default function PostJob({ company }) {
                 <Form.Group className="my-3">
                     <Row>
                         <Form.Label>Key responsibilities</Form.Label>
-                        <Col sm={6} md={5} lg={4}>
+                        <Col className="mb-2" sm={6} md={5} lg={4}>
                             <Form.Control
                                 placeholder="1"
                                 as="textarea"
@@ -268,7 +268,7 @@ export default function PostJob({ company }) {
                                 {formik.errors.key_responsibility_1}
                             </Form.Control.Feedback>
                         </Col>
-                        <Col sm={6} md={5} lg={4}>
+                        <Col className="mb-2" sm={6} md={5} lg={4}>
                             <Form.Control
                                 placeholder="2"
                                 as="textarea"
@@ -283,7 +283,7 @@ export default function PostJob({ company }) {
                                 {formik.errors.key_responsibility_2}
                             </Form.Control.Feedback>
                         </Col>
-                        <Col sm={6} md={5} lg={4}>
+                        <Col className="mb-2" sm={6} md={5} lg={4}>
                             <Form.Control
                                 placeholder="3"
                                 as="textarea"
@@ -298,7 +298,7 @@ export default function PostJob({ company }) {
                                 {formik.errors.key_responsibility_3}
                             </Form.Control.Feedback>
                         </Col>
-                        <Col sm={6} md={5} lg={4}>
+                        <Col className="mb-2" sm={6} md={5} lg={4}>
                             <Form.Control
                                 placeholder="4"
                                 as="textarea"
@@ -309,7 +309,7 @@ export default function PostJob({ company }) {
                                 onBlur={formik.handleBlur}
                             />
                         </Col>
-                        <Col sm={6} md={5} lg={4}>
+                        <Col className="mb-2" sm={6} md={5} lg={4}>
                             <Form.Control
                                 placeholder="5"
                                 as="textarea"
@@ -362,7 +362,7 @@ export default function PostJob({ company }) {
                 <Form.Group className="my-3">
                     <Row>
                         <Col sm={2} md={2} lg={2}>
-                            <Form.Label>Application link</Form.Label>
+                            <Form.Label>Application link or email</Form.Label>
                         </Col>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control

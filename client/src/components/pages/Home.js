@@ -26,7 +26,7 @@ export default function Home ({ candidate, company }) {
                 :
                 <>
                     <Welcome />
-                    <SampleJobs number={3} candidate={candidate} company={company} selection={"all"}/>
+                    <SampleJobs number={3} candidate={candidate} company={company} selection={"live"}/>
                     <FilterByDep />
                 </>
             }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import NavBar from "../../NavBar";
@@ -8,9 +8,21 @@ import * as Yup from 'yup';
 export default function Signup({ candidate, setCandidate }) {
     const navigate = useNavigate();
 
+    {/* NEW */}
+    const [errorMessage, setErrorMessage] = useState('');
+
+
     if (candidate) {
         navigate("/");
     }
+
+    const emailSchema = Yup.string()
+        .email("Invalid email address")
+        .matches(
+            /^[A-Za-z0-9]+@[A-Za-z0-9.]+\.[A-Za-z]{2,7}$/,
+            "Please enter a valid email address"
+        )
+        .required("Email is required");
 
     const formik = useFormik({
         initialValues: {
@@ -24,7 +36,8 @@ export default function Signup({ candidate, setCandidate }) {
         validationSchema: Yup.object({
             first_name: Yup.string().required("First name is required"),
             last_name: Yup.string().required("Last name is required"),
-            email: Yup.string().email("Invalid email address").required("Email is required"),
+            // email: Yup.string().email("Invalid email address").required("Email is required"),
+            email: emailSchema,
             password: Yup.string().required("Password is required"),
             preferred_department: Yup.string().required("Preferred department is required"),
             preferred_industry: Yup.string().required("Preferred industry is required")
@@ -37,7 +50,17 @@ export default function Signup({ candidate, setCandidate }) {
                 },
                 body: JSON.stringify(values)
             })
-                .then(response => response.json())
+                .then(response => {
+                    if (response.ok) {
+                        // Handle successful response
+                        return response.json();
+                      } else {
+                        // Capture error message from response
+                        return response.json().then(errorData => {
+                          throw new Error(errorData.error);
+                        });
+                    }
+                })
                 .then(json => {
                     if (json.id) {
                         setCandidate(json)
@@ -47,8 +70,8 @@ export default function Signup({ candidate, setCandidate }) {
                         setCandidate(null)
                     }
                 })
-                .catch(err => {
-                    console.log("Signup failed:", err.message);
+                .catch(error => {
+                    setErrorMessage(error.message);
                     setCandidate(null)
                 });
         }
@@ -212,6 +235,8 @@ export default function Signup({ candidate, setCandidate }) {
                             </Row>
                         </Form.Group>
                         <Button type="submit">Submit</Button>
+                        {/* NEW */}
+                        {errorMessage && <div className="error">{errorMessage}</div>}
                     </Col>
                 </Row>
             </Form>

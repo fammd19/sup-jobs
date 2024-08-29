@@ -110,7 +110,7 @@ export default function JobPage ( {candidate, company} ) {
             body: JSON.stringify({archived_job:true}),
         })
             .then(response => {
-                if (response.okay) {
+                if (response.ok) {
                     setJob(null)
                     navigate('/jobs')
                 }
