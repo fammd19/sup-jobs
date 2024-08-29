@@ -46,7 +46,10 @@ export default function CoSignup({ company, setCompany }) {
             size: Yup.number().min(1, "Size must be at least 1").max(200, "Size must be at most 200").required("Size is required"),
             about: Yup.string().required("About field is required"),
             industry: Yup.string().required("Industry is required"),
-            website_link: Yup.string().url("Invalid URL").notRequired(),
+            website_link: Yup.string().url("Invalid URL").required("A website link is required"),
+            linkedin_link: Yup.string().url("Invalid URL").notRequired(),
+            facebook_link: Yup.string().url("Invalid URL").notRequired(),
+            instagram_link: Yup.string().url("Invalid URL").notRequired(),
             // admin_email: Yup.string().email("Invalid email address").notRequired(),
             admin_email: emailSchema,
             logo: Yup.string().url("Invalid URL").notRequired(),
@@ -341,7 +344,11 @@ export default function CoSignup({ company, setCompany }) {
                                         name="linkedin_link"
                                         value={formik.values.linkedin_link}
                                         onChange={formik.handleChange}
+                                        isInvalid={formik.touched.linkedin_link && formik.errors.linkedin_link}
                                     />
+                                    <Form.Control.Feedback type="invalid">
+                                        {formik.errors.linkedin_link}
+                                    </Form.Control.Feedback>
                                 </Col>
                             </Row>
                         </Form.Group>
@@ -359,7 +366,11 @@ export default function CoSignup({ company, setCompany }) {
                                         name="facebook_link"
                                         value={formik.values.facebook_link}
                                         onChange={formik.handleChange}
-                                    />
+                                        isInvalid={formik.touched.facebook_link && formik.errors.facebook_link}
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            {formik.errors.facebook_link}
+                                        </Form.Control.Feedback>
                                 </Col>
                             </Row>
                         </Form.Group>
@@ -377,7 +388,11 @@ export default function CoSignup({ company, setCompany }) {
                                         name="instagram_link"
                                         value={formik.values.instagram_link}
                                         onChange={formik.handleChange}
-                                    />
+                                        isInvalid={formik.touched.instagram_link && formik.errors.instagram_link}
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            {formik.errors.instagram_link}
+                                        </Form.Control.Feedback>
                                 </Col>
                             </Row>
                         </Form.Group>
