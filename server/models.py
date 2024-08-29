@@ -114,7 +114,7 @@ class Company (db.Model, SerializerMixin):
 
     @validates('size')
     def validate_name(self, key, size):
-        if not isinstance(size, (int,)):
+        if not isinstance(size, (int)):
             raise ValueError("Size must be an integer")
 
         if size <= 0 or size > 200:

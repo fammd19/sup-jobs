@@ -5,37 +5,109 @@ from models import Company
 
 class CompanySignUp (Resource):
 
+    # def post(self):
+
+        # if 'candidate_id' in session or 'company_id' in session:
+        #     return make_response ({"error":"Unauthorised. User already logged in."}, 401)
+
+        # company = Company(
+        #         name = request.json.get('name'),
+        #         abn = request.json.get('abn'),
+        #         size = request.json.get('size'),
+        #         industry = request.json.get('industry').lower(),
+        #         mission_statement = request.json.get('mission_statement'),
+        #         about = request.json.get('about'),
+        #         website_link = request.json.get('website_link'),
+        #         facebook_link = request.json.get('facebook_link'),
+        #         instagram_link = request.json.get('instagram_link'),
+        #         linkedin_link = request.json.get('linkedin_link'),
+        #         logo = request.json.get('logo'),
+        #         admin_email = request.json.get('admin_email'),
+        #         hashed_password = request.json.get('password')
+        #     )
+
+        # db.session.add(company)
+        # db.session.commit()
+
+        # if company.id:
+        #         session['company_id'] = company.id
+        #         return make_response(company.to_dict(), 201)
+
+        # else:            
+        #     return make_response({"error": "Bad request. Unable to create company"}, 400)
+
     def post(self):
-
+        # Check if user is already logged in
         if 'candidate_id' in session or 'company_id' in session:
-            return make_response ({"error":"Unauthorised. User already logged in."}, 401)
+            return make_response({"error": "Unauthorised. User already logged in."}, 401)
 
-        company = Company(
-                name = request.json.get('name'),
-                abn = request.json.get('abn'),
-                size = request.json.get('size'),
-                industry = request.json.get('industry').lower(),
-                mission_statement = request.json.get('mission_statement'),
-                about = request.json.get('about'),
-                website_link = request.json.get('website_link'),
-                facebook_link = request.json.get('facebook_link'),
-                instagram_link = request.json.get('instagram_link'),
-                linkedin_link = request.json.get('linkedin_link'),
-                logo = request.json.get('logo'),
-                admin_email = request.json.get('admin_email'),
-                hashed_password = request.json.get('password')
+        try:
+            # Extract and validate inputs
+            name = request.json.get('name')
+            abn = request.json.get('abn')
+            industry = request.json.get('industry').lower()  # Convert to lowercase for consistency
+            mission_statement = request.json.get('mission_statement')
+            about = request.json.get('about')
+            size = request.json.get('size')
+
+            if size is None:
+                raise ValueError("Size is required")
+            try:
+                size = int(size)
+            except ValueError:
+                raise ValueError("Size must be an integer")
+
+            if size <= 0 or size > 200:
+                raise ValueError("Size must be between 1 and 200")
+
+            website_link = request.json.get('website_link')
+            facebook_link = request.json.get('facebook_link')
+            instagram_link = request.json.get('instagram_link')
+            linkedin_link = request.json.get('linkedin_link')
+            logo = request.json.get('logo')
+            admin_email = request.json.get('admin_email')
+            hashed_password = request.json.get('password')
+
+            if not name:
+                raise ValueError("Name cannot be blank")
+            if Company.query.filter(Company.name == name).first():
+                raise ValueError("Name registered to an existing company")
+
+            if Company.query.filter(Company.abn == abn).first():
+                raise ValueError("ABN registered to an existing company")
+
+            company = Company(
+                name=name,
+                abn=abn,
+                size=size,
+                industry=industry,
+                mission_statement=mission_statement,
+                about=about,
+                website_link=website_link,
+                facebook_link=facebook_link,
+                instagram_link=instagram_link,
+                linkedin_link=linkedin_link,
+                logo=logo,
+                admin_email=admin_email,
+                hashed_password=hashed_password
             )
 
-        db.session.add(company)
-        db.session.commit()
+            db.session.add(company)
+            db.session.commit()
 
-        if company.id:
+            if company.id:
                 session['company_id'] = company.id
                 return make_response(company.to_dict(), 201)
 
-        else:            
-            return make_response({"error": "Bad request. Unable to create company"}, 400)
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
 
+        except IntegrityError as e:
+            db.session.rollback()
+            return make_response({"error": "Integrity error: " + str(e)}, 400)
+
+        except Exception as e:
+            return make_response({"error": "An unexpected error occurred: " + str(e)}, 500)
 
 class CompanyLogin(Resource):
     

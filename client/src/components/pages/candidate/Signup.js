@@ -50,12 +50,12 @@ export default function Signup({ candidate, setCandidate }) {
                 },
                 body: JSON.stringify(values)
             })
+            // .then(response => response.json())
+            // new
                 .then(response => {
                     if (response.ok) {
-                        // Handle successful response
                         return response.json();
                       } else {
-                        // Capture error message from response
                         return response.json().then(errorData => {
                           throw new Error(errorData.error);
                         });

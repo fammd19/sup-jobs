@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Col, Row } from 'react-bootstrap';
 import NavBar from '../../NavBar';
@@ -7,6 +7,10 @@ import * as Yup from 'yup';
 
 export default function CoSignup({ company, setCompany }) {
     const navigate = useNavigate();
+
+    {/* NEW */}
+    const [errorMessage, setErrorMessage] = useState('');
+
 
     if (company) {
         navigate("/");
@@ -56,7 +60,17 @@ export default function CoSignup({ company, setCompany }) {
                 },
                 body: JSON.stringify(values)
             })
-            .then(response => response.json())
+            // .then(response => response.json())
+            // new
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                  } else {
+                    return response.json().then(errorData => {
+                      throw new Error(errorData.error);
+                    });
+                }
+            })
             .then(json => {
                 if (json.id) {
                     setCompany(json);
@@ -67,7 +81,7 @@ export default function CoSignup({ company, setCompany }) {
                 }
             })
             .catch(error => {
-                console.log("Signup failed:", error.message);
+                setErrorMessage(error.message);
                 setCompany(null);
             });
         }
@@ -369,6 +383,9 @@ export default function CoSignup({ company, setCompany }) {
                         </Form.Group>
 
                         <Button type="submit">Submit</Button>
+                        {/* NEW */}
+                        {errorMessage && <div className="error">{errorMessage}</div>}
+
                     </Col>
                 </Row>
             </Form>
