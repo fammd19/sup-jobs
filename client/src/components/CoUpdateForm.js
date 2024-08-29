@@ -1,9 +1,19 @@
 import { Form, Button } from "react-bootstrap";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 export default function CoUpdateForm({ companyDetails, setCompanyDetails, displayAccountUpdateForm }) {
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const emailSchema = Yup.string()
+        .email("Invalid email address")
+        .matches(
+            /^[A-Za-z0-9]+@[A-Za-z0-9.]+\.[A-Za-z]{2,7}$/,
+            "Please enter a valid email address"
+        )
+        .required("Email is required");
 
     const formik = useFormik({
         initialValues: {
@@ -24,11 +34,19 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
             size: Yup.string().required("Size is required"),
             about: Yup.string().required("About section is required"),
             website_link: Yup.string().url("Invalid URL").required("Website link is required"),
+            linkedin_link: Yup.string().url("Invalid URL").notRequired(),
+            facebook_link: Yup.string().url("Invalid URL").notRequired(),
+            instagram_link: Yup.string().url("Invalid URL").notRequired(),
             logo: Yup.string().required("Logo link is required"),
-            admin_email: Yup.string().email("Invalid email address").required("Admin email is required"),
-            hashed_password: Yup.string().required("Password is required"),
+            // admin_email: Yup.string().email("Invalid email address").required("Admin email is required"),
+            admin_email: emailSchema,
+            hashed_password: Yup.string().notRequired("Password is required"),
         }),
         onSubmit: (values) => {
+            const updatedValues = { ...values };
+            if (!updatedValues.hashed_password) {
+                delete updatedValues.hashed_password;
+
             fetch("/api/company/account", {
                 method: "PATCH",
                 headers: {
@@ -52,7 +70,8 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
                     console.error("Error updating company details:", error);
                 });
             displayAccountUpdateForm();
-        },
+        }
+    }
     });
 
     useEffect(() => {
@@ -70,7 +89,7 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
                     linkedin_link: json.linkedin_link,
                     logo: json.logo,
                     admin_email: json.admin_email,
-                    hashed_password: "",
+                    hashed_password: json.hashed_password,
                 });
             });
     }, []);
@@ -151,7 +170,11 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
                     value={formik.values.linkedin_link}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                />
+                    isInvalid={formik.touched.linkedin_link && formik.errors.linkedin_link}
+                    />
+                <Form.Control.Feedback type="invalid">
+                    {formik.errors.linkedin_link}
+                </Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
                 <Form.Label>Facebook</Form.Label>
@@ -161,7 +184,11 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
                     value={formik.values.facebook_link}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                />
+                    isInvalid={formik.touched.facebook_link && formik.errors.facebook_link}
+                    />
+                <Form.Control.Feedback type="invalid">
+                    {formik.errors.facebook_link}
+                </Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
                 <Form.Label>Instagram</Form.Label>
@@ -171,7 +198,11 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
                     value={formik.values.instagram_link}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                />
+                    isInvalid={formik.touched.instagram_link && formik.errors.instagram_link}
+                    />
+                <Form.Control.Feedback type="invalid">
+                    {formik.errors.instagram_link}
+                </Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
                 <Form.Label>Logo link</Form.Label>
@@ -201,8 +232,10 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
                     {formik.errors.admin_email}
                 </Form.Control.Feedback>
             </Form.Group>
+            
             <Form.Group>
-                <Form.Label>Password</Form.Label>
+                <Form.Label>New password</Form.Label>
+                <p>Please add a passsword if you'd like to update your existing password</p>
                 <Form.Control
                     type="password"
                     name="hashed_password"
@@ -214,7 +247,7 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
                 <Form.Control.Feedback type="invalid">
                     {formik.errors.hashed_password}
                 </Form.Control.Feedback>
-            </Form.Group>
+            </Form.Group> 
             <Button type="submit">Submit update</Button>
         </Form>
     );

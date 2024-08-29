@@ -42,14 +42,12 @@ export default function Account ( {candidate, setCandidate} ) {
 
         return (
             <>
-                {/* <NavBar candidate={candidate}/> */}
                 <h1>Account</h1>
 
                 <div>
                     <p>First name: {candidateDetails.first_name} </p>
                     <p>Last name: {candidateDetails.last_name}</p>
                     <p>Email: {candidateDetails.email}</p>
-                    <p>Password: *******</p>
                     <p>Preferred industry: {candidateDetails.preferred_industry}</p>
                     <p>Preferred department: {candidateDetails.preferred_department}</p>
                 </div>

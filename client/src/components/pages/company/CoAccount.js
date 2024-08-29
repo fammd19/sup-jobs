@@ -84,9 +84,7 @@ export default function CoAccount ( {company, setCompany} ) {
                         :
                         null
                     }
-                    <p>Email: {companyDetails.admin_email}</p>
-                    <p>Password: *******</p>
-                    
+                    <p>Email: {companyDetails.admin_email}</p>                    
                 </div>
 
                 <Link to={`/jobs/company/${companyDetails.id}`}><Button className="mx-1" variant="primary">View your live jobs</Button></Link>

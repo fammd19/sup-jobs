@@ -111,7 +111,7 @@ export default function PostJob({ company }) {
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control
                                 type="text"
-                                name="salary_comment"
+                                name="salary_comments"
                                 value={formik.values.salary_comments}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
