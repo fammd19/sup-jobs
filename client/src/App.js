@@ -36,23 +36,25 @@ export default function App() {
 
   
   useEffect(() => {
-    fetch('/api/candidate/account')
-      .then(response=> response.json())
-      .then(json=> {
-        if (json.id) {
-          setCandidate(json)
-          } 
-        })}
-    ,[])
+    if (!company) {
+      fetch('/api/candidate/account')
+        .then(response=> response.json())
+        .then(json=> {
+          if (json.id) {
+            setCandidate(json)
+            } 
+          })}}
+      ,[])
 
   useEffect(() => {
+    if (!candidate) {
     fetch('/api/company/account')
       .then(response=> response.json())
       .then(json=> {
         if (json.id) {
           setCompany(json)
           } 
-        })}
+        })}}
     ,[])
 
 
@@ -70,9 +72,10 @@ export default function App() {
         <Route path='/jobs' element={<Jobs candidate={candidate} company={company}/>}>
           <Route index element={<JobsIndex candidate={candidate} company={company} />}/>
           <Route path=':id' element={<JobPage candidate={candidate} company={company}/> }/>
-          <Route path='company/:id' element={<CoJobs candidate={candidate} company={company}/>}/>
-          <Route path='saved' element={<SavedJobs candidate={candidate}/>}/>
         </Route>
+
+        <Route path='/jobs/company/:id' element={<CoJobs candidate={candidate} company={company}/>}/>
+        <Route path='/jobs/saved' element={<SavedJobs candidate={candidate} company={company}/>}/>
 
 
         <Route path='/companies' element={<AllCos candidate={candidate} company={company}/>}>

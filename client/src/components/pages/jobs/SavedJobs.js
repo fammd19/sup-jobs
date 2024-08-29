@@ -13,9 +13,9 @@ export default function SavedJobs ( { candidate }) {
         .catch(error => console.log(error.message))
     },[])
 
-     if (!candidate) {
-        navigate("/jobs")
-     }
+    //  if (!candidate) {
+    //     navigate("/jobs")
+    //  }
 
     return (
         <>

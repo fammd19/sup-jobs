@@ -56,6 +56,14 @@ export default function JobsIndex ( { candidate, company }) {
                         :
                         null
                     }
+
+                    {   
+                        candidate
+                        ?
+                        <Link to={`/jobs/saved`}><p className="my-2" variant="primary"><b>View your saved jobs</b></p></Link>
+                        :
+                        null
+                    }
                     
                     <Col>
                         {

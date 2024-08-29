@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap';
 import CoUpdateForm from '../../CoUpdateForm';
-import NavBar from '../../NavBar';
 
 export default function CoAccount ( {company, setCompany} ) {
         
@@ -90,9 +89,9 @@ export default function CoAccount ( {company, setCompany} ) {
                     
                 </div>
 
-                <Link to={`/jobs/company/${company.id}`}><Button variant="primary">View posted jobs</Button></Link>
+                <Link to={`/jobs/company/${companyDetails.id}`}><Button variant="primary">View your live jobs</Button></Link>
 
-                <Button className="mx-1" id="update-account-btn" onClick={displayAccountUpdateForm}>Update details</Button>
+                <Button className="mx-1" id="update-account-btn" onClick={displayAccountUpdateForm}>Update account details</Button>
                 <div id="account-update-form" className="hide">
                     <CoUpdateForm companyDetails={companyDetails} setCompanyDetails={setCompanyDetails} displayAccountUpdateForm={displayAccountUpdateForm} />
                 </div>

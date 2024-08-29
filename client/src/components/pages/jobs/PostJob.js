@@ -42,6 +42,7 @@ export default function PostJob({ company }) {
             key_responsibility_2: Yup.string().required("At least 3 key responsibilities are required"),
             key_responsibility_3: Yup.string().required("At least 3 key responsibilities are required"),
             application_link: Yup.string().required("Application link is required"),
+            closing_date: Yup.string().required("Please add a closing date"),
         }),
         onSubmit: (values) => {
             fetch("api/jobs/create", {
@@ -391,6 +392,7 @@ export default function PostJob({ company }) {
                                 value={formik.values.closing_date}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
+                                isInvalid={formik.touched.closing_date && formik.errors.closing_date}
                             />
                         </Col>
                     </Row>

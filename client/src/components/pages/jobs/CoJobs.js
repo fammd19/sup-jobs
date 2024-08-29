@@ -18,10 +18,6 @@ export default function CoJobs ( { candidate, company }) {
         } 
     }, [id]);
 
-     if (!company) {
-        navigate("/jobs")
-     }
-
     return (
         <>
         <Container>
