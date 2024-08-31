@@ -15,6 +15,18 @@ export default function PostJob({ company }) {
         navigate("/");
     }
 
+    const applicationLinkSchema = Yup.string()
+        .test(
+            "is-url-or-email",
+            "Please enter a valid email address or URL",
+            (value) => {
+                const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,4}\/?.*$/i;
+                const emailRegex = /^[A-Za-z0-9]+@[A-Za-z0-9.]+\.[A-Za-z]{2,7}$/;
+                return urlRegex.test(value) || emailRegex.test(value);
+            }
+        )
+        .required("Application link or email is required");
+
     const formik = useFormik({
         initialValues: {
             title: "",
@@ -45,7 +57,7 @@ export default function PostJob({ company }) {
             key_responsibility_1: Yup.string().required("At least 3 key responsibilities are required"),
             key_responsibility_2: Yup.string().required("At least 3 key responsibilities are required"),
             key_responsibility_3: Yup.string().required("At least 3 key responsibilities are required"),
-            application_link: Yup.string().required("Application link is required"),
+            application_link: applicationLinkSchema,
             closing_date: Yup.string().required("Please add a closing date"),
         }),
         onSubmit: (values) => {
