@@ -57,7 +57,6 @@ export default function JobUpdateForm({ company, job, setJob, displayJobUpdateFo
             closing_date: Yup.string().required("Please add a closing date"),
         }),
         onSubmit: (values) => {
-            console.log("Submitting form with values: ", values);
             fetch(`/api/jobs/${job.id}`, {
                 method: "PATCH",
                 headers: {
@@ -167,7 +166,7 @@ export default function JobUpdateForm({ company, job, setJob, displayJobUpdateFo
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control
                                 type="text"
-                                name="salary_comment"
+                                name="salary_comments"
                                 value={formik.values.salary_comments}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}

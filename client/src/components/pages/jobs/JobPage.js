@@ -143,21 +143,30 @@ export default function JobPage ( {candidate, company} ) {
                                 </Row >
                             </Col>
                             <Col className="job-title col-8">
-                                <Row clsssName="mt-2">
-                                    <h1 className="mb-0">{`${job.title}`}</h1>
-                                    <h2 className="mb-2">{`${job.company.name}`}</h2>
-                            
-                                    <p className="mb-0">${`${job.salary}`}</p>
-                                    <p className="mb-0">{`${job.location}`}</p>
-                                    <p className="mb-0">{`${job.job_type}`}</p>
-                                    { job.closing_date
-                                    ?
-                                    <p className="mb-0">{`${job.closing_date.split(' ')[0]}`}</p>
-                                    :
-                                    null}
+                                <Row>
+                                    <h1 className="mt-3 mb-2">{`${job.title}`}</h1>
+                                    <h3 className="mb-2">{`@ ${job.company.name}`}</h3>
                                 </Row>
+                               
                             </Col>
                         </Row>
+                        <Row className="my-4">
+                                    <p className="mb-0">{`Location: ${job.location.toUpperCase()}`}</p>
+                                    <p className="mb-0">{`Type: ${job.job_type.toUpperCase()}`}</p>
+                                    { job.closing_date
+                                    ?
+                                    <p className="mb-0">{`Closing date: ${job.closing_date.split(' ')[0]}`}</p>
+                                    :
+                                    null}
+                                    <p className="mb-0">{`Salary: $${job.salary}`}</p>
+                                    {
+                                        job.salary_comments
+                                        ?
+                                        <p className="mb-0">{`${job.salary_comments}`}</p>
+                                        :
+                                        null
+                                    }
+                                </Row>
                         <Row className="mt-3 text-start">
 
                                 <div>
