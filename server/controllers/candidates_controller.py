@@ -125,14 +125,21 @@ class CandidateAccount (Resource):
         candidate = Candidate.query.filter(Candidate.id == session['candidate_id']).first()
 
         if candidate:
-            for attr in request.json:
-                if attr == 'email' and request.json[attr] == candidate.email:
-                    continue
-                setattr(candidate, attr, request.json[attr])
+            try:
+                for attr in request.json:
+                    if attr == 'email' and request.json[attr] == candidate.email:
+                        continue
+                    setattr(candidate, attr, request.json[attr])
                     
-            db.session.commit()
-
-            return make_response(candidate.to_dict(), 200)
+                db.session.commit()
+                return make_response(candidate.to_dict(), 200)
+        
+            except ValueError as e:
+                return make_response({"error": str(e)}, 400)
+            
+            except Exception as e:
+                return make_response({"error": "An unexpected error occurred: " + str(e)}, 500)
+        
         else:
             return make_response({"error": "Candidate not updated."}, 404)
 

@@ -6,6 +6,7 @@ import * as Yup from "yup";
 export default function UpdateForm({ candidateDetails, setCandidateDetails, displayAccountUpdateForm }) {
 
     const [showPassword, setShowPassword] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const formik = useFormik({
         initialValues: {
@@ -22,7 +23,6 @@ export default function UpdateForm({ candidateDetails, setCandidateDetails, disp
         }),
         onSubmit: (values) => {
             const updatedValues = { ...values };
-            console.log (`Password: ${updatedValues.hashed_password}`)
             if (!updatedValues.hashed_password) {
                 delete updatedValues.hashed_password;
             }
@@ -35,21 +35,23 @@ export default function UpdateForm({ candidateDetails, setCandidateDetails, disp
                 body: JSON.stringify(values),
             })
                 .then((response) => {
-                    if (!response.ok) {
-                        console.log("Update unsuccessful");
-                        return null;
+                    if (response.ok) {
+                        return response.json();
+                      } else {
+                        return response.json().then(errorData => {
+                          throw new Error(errorData.error || "An unknown error occurred");
+                        });
                     }
-                    return response.json();
                 })
                 .then((data) => {
                     if (data) {
                         setCandidateDetails(data);
                     }
+                    displayAccountUpdateForm();
                 })
                 .catch((error) => {
-                    console.error("Error updating candidate details:", error);
+                    setErrorMessage(error.message);
                 });
-            displayAccountUpdateForm();
         }
     });
 
@@ -126,6 +128,7 @@ export default function UpdateForm({ candidateDetails, setCandidateDetails, disp
                 </Form.Control.Feedback>
             </Form.Group>
             <Button type="submit">Submit update</Button>
+            {errorMessage && <div className="error">{errorMessage}</div>}
         </Form>
     );
 }

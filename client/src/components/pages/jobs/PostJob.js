@@ -7,9 +7,7 @@ import * as Yup from 'yup';
 export default function PostJob({ company }) {
     const navigate = useNavigate();
 
-    {/* NEW */}
     const [errorMessage, setErrorMessage] = useState('');
-
 
     if (!company) {
         navigate("/");
@@ -425,7 +423,6 @@ export default function PostJob({ company }) {
                 </Form.Group>
 
                 <Button type="submit">Submit</Button>
-                {/* NEW */}
                 {errorMessage && <div className="error">{errorMessage}</div>}
 
             </Form>

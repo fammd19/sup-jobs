@@ -198,14 +198,21 @@ class JobById (Resource):
         else:
             return make_response({"message": "No job found with this ID"}, 404)
 
-
     def patch(self, id):
-
 
         if 'company_id' not in session:
             return make_response({"error": "Unauthorized. No company logged in."}, 401)
 
         job = Job.query.filter(Job.id == id).first()
+
+        existing_jobs = Job.query.filter(Job.company_id == session['company_id']).all()
+        
+        for existing_job in existing_jobs:
+            if existing_job.id == job.id:
+                continue
+            if existing_job.title.lower()==request.json.get('title').lower() and existing_job.salary==request.json.get('salary') and existing_job.location==request.json.get('location'):
+                return make_response({"error": "A job with the same title & salary already exists in this location."}, 400)
+        
 
         if job is None:
             return make_response({"error": "Job not found."}, 404)
@@ -213,19 +220,53 @@ class JobById (Resource):
         if job.company_id != session['company_id']:
             return make_response({"error": "Unauthorized. This job does not belong to the logged-in company."}, 403)
 
-        data = request.json
-        if 'closing_date' in data:
+        if job:
             try:
-                data['closing_date'] = datetime.strptime(data['closing_date'], '%Y-%m-%d').date()
-            except ValueError:
-                return make_response({"error": "Invalid date format. Use YYYY-MM-DD."}, 400)
+                if 'closing_date' in request.json:
+                    try:
+                        request.json['closing_date'] = datetime.strptime(request.json['closing_date'], '%Y-%m-%d').date()
+                    except ValueError:
+                        return make_response({"error": "Invalid date format. Use YYYY-MM-DD."}, 400)
 
-        for attr, value in data.items():
-            setattr(job, attr, value)
+                for attr in request.json:
+                    setattr(job, attr, request.json[attr])
 
-        db.session.commit()
+                db.session.commit()
+                return make_response(job.to_dict(), 203)
+            
+            except ValueError as e:
+                return make_response({"error": str(e)}, 400)
+            
+            except Exception as e:
+                return make_response({"error": "An unexpected error occurred: " + str(e)}, 500)
 
-        return make_response(job.to_dict(), 203)
+
+    # def patch(self, id):
+
+    #     if 'company_id' not in session:
+    #         return make_response({"error": "Unauthorized. No company logged in."}, 401)
+
+    #     job = Job.query.filter(Job.id == id).first()
+
+    #     if job is None:
+    #         return make_response({"error": "Job not found."}, 404)
+
+    #     if job.company_id != session['company_id']:
+    #         return make_response({"error": "Unauthorized. This job does not belong to the logged-in company."}, 403)
+
+    #     data = request.json
+    #     if 'closing_date' in data:
+    #         try:
+    #             data['closing_date'] = datetime.strptime(data['closing_date'], '%Y-%m-%d').date()
+    #         except ValueError:
+    #             return make_response({"error": "Invalid date format. Use YYYY-MM-DD."}, 400)
+
+    #     for attr, value in data.items():
+    #         setattr(job, attr, value)
+
+    #     db.session.commit()
+
+    #     return make_response(job.to_dict(), 203)
 
     def delete(self, id):
         

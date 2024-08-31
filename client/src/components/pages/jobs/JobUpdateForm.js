@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
@@ -6,6 +6,21 @@ import * as Yup from 'yup';
 
 export default function JobUpdateForm({ company, job, setJob, displayJobUpdateForm }) {
     const navigate = useNavigate();
+
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const applicationLinkSchema = Yup.string()
+        .test(
+            "is-url-or-email",
+            "Please enter a valid email address or URL",
+            (value) => {
+                const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,4}\/?.*$/i;
+                const emailRegex = /^[A-Za-z0-9]+@[A-Za-z0-9.]+\.[A-Za-z]{2,7}$/;
+                return urlRegex.test(value) || emailRegex.test(value);
+            }
+        )
+        .required("Application link or email is required");
+
 
     const formik = useFormik({
         initialValues: {
@@ -30,7 +45,7 @@ export default function JobUpdateForm({ company, job, setJob, displayJobUpdateFo
         },
         validationSchema: Yup.object({
             title: Yup.string().required("Title is required"),
-            salary: Yup.string().required("Salary is required"),
+            salary: Yup.number().min(0, "Salary cannot be negative"),
             department: Yup.string().required("Department is required"),
             location: Yup.string().required("Location is required"),
             job_type: Yup.string().required("Job type is required"),
@@ -38,7 +53,7 @@ export default function JobUpdateForm({ company, job, setJob, displayJobUpdateFo
             key_responsibility_1: Yup.string().required("At least 3 key responsibilities are required"),
             key_responsibility_2: Yup.string().required("At least 3 key responsibilities are required"),
             key_responsibility_3: Yup.string().required("At least 3 key responsibilities are required"),
-            application_link: Yup.string().required("Application link is required"),
+            application_link: applicationLinkSchema,
             closing_date: Yup.string().required("Please add a closing date"),
         }),
         onSubmit: (values) => {
@@ -50,13 +65,23 @@ export default function JobUpdateForm({ company, job, setJob, displayJobUpdateFo
                 },
                 body: JSON.stringify(values),
             })
-                .then(response => response.json())
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                      } else {
+                        return response.json().then(errorData => {
+                          throw new Error(errorData.error || "An unknown error occurred");
+                        });
+                    }
+                })
                 .then(json => {
-                    setJob(json)
+                    if (json) {
+                        setJob(json)
+                    }
+                    displayJobUpdateForm();
                     navigate(`/jobs/${job.id}`)
                 })
-                .catch(error => console.log("API Error: ", error.message));
-                displayJobUpdateForm();
+                .catch(error => setErrorMessage(error.message));
         }
     });
 
@@ -120,7 +145,7 @@ export default function JobUpdateForm({ company, job, setJob, displayJobUpdateFo
                         </Col>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control
-                                type="text"
+                                type="number"
                                 name="salary"
                                 value={formik.values.salary}
                                 onChange={formik.handleChange}
@@ -446,6 +471,8 @@ export default function JobUpdateForm({ company, job, setJob, displayJobUpdateFo
                         Save
                     </Button>
                 </div>
+                {errorMessage && <div className="error">{errorMessage}</div>}
+
             </Form>
         </>
     );

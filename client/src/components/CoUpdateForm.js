@@ -55,7 +55,7 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
                 },
                 body: JSON.stringify(values),
             })
-                .then((response) => {
+                .then(response => {
                     if (response.ok) {
                         return response.json();
                       } else {
