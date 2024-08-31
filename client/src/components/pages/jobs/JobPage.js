@@ -146,9 +146,10 @@ export default function JobPage ( {candidate, company} ) {
                                 <Row clsssName="mt-2">
                                     <h1 className="mb-0">{`${job.title}`}</h1>
                                     <h2 className="mb-2">{`${job.company.name}`}</h2>
+                            
                                     <p className="mb-0">${`${job.salary}`}</p>
-                                <p className="mb-0">{`${job.location}`}</p>
-                                <p className="mb-0">{`${job.job_type}`}</p>
+                                    <p className="mb-0">{`${job.location}`}</p>
+                                    <p className="mb-0">{`${job.job_type}`}</p>
                                     { job.closing_date
                                     ?
                                     <p className="mb-0">{`${job.closing_date.split(' ')[0]}`}</p>

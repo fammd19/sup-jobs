@@ -1,9 +1,11 @@
 import { Form, Button } from "react-bootstrap";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 export default function UpdateForm({ candidateDetails, setCandidateDetails, displayAccountUpdateForm }) {
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const formik = useFormik({
         initialValues: {
@@ -16,9 +18,15 @@ export default function UpdateForm({ candidateDetails, setCandidateDetails, disp
             first_name: Yup.string().required("First name is required"),
             last_name: Yup.string().required("Last name is required"),
             email: Yup.string().email("Invalid email address").required("Email is required"),
-            hashed_password: Yup.string().required("Password is required"),
+            hashed_password: Yup.string().notRequired(),
         }),
         onSubmit: (values) => {
+            const updatedValues = { ...values };
+            console.log (`Password: ${updatedValues.hashed_password}`)
+            if (!updatedValues.hashed_password) {
+                delete updatedValues.hashed_password;
+            }
+
             fetch("/api/candidate/account", {
                 method: "PATCH",
                 headers: {
@@ -42,7 +50,7 @@ export default function UpdateForm({ candidateDetails, setCandidateDetails, disp
                     console.error("Error updating candidate details:", error);
                 });
             displayAccountUpdateForm();
-        },
+        }
     });
 
     useEffect(() => {
@@ -50,10 +58,10 @@ export default function UpdateForm({ candidateDetails, setCandidateDetails, disp
             .then((response) => response.json())
             .then((json) => {
                 formik.setValues({
-                    first_name: json.first_name || "",
-                    last_name: json.last_name || "",
-                    hashed_password: "",
-                    email: json.email || "",
+                    first_name: json.first_name,
+                    last_name: json.last_name,
+                    hashed_password: json.hashed_password,
+                    email: json.email,
                 });
             });
     }, []);
@@ -103,7 +111,8 @@ export default function UpdateForm({ candidateDetails, setCandidateDetails, disp
                 </Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
-                <Form.Label>Password</Form.Label>
+                <Form.Label>New password</Form.Label>
+                <p>Please add a passsword if you'd like to update your existing password</p>
                 <Form.Control
                     type="password"
                     name="hashed_password"

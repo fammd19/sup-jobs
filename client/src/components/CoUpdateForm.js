@@ -40,12 +40,13 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
             logo: Yup.string().required("Logo link is required"),
             // admin_email: Yup.string().email("Invalid email address").required("Admin email is required"),
             admin_email: emailSchema,
-            hashed_password: Yup.string().notRequired("Password is required"),
+            hashed_password: Yup.string().notRequired(),
         }),
         onSubmit: (values) => {
             const updatedValues = { ...values };
             if (!updatedValues.hashed_password) {
                 delete updatedValues.hashed_password;
+            }
 
             fetch("/api/company/account", {
                 method: "PATCH",
@@ -71,7 +72,6 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
                 });
             displayAccountUpdateForm();
         }
-    }
     });
 
     useEffect(() => {
