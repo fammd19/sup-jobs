@@ -28,13 +28,6 @@ export default function SampleJobs ( {number, candidate, company, selection} ) {
                                         <Card.Img variant="top" src={`${job.company.logo}`} />
                                     </Row >
                                     <Card.Body>
-                                        {
-                                            job.archived_job
-                                            ?
-                                            <Card.Text className="archived-banner">This job is no longer available</Card.Text>
-                                            :
-                                            null
-                                        }
                                             <Card.Title>{`${job.title}`}</Card.Title>
                                             <Card.Subtitle>{`${job.company.name}`}</Card.Subtitle>
                                             <Card.Text>${`${job.salary}`}</Card.Text>

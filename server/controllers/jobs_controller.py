@@ -161,7 +161,7 @@ class AllJobs(Resource):
 class LiveJobs(Resource):
 
     def get(self):
-        jobs = Job.query.filter(Job.archived_job == False).order_by(Job.date_posted).all()
+        jobs = Job.query.filter(and_(Job.archived_job == False, Job.closing_date >= date.today())).order_by(Job.date_posted).all()
 
         if len(jobs) > 0:
             jobs_dict = [job.to_dict() for job in jobs]

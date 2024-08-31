@@ -12,7 +12,6 @@ export default function JobPage ( {candidate, company} ) {
     const [job, setJob] = useState (null)
     const [saved, setSaved] = useState (false)
 
-
     useEffect (()=> {
         if (candidate) {
             fetch('/api/jobs/saved') 
@@ -153,11 +152,13 @@ export default function JobPage ( {candidate, company} ) {
                         <Row className="my-4">
                                     <p className="mb-0">{`Location: ${job.location.toUpperCase()}`}</p>
                                     <p className="mb-0">{`Type: ${job.job_type.toUpperCase()}`}</p>
-                                    { job.closing_date
-                                    ?
-                                    <p className="mb-0">{`Closing date: ${job.closing_date.split(' ')[0]}`}</p>
-                                    :
-                                    null}
+                                    { 
+                                        job.closing_date
+                                        ?
+                                        <p className="mb-0">{`Closing date: ${job.closing_date.split(' ')[0]}`}</p>
+                                        :
+                                        null
+                                    }
                                     <p className="mb-0">{`Salary: $${job.salary}`}</p>
                                     {
                                         job.salary_comments
