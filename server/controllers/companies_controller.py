@@ -37,12 +37,10 @@ class CompanySignUp (Resource):
         #     return make_response({"error": "Bad request. Unable to create company"}, 400)
 
     def post(self):
-        # Check if user is already logged in
         if 'candidate_id' in session or 'company_id' in session:
             return make_response({"error": "Unauthorised. User already logged in."}, 401)
 
         try:
-            # Extract and validate inputs
             name = request.json.get('name')
             abn = request.json.get('abn')
             industry = request.json.get('industry').lower()  # Convert to lowercase for consistency
@@ -102,9 +100,9 @@ class CompanySignUp (Resource):
         except ValueError as e:
             return make_response({"error": str(e)}, 400)
 
-        except IntegrityError as e:
-            db.session.rollback()
-            return make_response({"error": "Integrity error: " + str(e)}, 400)
+        # except IntegrityError as e:
+        #     db.session.rollback()
+        #     return make_response({"error": "Integrity error: " + str(e)}, 400)
 
         except Exception as e:
             return make_response({"error": "An unexpected error occurred: " + str(e)}, 500)

@@ -7,7 +7,6 @@ from sqlalchemy import and_
 
 
 class CreateJob (Resource):
-
     def post(self):
         
         if 'company_id' not in session:
@@ -16,8 +15,8 @@ class CreateJob (Resource):
         existing_jobs = Job.query.filter(Job.company_id == session['company_id']).all()
         
         for job in existing_jobs:
-            if job.title.lower()==request.json.get('title').lower() and job.salary==request.json.get('salary'):
-                return make_response({"error":"A job with the same title & salary exists for this company."}, 403)
+            if job.title.lower()==request.json.get('title').lower() and job.salary==request.json.get('salary') and job.location==request.json.get('location'):
+                return make_response({"error": "A job with the same title & salary already exists in this location."}, 400)
 
         closing_date_str = request.json.get('closing_date')
         if closing_date_str:
@@ -25,38 +24,126 @@ class CreateJob (Resource):
         else:
             closing_date = None
 
-        job = Job(
-                title = request.json.get('title'),
-                salary = request.json.get('salary'),
-                salary_comments = request.json.get('salary_comments'),
-                department = request.json.get('department').lower(),
-                role_description = request.json.get('role_description'),
-                application_link = request.json.get('application_link'),
-                location = request.json.get('location'),
-                postcode = request.json.get('postcode'),
-                essential_experience = request.json.get('essential_experience'),
-                optional_experience = request.json.get('optional_experience'),
-                key_responsibility_1 = request.json.get('key_responsibility_1'),
-                key_responsibility_2 = request.json.get('key_responsibility_2'),
-                key_responsibility_3 = request.json.get('key_responsibility_3'),
-                key_responsibility_4 = request.json.get('key_responsibility_4'),
-                key_responsibility_5 = request.json.get('key_responsibility_5'),
-                job_type = request.json.get('job_type'),
+        try:
+            title = request.json.get('title')
+            salary = request.json.get('salary')
+            salary_comments = request.json.get('salary_comments')
+            department = request.json.get('department').lower()
+            role_description = request.json.get('role_description')
+            application_link = request.json.get('application_link')
+            location = request.json.get('location')
+            postcode = request.json.get('postcode')
+            essential_experience = request.json.get('essential_experience')
+            optional_experience = request.json.get('optional_experience')
+            key_responsibility_1 = request.json.get('key_responsibility_1')
+            key_responsibility_2 = request.json.get('key_responsibility_2')
+            key_responsibility_3 = request.json.get('key_responsibility_3')
+            key_responsibility_4 = request.json.get('key_responsibility_4')
+            key_responsibility_5 = request.json.get('key_responsibility_5')
+            job_type = request.json.get('job_type')
+            closing_date = closing_date
+            date_posted = date.today()
+            company_id = session['company_id']
+            archived_job = request.json.get('archived_job') 
+            
+            if salary is None:
+                raise ValueError("Salary is required")
+            try:
+                salary = int(salary)
+            except ValueError:
+                raise ValueError("Salary must be an integer")
+            if salary < 0:
+                raise ValueError("Salary cannot be negative")
+
+
+
+            job = Job(
+                title = title,
+                salary = salary,
+                salary_comments = salary_comments,
+                department = department,
+                role_description = role_description,
+                application_link = application_link,
+                location = location,
+                postcode = postcode,
+                essential_experience = essential_experience,
+                optional_experience = optional_experience,
+                key_responsibility_1 = key_responsibility_1,
+                key_responsibility_2 = key_responsibility_2,
+                key_responsibility_3 = key_responsibility_3,
+                key_responsibility_4 = key_responsibility_4,
+                key_responsibility_5 = key_responsibility_5,
+                job_type = job_type,
                 closing_date = closing_date,
-                date_posted = date.today(),
-                company_id = session['company_id'],
-                archived_job = request.json.get('archived_job')
+                date_posted = date_posted,
+                company_id = company_id,
+                archived_job = archived_job
             )
 
-        db.session.add(job)
-        db.session.commit()
+            db.session.add(job)
+            db.session.commit()
 
         
-        if job.id:
-            return make_response(job.to_dict(), 201)
+            if job.id:
+                return make_response(job.to_dict(), 201)
 
-        else:
-            return make_response({"error": "Unable to create job"}, 400)
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
+
+        except Exception as e:
+            return make_response({"error": "An unexpected error occurred: " + str(e)}, 500)
+
+
+
+    # def post(self):
+        
+    #     if 'company_id' not in session:
+    #         return make_response ({"error":"Unauthorised. No company logged in."}, 401)
+        
+    #     existing_jobs = Job.query.filter(Job.company_id == session['company_id']).all()
+        
+    #     for job in existing_jobs:
+    #         if job.title.lower()==request.json.get('title').lower() and job.salary==request.json.get('salary'):
+    #             return make_response({"error":"A job with the same title & salary exists for this company."}, 403)
+
+    #     closing_date_str = request.json.get('closing_date')
+    #     if closing_date_str:
+    #         closing_date = datetime.strptime(closing_date_str, '%Y-%m-%d')
+    #     else:
+    #         closing_date = None
+
+    #     job = Job(
+    #             title = request.json.get('title'),
+    #             salary = request.json.get('salary'),
+    #             salary_comments = request.json.get('salary_comments'),
+    #             department = request.json.get('department').lower(),
+    #             role_description = request.json.get('role_description'),
+    #             application_link = request.json.get('application_link'),
+    #             location = request.json.get('location'),
+    #             postcode = request.json.get('postcode'),
+    #             essential_experience = request.json.get('essential_experience'),
+    #             optional_experience = request.json.get('optional_experience'),
+    #             key_responsibility_1 = request.json.get('key_responsibility_1'),
+    #             key_responsibility_2 = request.json.get('key_responsibility_2'),
+    #             key_responsibility_3 = request.json.get('key_responsibility_3'),
+    #             key_responsibility_4 = request.json.get('key_responsibility_4'),
+    #             key_responsibility_5 = request.json.get('key_responsibility_5'),
+    #             job_type = request.json.get('job_type'),
+    #             closing_date = closing_date,
+    #             date_posted = date.today(),
+    #             company_id = session['company_id'],
+    #             archived_job = request.json.get('archived_job')
+    #         )
+
+    #     db.session.add(job)
+    #     db.session.commit()
+
+        
+    #     if job.id:
+    #         return make_response(job.to_dict(), 201)
+
+    #     else:
+    #         return make_response({"error": "Unable to create job"}, 400)
 
 
 class AllJobs(Resource):

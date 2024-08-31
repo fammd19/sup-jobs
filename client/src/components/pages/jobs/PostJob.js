@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Button, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
@@ -6,6 +6,10 @@ import * as Yup from 'yup';
 
 export default function PostJob({ company }) {
     const navigate = useNavigate();
+
+    {/* NEW */}
+    const [errorMessage, setErrorMessage] = useState('');
+
 
     if (!company) {
         navigate("/");
@@ -33,7 +37,7 @@ export default function PostJob({ company }) {
         },
         validationSchema: Yup.object({
             title: Yup.string().required("Title is required"),
-            salary: Yup.string().required("Salary is required"),
+            salary: Yup.number().min(0, "Salary cannot be negative"),
             department: Yup.string().required("Department is required"),
             location: Yup.string().required("Location is required"),
             job_type: Yup.string().required("Job type is required"),
@@ -52,9 +56,19 @@ export default function PostJob({ company }) {
                 },
                 body: JSON.stringify(values),
             })
-            .then(response => response.json())
+            // .then(response => response.json())
+            // new
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                  } else {
+                    return response.json().then(errorData => {
+                      throw new Error(errorData.error);
+                    });
+                }
+            })
             .then(json => navigate(`/jobs/${json.id}`))
-            .catch(error => console.log(error.message));
+            .catch(error => setErrorMessage(error.message));
         }
     });
 
@@ -89,7 +103,7 @@ export default function PostJob({ company }) {
                         </Col>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control
-                                type="text"
+                                type="number"
                                 name="salary"
                                 value={formik.values.salary}
                                 onChange={formik.handleChange}
@@ -399,6 +413,9 @@ export default function PostJob({ company }) {
                 </Form.Group>
 
                 <Button type="submit">Submit</Button>
+                {/* NEW */}
+                {errorMessage && <div className="error">{errorMessage}</div>}
+
             </Form>
         </>
     );
