@@ -152,7 +152,7 @@ class Company (db.Model, SerializerMixin):
             raise ValueError("Email is a required field")
 
         if Company.query.filter(Company.admin_email == admin_email).first():
-            raise ValueError("Email already taken")
+            raise ValueError("This email is already signed up to another account")
 
         if not re.match(r'^[A-Za-z0-9]+@[A-Za-z0-9.]+\.[A-Za-z]{2,7}$', admin_email):
             raise ValueError("Email not valid")

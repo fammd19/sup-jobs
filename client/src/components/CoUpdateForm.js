@@ -6,6 +6,8 @@ import * as Yup from "yup";
 export default function CoUpdateForm({ companyDetails, setCompanyDetails, displayAccountUpdateForm }) {
 
     const [showPassword, setShowPassword] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+
 
     const emailSchema = Yup.string()
         .email("Invalid email address")
@@ -17,7 +19,6 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
 
     const formik = useFormik({
         initialValues: {
-            name: companyDetails.name,
             size: companyDetails.size,
             about: companyDetails.about,
             mission_statement: companyDetails.mission_statement,
@@ -30,14 +31,13 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
             hashed_password: "",
         },
         validationSchema: Yup.object({
-            name: Yup.string().required("Name is required"),
-            size: Yup.string().required("Size is required"),
+            size: Yup.number().min(1, "Size must be at least 1").max(200, "Size must be at most 200").required("Size is required"),
             about: Yup.string().required("About section is required"),
             website_link: Yup.string().url("Invalid URL").required("Website link is required"),
             linkedin_link: Yup.string().url("Invalid URL").notRequired(),
             facebook_link: Yup.string().url("Invalid URL").notRequired(),
             instagram_link: Yup.string().url("Invalid URL").notRequired(),
-            logo: Yup.string().required("Logo link is required"),
+            logo: Yup.string().url("Invalid URL").required("Please enter a valid logo link"),
             // admin_email: Yup.string().email("Invalid email address").required("Admin email is required"),
             admin_email: emailSchema,
             hashed_password: Yup.string().notRequired(),
@@ -56,21 +56,23 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
                 body: JSON.stringify(values),
             })
                 .then((response) => {
-                    if (!response.ok) {
-                        console.log("Update unsuccessful");
-                        return null;
+                    if (response.ok) {
+                        return response.json();
+                      } else {
+                        return response.json().then(errorData => {
+                          throw new Error(errorData.error || "An unknown error occurred");
+                        });
                     }
-                    return response.json();
                 })
                 .then((data) => {
                     if (data) {
                         setCompanyDetails(data);
                     }
+                    displayAccountUpdateForm();
                 })
                 .catch((error) => {
-                    console.error("Error updating company details:", error);
+                    setErrorMessage(error.message);
                 });
-            displayAccountUpdateForm();
         }
     });
 
@@ -79,7 +81,6 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
             .then((response) => response.json())
             .then((json) => {
                 formik.setValues({
-                    name: json.name,
                     size: json.size,
                     about: json.about,
                     mission_statement: json.mission_statement,
@@ -95,25 +96,12 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
     }, []);
 
     return (
-        <Form onSubmit={formik.handleSubmit}>
-            <Form.Group>
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                    type="text"
-                    name="name"
-                    value={formik.values.name}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    isInvalid={!!formik.errors.name && formik.touched.name}
-                />
-                <Form.Control.Feedback type="invalid">
-                    {formik.errors.name}
-                </Form.Control.Feedback>
-            </Form.Group>
+        <Form className="my-4" onSubmit={formik.handleSubmit}>
+            <h3>Update company details</h3>
             <Form.Group>
                 <Form.Label>Size</Form.Label>
                 <Form.Control
-                    type="text"
+                    type="number"
                     name="size"
                     value={formik.values.size}
                     onChange={formik.handleChange}
@@ -249,6 +237,8 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
                 </Form.Control.Feedback>
             </Form.Group> 
             <Button type="submit">Submit update</Button>
+            {errorMessage && <div className="error">{errorMessage}</div>}
+
         </Form>
     );
 }

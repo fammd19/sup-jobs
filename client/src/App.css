@@ -121,6 +121,11 @@ h1 {
   padding: 10px;
 }
 
+.error {
+  font-weight: bolder;
+  color: red;
+}
+
 
 
 

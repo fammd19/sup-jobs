@@ -156,43 +156,67 @@ class CompanyAccount(Resource):
         else: 
             return make_response({"message":"No company found."}, 404)
 
+
+
     def patch(self):
-
         if 'company_id' not in session:
-            return make_response ({"error":"Unauthorised. No company logged in."}, 401)
-
+            return make_response({"error":"Unauthorised. No company logged in."}, 401)
+        
         company = Company.query.filter(Company.id == session['company_id']).first()
 
         if company:
-            for attr in request.json:
-                if attr == 'admin_email' and request.json[attr] == company.admin_email:
-                    continue
-                setattr(company, attr, request.json[attr])
+            try:
+                for attr in request.json:
+                    if attr == 'admin_email' and request.json[attr] == company.admin_email:
+                        continue
+                    setattr(company, attr, request.json[attr])
                 
-            db.session.commit()
-            return make_response(company.to_dict(), 200)
+                db.session.commit()
+                return make_response(company.to_dict(), 200)
 
+            except ValueError as e:
+                return make_response({"error": str(e)}, 400)
+            
+            except Exception as e:
+                return make_response({"error": "An unexpected error occurred: " + str(e)}, 500)
+        
         else:
-            return make_response({"error": "Company not updated."}, 404)
+            return make_response({"error": "Company not found."}, 404)
+
+    # def patch(self):
+
+    #     company = Company.query.filter(Company.id == session['company_id']).first()
+
+    #     if company:
+    #         for attr in request.json:
+    #             if attr == 'admin_email' and request.json[attr] == company.admin_email:
+    #                 continue
+    #             setattr(company, attr, request.json[attr])
+                
+    #         db.session.commit()
+    #         return make_response(company.to_dict(), 200)
+
+    #     else:
+    #         return make_response({"error": "Company not updated."}, 404)
 
 
-    def delete(self):
+    # def delete(self):
 
-        if 'company_id' not in session:
-            return make_response ({"error":"Unauthorised. No company logged in."}, 401)
+    #     if 'company_id' not in session:
+    #         return make_response ({"error":"Unauthorised. No company logged in."}, 401)
 
-        company = Company.query.filter(Company.id == session['company_id']).first()
+    #     company = Company.query.filter(Company.id == session['company_id']).first()
 
-        if company:
+    #     if company:
 
-            db.session.delete(company)
-            db.session.commit()
+    #         db.session.delete(company)
+    #         db.session.commit()
 
-            session.pop('company_id', None)
-            return make_response({"message":"Company deleted"}, 204)
+    #         session.pop('company_id', None)
+    #         return make_response({"message":"Company deleted"}, 204)
 
-        else: 
-            return make_response({"error":"No company account found"}, 404)
+    #     else: 
+    #         return make_response({"error":"No company account found"}, 404)
 
 
 class CompanyById(Resource):
