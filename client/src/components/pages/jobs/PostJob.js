@@ -414,6 +414,7 @@ export default function PostJob({ company }) {
                                 type="date"
                                 name="closing_date"
                                 value={formik.values.closing_date}
+                                min={new Date().toISOString().split('T')[0]}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 isInvalid={formik.touched.closing_date && formik.errors.closing_date}

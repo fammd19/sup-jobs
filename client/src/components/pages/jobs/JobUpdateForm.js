@@ -106,7 +106,7 @@ export default function JobUpdateForm({ company, job, setJob, displayJobUpdateFo
                     postcode: json.postcode || "",
                     application_link: json.application_link || "",
                     archived_job: json.archived_job,
-                    closing_date: json.closing_date ? json.closing_date.split(' ')[0] : "" // Ensure correct format
+                    closing_date: json.closing_date ? json.closing_date.split(' ')[0] : ""
 
                 });
             })
@@ -449,6 +449,7 @@ export default function JobUpdateForm({ company, job, setJob, displayJobUpdateFo
                                 value={formik.values.closing_date ? formik.values.closing_date.split(' ')[0] : ""}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
+                                min={new Date().toISOString().split('T')[0]}
                                 isInvalid={formik.touched.closing_date && formik.errors.closing_date}
                             />
                         </Col>

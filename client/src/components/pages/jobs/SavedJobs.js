@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom"
 export default function SavedJobs ( { candidate }) {
     const [jobs, setJobs] = useState([])
     const navigate = useNavigate()
+    const today = new Date().toISOString().split('T')[0]
+    console.log(today)
 
     useEffect ( () => {
         fetch(`/api/jobs/saved`)
@@ -32,9 +34,9 @@ export default function SavedJobs ( { candidate }) {
                                 <Card  className="my-3" key={job.id}>
                                     <Card.Body>
                                         {
-                                            job.archived_job===true
+                                            job.archived_job===true || job.closing_date<today
                                             ?
-                                            <h2>This job is no longer available</h2>
+                                            <h4 className="archived-banner">This job is no longer available</h4>
                                             :
                                             null
                                         }
@@ -51,8 +53,8 @@ export default function SavedJobs ( { candidate }) {
                                                 
                                             </Col>
                                             <Col className="col-5">
-                                                <Card.Text className="mt-2">{`${job.job_type}`}</Card.Text>
-                                                <Card.Text>{`${job.location}`}</Card.Text>
+                                                <Card.Text className="mt-2">{`${job.job_type.toUpperCase()}`}</Card.Text>
+                                                <Card.Text>{`${job.location.toUpperCase()}`}</Card.Text>
                                                 <Link to={`/jobs/${job.id}`}><Button variant="primary">More details</Button></Link>
                                             </Col>
                                         </Row>

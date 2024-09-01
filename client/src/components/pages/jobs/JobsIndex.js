@@ -84,8 +84,8 @@ export default function JobsIndex ( { candidate, company }) {
                                                 
                                             </Col>
                                             <Col className="col-5">
-                                                <Card.Text className="mt-2">{`${job.job_type}`}</Card.Text>
-                                                <Card.Text>{`${job.location}`}</Card.Text>
+                                                <Card.Text className="mt-2">{`${job.job_type.toUpperCase()}`}</Card.Text>
+                                                <Card.Text>{`${job.location.toUpperCase()}`}</Card.Text>
                                                 {
                                                     candidate || company
                                                     ?

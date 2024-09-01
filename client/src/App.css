@@ -117,8 +117,9 @@ h1 {
 
 .archived-banner {
   color: red;
-  background-color: lightgray;
+  /* background-color: lightgray; */
   padding: 10px;
+  font-weight: bold;
 }
 
 .error {

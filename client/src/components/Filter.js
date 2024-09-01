@@ -63,7 +63,7 @@ export default function Filter({ setUrl, company_id }) {
                         </Form.Group>
                     </Col>
                     <Col sm={5} md={4} lg={3} className="mb-2">
-                        <Form.Select name="location-filter" onChange={(e) => setLocation(e.target.value)}>
+                        <Form.Select value={location} name="location-filter" onChange={(e) => setLocation(e.target.value)}>
                             <option value="">All locations</option>
                             <option value="remote">Remote</option>
                             <option value="act">ACT</option>
@@ -77,7 +77,7 @@ export default function Filter({ setUrl, company_id }) {
                         </Form.Select>
                     </Col>
                     <Col sm={5} md={4} lg={3} className="mb-2">
-                        <Form.Select name="department-filter" onChange={(e) => setDepartment(e.target.value)}>
+                        <Form.Select value={department} name="department-filter" onChange={(e) => setDepartment(e.target.value)}>
                             <option value="">All departments</option>
                             <option value="co-founder">Co-Founder</option>
                             <option value="design">Design</option>
@@ -88,7 +88,7 @@ export default function Filter({ setUrl, company_id }) {
                         </Form.Select>
                     </Col>
                     <Col sm={5} md={4} lg={3} className="mb-2">
-                        <Form.Select name="industry-filter" onChange={(e) => setIndustry(e.target.value)}>
+                        <Form.Select value={industry} name="industry-filter" onChange={(e) => setIndustry(e.target.value)}>
                             <option value="">All industries</option>
                             <option value="agriculture">Agriculture, Forestry & Fishing</option>
                             <option value="construction">Construction</option>
