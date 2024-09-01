@@ -44,7 +44,7 @@ export default function NavBar ({ candidate, company } ) {
                   <Link className="nav-item nav-link" onClick={handleLinkClick} to="/">Home</Link>
                   <Link className="nav-item nav-link" onClick={handleLinkClick} to="/jobs">Jobs</Link>
                   <Link className="nav-item nav-link" onClick={handleLinkClick} to="/companies">Company Profiles</Link>
-                  <Link className="nav-item nav-link" onClick={handleLinkClick} to="/login">Login/ Signup</Link>
+                  <Link className="nav-item nav-link" onClick={handleLinkClick} to="/login">Login/ signup</Link>
                   <Link to="/company-login" onClick={handleLinkClick}><Button className="btn-secondary">For Companies</Button></Link>
               </Nav>
         }

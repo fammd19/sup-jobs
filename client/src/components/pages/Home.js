@@ -21,14 +21,27 @@ export default function Home ({ candidate, company }) {
                         <Col  xs="auto"><Link to={`/jobs/company/${company.id}`}><Button variant="primary">View your jobs</Button></Link></Col>
                         <Col xs="auto"><Link to="/jobs"><Button className="btn-primary">View all jobs</Button></Link></Col>
                     </Row>
-                    
                 </>
                 :
-                <>
-                    <Welcome />
-                    <SampleJobs number={3} candidate={candidate} company={company} selection={"live"}/>
-                    <FilterByDep />
-                </>
+                candidate
+                    ?
+                    <>
+                        <Welcome />
+                        <SampleJobs number={3} candidate={candidate} company={company} selection={"live"}/>
+                        <h4>Search by department</h4>
+                        <FilterByDep />
+                    </>
+                    :
+                    <>
+                        <Welcome />
+                        <Row className="justify-content-center mt-0 mb-5">
+                            <Col xs="auto"><Link to="/login">Candidate login/ signup</Link></Col>
+                            <Col xs="auto"><Link to="/company-login">Company login/ signup</Link></Col>
+                        </Row>
+                        <SampleJobs number={3} candidate={candidate} company={company} selection={"live"}/>
+                        <h4>Search by department</h4>
+                        <FilterByDep />
+                    </>
             }
 
         </>
