@@ -210,7 +210,7 @@ class JobById (Resource):
         for existing_job in existing_jobs:
             if existing_job.id == job.id:
                 continue
-            if existing_job.title.lower()==request.json.get('title').lower() and existing_job.salary==request.json.get('salary') and existing_job.location==request.json.get('location'):
+            if existing_job.title.lower()==request.json.get('title') and existing_job.salary==request.json.get('salary') and existing_job.location==request.json.get('location'):
                 return make_response({"error": "A job with the same title & salary already exists in this location."}, 400)
         
 

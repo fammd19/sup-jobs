@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Form, Col, Row, Button, Dropdown } from "react-bootstrap";
+import { Form, Col, Row, Button, Dropdown, InputGroup } from "react-bootstrap";
 
 export default function Filter({ setUrl, company_id }) {
     const [department, setDepartment] = useState("");
@@ -52,17 +52,19 @@ export default function Filter({ setUrl, company_id }) {
                 <Row className="justify-content-md-center">
                     <Col sm={5} md={4} lg={3} className="mb-2">
                     <Form.Group className="input-group">
-                    <span className="input-prefix">Salary: $</span>
+                        <InputGroup.Text>$</InputGroup.Text>
+                    {/* <span className="input-prefix">Salary: $</span> */}
                             <Form.Control
                                 className="salary-input"
                                 type="number"
+                                placeholder="Salary"
                                 value={salary}
                                 onChange={(e) => setSalary(e.target.value)}
                             />
                             
                         </Form.Group>
                     </Col>
-                    <Col sm={5} md={4} lg={3} className="mb-2">
+                    <Col sm={5} md={2} lg={3} className="mb-2">
                         <Form.Select value={location} name="location-filter" onChange={(e) => setLocation(e.target.value)}>
                             <option value="">All locations</option>
                             <option value="remote">Remote</option>

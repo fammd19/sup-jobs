@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import { Button, Row, Col } from 'react-bootstrap';
 
 export default function ACoProfile () {
@@ -78,6 +78,11 @@ export default function ACoProfile () {
                             null
                         }  
                         </Col>
+                    </Row>
+                        <Link to={`/jobs/company/${companyDetails.id}`}><Button className="mx-1 my-4" variant="primary">View live jobs</Button></Link>
+
+                    <Row>
+
                     </Row>               
                 </div>
 

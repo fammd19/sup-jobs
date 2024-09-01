@@ -432,11 +432,250 @@ def create_records():
             company_id=33
         )
 
+        job22 = Job(
+            title="Senior Software Engineer",
+            salary=130000,
+            salary_comments="Includes equity options",
+            department="technology",
+            role_description="Lead the development of our core technology platform, ensuring scalability and performance. Work with a team of talented engineers to drive innovation.",
+            application_link="https://techfusion.com.au/careers/senior-software-engineer",
+            location="act",
+            postcode="2601",
+            essential_experience="7+ years in software development, experience with cloud technologies",
+            optional_experience="Experience in a leadership role within a tech company",
+            key_responsibility_1="Architect and develop scalable software solutions.",
+            key_responsibility_2="Mentor junior engineers and foster a collaborative team environment.",
+            key_responsibility_3="Work closely with product teams to align technology with business goals.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=30),
+            date_posted=date.today(),
+            company_id=21
+        )
+
+        job23 = Job(
+            title="Marketing Coordinator",
+            salary=70000,
+            salary_comments="Plus performance bonuses",
+            department="marketing",
+            role_description="Support the marketing team in executing campaigns that drive enrollment and brand awareness. A great role for someone looking to grow in educational marketing.",
+            application_link="contact@inspireeducation.com.au",
+            location="nsw",
+            postcode="2000",
+            essential_experience="2+ years in marketing, preferably in the education sector",
+            optional_experience="Experience with digital marketing tools and social media management",
+            key_responsibility_1="Assist in the planning and execution of marketing campaigns.",
+            key_responsibility_2="Manage social media accounts and engage with the community.",
+            key_responsibility_3="Analyze campaign performance and report on key metrics.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=25),
+            date_posted=date.today(),
+            company_id=22
+        )
+
+        job24 = Job(
+            title="VR Curriculum Developer",
+            salary=90000,
+            salary_comments="Includes opportunities for professional development",
+            department="design",
+            role_description="Develop immersive VR-based curricula that enhance student learning experiences. Collaborate with educators and technologists to innovate education.",
+            application_link="https://nextgeneducation.com.au/careers/vr-curriculum-developer",
+            location="qld",
+            postcode="4000",
+            essential_experience="Experience in curriculum development and VR technologies",
+            optional_experience="Background in educational psychology or instructional design",
+            key_responsibility_1="Design and develop VR-based educational modules.",
+            key_responsibility_2="Work with subject matter experts to ensure content accuracy.",
+            key_responsibility_3="Test and refine VR curricula based on student feedback.",
+            job_type="contract",
+            closing_date=date.today() + timedelta(days=20),
+            date_posted=date.today(),
+            company_id=23
+        )
+
+        job25 = Job(
+            title="Operations Manager",
+            salary=110000,
+            salary_comments="Includes relocation assistance",
+            department="operations",
+            role_description="Oversee day-to-day operations at our sustainable farm, ensuring that production meets quality standards and that our practices align with sustainability goals.",
+            application_link="https://harvestfreshfarms.com.au/careers/operations-manager",
+            location="sa",
+            postcode="5000",
+            essential_experience="5+ years in operations management, preferably in agriculture",
+            optional_experience="Knowledge of sustainable farming practices",
+            key_responsibility_1="Manage farm operations and logistics.",
+            key_responsibility_2="Ensure compliance with environmental and safety regulations.",
+            key_responsibility_3="Optimize resource use and minimize waste.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=18),
+            date_posted=date.today(),
+            company_id=24
+        )
+
+        job26 = Job(
+            title="Sustainability Analyst",
+            salary=95000,
+            salary_comments="Performance-based bonuses",
+            department="finance",
+            role_description="Analyze and report on the financial impact of our sustainability initiatives. Provide insights to guide our sustainable farming strategies.",
+            application_link="info@greenacresagriculture.com.au",
+            location="wa",
+            postcode="6000",
+            essential_experience="3+ years in financial analysis, with a focus on sustainability",
+            optional_experience="Experience in the agriculture industry",
+            key_responsibility_1="Conduct financial analysis on sustainability projects.",
+            key_responsibility_2="Prepare reports and presentations for stakeholders.",
+            key_responsibility_3="Collaborate with the operations team to align financial goals with sustainability.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=22),
+            date_posted=date.today(),
+            company_id=25
+        )
+
+        job27 = Job(
+            title="Partner",
+            salary=0,
+            salary_comments="Generous equity options for right partner",
+            department="co-founder",
+            role_description="We've been proclaimed as one of the most exciting legal start-ups of the decade and we want to live up to that. This role would be a partnership with our founder to drive the business forward. Please get in touch if you'd like more information and to see if you ight be a good fit. Once in a lifetime opportunity.",
+            application_link="support@legalease.com.au",
+            location="remote",
+            essential_experience="Experience navigating the legal sector and strong business acumen",
+            optional_experience="Start-up experience, leadership preferred",
+            key_responsibility_1="Work with the founder as a partner to make strategic decisions",
+            key_responsibility_2="Define our business goals and develop a roadmap to achieve them",
+            key_responsibility_3="Contribute new ideas, knowledge and experience.",
+            job_type="volunteer",
+            closing_date=date.today() + timedelta(days=15),
+            date_posted=date.today(),
+            company_id=26
+        )
+
+        job28 = Job(
+            title="Corporate Law Intern",
+            salary=30000,
+            salary_comments="Internship with potential for full-time offer",
+            department="operations",
+            role_description="Work closely with our corporate law team, gaining exposure to high-profile cases and learning from seasoned legal professionals.",
+            application_link="https://justicepartners.com.au/careers/corporate-law-intern",
+            location="nsw",
+            postcode="2000",
+            essential_experience="Pursuing a law degree, with a focus on corporate law",
+            optional_experience="Previous internship experience in a law firm",
+            key_responsibility_1="Assist with legal research and case preparation.",
+            key_responsibility_2="Draft and review legal documents under supervision.",
+            key_responsibility_3="Participate in client meetings and court sessions.",
+            job_type="internship",
+            closing_date=date.today() + timedelta(days=10),
+            date_posted=date.today(),
+            company_id=27
+        )
+
+        job29 = Job(
+            title="Freelance Fashion Designer",
+            salary=80000,
+            salary_comments="Project-based with potential for long-term collaboration",
+            department="design",
+            role_description="Create innovative and sustainable fashion designs for our upcoming collections. Work remotely with our design team to bring fresh ideas to life.",
+            application_link="info@innovativeclothing.com.au",
+            location="remote",
+            essential_experience="5+ years in fashion design, with a portfolio showcasing innovative work",
+            optional_experience="Experience in sustainable fashion",
+            key_responsibility_1="Design unique and sustainable clothing items.",
+            key_responsibility_2="Collaborate with the production team to ensure design feasibility.",
+            key_responsibility_3="Stay updated on fashion trends and sustainability practices.",
+            job_type="freelance",
+            closing_date=date.today() + timedelta(days=28),
+            date_posted=date.today(),
+            company_id=28
+        )
+
+        job30 = Job(
+            title="Health Services Coordinator",
+            salary=70000,
+            salary_comments="Includes healthcare benefits",
+            department="operations",
+            role_description="Coordinate and manage the delivery of health services across multiple locations, ensuring high standards of patient care and efficient operations.",
+            application_link="https://spirehealthservices.com.au/careers/health-services-coordinator",
+            location="nt",
+            postcode="0800",
+            essential_experience="3+ years in healthcare management or coordination",
+            optional_experience="Experience with patient management systems",
+            key_responsibility_1="Coordinate the day-to-day operations of health services.",
+            key_responsibility_2="Ensure compliance with healthcare regulations.",
+            key_responsibility_3="Manage staff schedules and patient appointments.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=16),
+            date_posted=date.today(),
+            company_id=29
+        )
+
+        job31 = Job(
+            title="AI Healthcare Researcher",
+            salary=140000,
+            salary_comments="Includes research grants",
+            department="technology",
+            role_description="Lead research projects focused on developing AI-driven healthcare solutions that improve patient outcomes and streamline medical processes.",
+            application_link="https://smarthealthinnovations.com.au/careers/ai-healthcare-researcher",
+            location="tas",
+            postcode="7000",
+            essential_experience="PhD in AI or related field, with experience in healthcare applications",
+            optional_experience="Experience in leading research teams",
+            key_responsibility_1="Conduct cutting-edge research in AI healthcare technologies.",
+            key_responsibility_2="Collaborate with healthcare professionals to identify key challenges.",
+            key_responsibility_3="Publish research findings in leading journals and conferences.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=14),
+            date_posted=date.today(),
+            company_id=30
+        )
+
+        job32 = Job(
+            title="Health Services Coordinator",
+            salary=70000,
+            salary_comments="Includes healthcare benefits",
+            department="operations",
+            role_description="Coordinate and manage the delivery of health services across multiple locations, ensuring high standards of patient care and efficient operations.",
+            application_link="https://spirehealthservices.com.au/careers/health-services-coordinator",
+            location="nt",
+            postcode="0800",
+            essential_experience="3+ years in healthcare management or coordination",
+            optional_experience="Experience with patient management systems",
+            key_responsibility_1="Coordinate the day-to-day operations of health services.",
+            key_responsibility_2="Ensure compliance with healthcare regulations.",
+            key_responsibility_3="Manage staff schedules and patient appointments.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=16),
+            date_posted=date.today(),
+            company_id=29
+        )
+
+        job33 = Job(
+            title="AI Healthcare Researcher",
+            salary=140000,
+            salary_comments="Includes research grants",
+            department="technology",
+            role_description="Lead research projects focused on developing AI-driven healthcare solutions that improve patient outcomes and streamline medical processes.",
+            application_link="https://smarthealthinnovations.com.au/careers/ai-healthcare-researcher",
+            location="tas",
+            postcode="7000",
+            essential_experience="PhD in AI or related field, with experience in healthcare applications",
+            optional_experience="Experience in leading research teams",
+            key_responsibility_1="Conduct cutting-edge research in AI healthcare technologies.",
+            key_responsibility_2="Collaborate with healthcare professionals to identify key challenges.",
+            key_responsibility_3="Publish research findings in leading journals and conferences.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=14),
+            date_posted=date.today(),
+            company_id=30
+        )
+
+
 
 
         db.session.add_all([job1,job2,job3,job4,job5,job6,job7,job8,job9,job10])
         db.session.add_all([job11,job12,job13,job14,job15,job16,job17,job18,job19,job20])
-        db.session.add_all([job21])
+        db.session.add_all([job21,job22,job23,job24,job25,job26,job27,job28,job29,job30,job31])
         db.session.commit()
 
         print("Records created successfully!")
