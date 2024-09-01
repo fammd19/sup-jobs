@@ -8,7 +8,6 @@ import * as Yup from 'yup';
 export default function Signup({ candidate, setCandidate }) {
     const navigate = useNavigate();
 
-    {/* NEW */}
     const [errorMessage, setErrorMessage] = useState('');
 
 
@@ -36,7 +35,6 @@ export default function Signup({ candidate, setCandidate }) {
         validationSchema: Yup.object({
             first_name: Yup.string().required("First name is required"),
             last_name: Yup.string().required("Last name is required"),
-            // email: Yup.string().email("Invalid email address").required("Email is required"),
             email: emailSchema,
             password: Yup.string().required("Password is required"),
             preferred_department: Yup.string().required("Preferred department is required"),

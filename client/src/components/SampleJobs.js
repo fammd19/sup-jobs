@@ -22,48 +22,48 @@ export default function SampleJobs ( {number, candidate, company, selection} ) {
                         {
                             jobs.slice(0, number).map((job)=> {
                                 return(
-                                    <Col>
-                                <Card key={job.id}>
-                                    <Row className="justify-content-center mt-2">
-                                        <Card.Img variant="top" src={`${job.company.logo}`} />
-                                    </Row >
-                                    <Card.Body>
-                                            <Card.Title>{`${job.title}`}</Card.Title>
-                                            <Card.Subtitle>{`${job.company.name}`}</Card.Subtitle>
-                                            <Card.Text>${`${job.salary}`}</Card.Text>
-                                            <Card.Text>{`${job.location}`}</Card.Text>
-                                            <Card.Text>{`${job.job_type}`}</Card.Text>
-                                            { 
-                                                job.closing_date
-                                                ?
-                                                <Card.Text>{`${job.closing_date.split(' ')[0]}`}</Card.Text>
-                                                :
-                                                null
-                                            }
-                                            {
-                                                    candidate || company
-                                                    ?
-                                                    <Link to={`/jobs/${job.id}`}><Button variant="primary">More details</Button></Link>
-                                                    :
-                                                    <OverlayTrigger
-                                                    placement="bottom"
-                                                    overlay={<Tooltip id="button-tooltip">You must be logged in to view job details</Tooltip>}
-                                                  >
-                                                    <span className="d-inline-block">
-                                                      <Button variant="primary  disabled" disabled style={{ pointerEvents: 'none' }}>
-                                                        Signup to view details
-                                                      </Button>
-                                                    </span>
-                                                  </OverlayTrigger>
-                                                    
-                                                }
-                                    </Card.Body>
-                                </Card>
-                                </Col>
+                                    <Col key={job.id}>
+                                        <Card key={job.id}>
+                                            <Row className="justify-content-center mt-2">
+                                                <Card.Img variant="top" src={`${job.company.logo}`} />
+                                            </Row >
+                                            <Card.Body>
+                                                    <Card.Title>{`${job.title}`}</Card.Title>
+                                                    <Card.Subtitle>{`${job.company.name}`}</Card.Subtitle>
+                                                    <Card.Text>${`${job.salary}`}</Card.Text>
+                                                    <Card.Text>{`${job.location}`}</Card.Text>
+                                                    <Card.Text>{`${job.job_type}`}</Card.Text>
+                                                    { 
+                                                        job.closing_date
+                                                        ?
+                                                        <Card.Text>{`${job.closing_date.split(' ')[0]}`}</Card.Text>
+                                                        :
+                                                        null
+                                                    }
+                                                    {
+                                                            candidate || company
+                                                            ?
+                                                            <Link to={`/jobs/${job.id}`}><Button variant="primary">More details</Button></Link>
+                                                            :
+                                                            <OverlayTrigger
+                                                            placement="bottom"
+                                                            overlay={<Tooltip id="button-tooltip">You must be logged in to view job details</Tooltip>}
+                                                        >
+                                                            <span className="d-inline-block">
+                                                            <Button variant="primary  disabled" disabled style={{ pointerEvents: 'none' }}>
+                                                                Signup to view details
+                                                            </Button>
+                                                            </span>
+                                                        </OverlayTrigger>
+                                                            
+                                                        }
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
                                 
-                        )
-                    })
-                    }
+                                )
+                            })
+                        }
 
                 </Row>
                 :

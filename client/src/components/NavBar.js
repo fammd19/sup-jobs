@@ -15,7 +15,7 @@ export default function NavBar ({ candidate, company } ) {
   return(
     <>
     <Navbar expand="lg" className="bg-body-tertiary" collapseOnSelect expanded={expanded}>
-      <Navbar.Brand href="#home" className="mx-5"><img src="../../../assets/sup-logo.svg" /></Navbar.Brand>
+      <Navbar.Brand href="/" className="mx-5"><img src="../../../assets/sup-logo.svg" /></Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav"  className="mx-5" onClick={() => setExpanded(expanded ? false : true)} />
       <Container>
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -25,7 +25,7 @@ export default function NavBar ({ candidate, company } ) {
             <Nav className="ms-auto">
                 <Link className="nav-item nav-link" onClick={handleLinkClick} to="/">Home</Link>
                 <Link className="nav-item nav-link" onClick={handleLinkClick} to="/jobs">Jobs</Link>
-                <Link className="nav-item nav-link" onClick={handleLinkClick} to="/companies">Company Profiles</Link>
+                <Link className="nav-item nav-link" onClick={handleLinkClick} to="/companies">Company profiles</Link>
                 <Link className="nav-item nav-link" onClick={handleLinkClick} to="/account">Account</Link>
                 <Link className="nav-item nav-link" onClick={handleLinkClick} to="/logout">Logout</Link>
             </Nav>
@@ -35,7 +35,7 @@ export default function NavBar ({ candidate, company } ) {
               <Nav className="ms-auto">
                 <Link className="nav-item nav-link" onClick={handleLinkClick} to="/">Home</Link>
                 <Link className="nav-item nav-link" onClick={handleLinkClick} to="/jobs">Jobs</Link>
-                <Link className="nav-item nav-link" onClick={handleLinkClick} to="/post-job">Post Jobs</Link>
+                <Link className="nav-item nav-link" onClick={handleLinkClick} to="/post-job">Post jobs</Link>
                 <Link className="nav-item nav-link" onClick={handleLinkClick} to="/company-account">Account</Link>
                 <Link className="nav-item nav-link" onClick={handleLinkClick} to="/company-logout">Logout</Link>
               </Nav>
@@ -43,9 +43,9 @@ export default function NavBar ({ candidate, company } ) {
               <Nav className="ms-auto">
                   <Link className="nav-item nav-link" onClick={handleLinkClick} to="/">Home</Link>
                   <Link className="nav-item nav-link" onClick={handleLinkClick} to="/jobs">Jobs</Link>
-                  <Link className="nav-item nav-link" onClick={handleLinkClick} to="/companies">Company Profiles</Link>
+                  <Link className="nav-item nav-link" onClick={handleLinkClick} to="/companies">Company profiles</Link>
                   <Link className="nav-item nav-link" onClick={handleLinkClick} to="/login">Login/ signup</Link>
-                  <Link to="/company-login" onClick={handleLinkClick}><Button className="btn-secondary">For Companies</Button></Link>
+                  <Link to="/company-login" onClick={handleLinkClick}><Button className="btn-secondary">For companies</Button></Link>
               </Nav>
         }
       </Navbar.Collapse>

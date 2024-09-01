@@ -11,6 +11,19 @@ export default function JobPage ( {candidate, company} ) {
     const navigate = useNavigate();
     const [job, setJob] = useState (null)
     const [saved, setSaved] = useState (false)
+    
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based, so add 1
+        const day = String(date.getDate()).padStart(2, '0');
+      
+        return `${year}-${month}-${day}`;
+    }
+      
+    const today_unformatted = new Date();
+      
+    const today = formatDate(today_unformatted);
+
 
     useEffect (()=> {
         if (candidate) {
@@ -81,7 +94,7 @@ export default function JobPage ( {candidate, company} ) {
             response.json()
             setSaved(true)
     })
-        //need to display a prompt here
+        //need to display a prompt here?
     }
     
 
@@ -92,8 +105,7 @@ export default function JobPage ( {candidate, company} ) {
             .then(response => {
                 setSaved(false)
                 if (response.okay) {
-                }
-                else {
+                } else {
                     console.log(response.error)
                 }
             })
@@ -128,7 +140,7 @@ export default function JobPage ( {candidate, company} ) {
                 ?
                 <main className="mx-5">
                     {
-                        job.archived_job
+                        job.archived_job || job.closing_date < today
                         ?
                         <h2 className="my-4 archived-banner">This job is no longer available</h2>
                         :
@@ -261,7 +273,7 @@ export default function JobPage ( {candidate, company} ) {
                                     :
                                     <div>
                                         {
-                                        candidate
+                                        candidate && job.closing_date>today && job.archived_job==false
                                         ?
                                         <Button className="mx-1" onClick={handleSave}>Save job</Button>
                                         :

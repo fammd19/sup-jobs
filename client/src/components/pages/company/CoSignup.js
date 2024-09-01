@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Col, Row } from 'react-bootstrap';
-import NavBar from '../../NavBar';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 export default function CoSignup({ company, setCompany }) {
     const navigate = useNavigate();
 
-    {/* NEW */}
     const [errorMessage, setErrorMessage] = useState('');
-
 
     if (company) {
         navigate("/");
@@ -42,7 +39,7 @@ export default function CoSignup({ company, setCompany }) {
         },
         validationSchema: Yup.object({
             name: Yup.string().required("Company name is required"),
-            abn: Yup.string().length(11, "ABN must be 11 digits").matches(/^\d+$/, "ABN must be numeric").required("ABN is required"),
+            abn: Yup.string().length(11, "ABN must be 11 digits").matches(/^\d+$/, "ABN must be numeric").required("Your 11 digit ABN is required"),
             size: Yup.number().min(1, "Size must be at least 1").max(200, "Size must be at most 200").required("Size is required"),
             about: Yup.string().required("About field is required"),
             industry: Yup.string().required("Industry is required"),
@@ -50,9 +47,8 @@ export default function CoSignup({ company, setCompany }) {
             linkedin_link: Yup.string().url("Invalid URL").notRequired(),
             facebook_link: Yup.string().url("Invalid URL").notRequired(),
             instagram_link: Yup.string().url("Invalid URL").notRequired(),
-            // admin_email: Yup.string().email("Invalid email address").notRequired(),
             admin_email: emailSchema,
-            logo: Yup.string().url("Invalid URL").notRequired(),
+            logo: Yup.string().url("Invalid URL").required("Please add a link to your company logo"),
             password: Yup.string().required("Password is required")
         }),
         onSubmit: (values) => {
@@ -99,7 +95,7 @@ export default function CoSignup({ company, setCompany }) {
                         <Form.Group className="my-3">
                             <Row>
                                 <Col>
-                                    <Form.Label>Name</Form.Label>
+                                    <Form.Label>Company name</Form.Label>
                                 </Col>
                             </Row>
                             <Row>
@@ -109,6 +105,7 @@ export default function CoSignup({ company, setCompany }) {
                                         name="name"
                                         value={formik.values.name}
                                         onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
                                         isInvalid={formik.touched.name && formik.errors.name}
                                     />
                                     <Form.Control.Feedback type="invalid">
@@ -131,6 +128,7 @@ export default function CoSignup({ company, setCompany }) {
                                         name="admin_email"
                                         value={formik.values.admin_email}
                                         onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
                                         isInvalid={formik.touched.admin_email && formik.errors.admin_email}
                                     />
                                     <Form.Control.Feedback type="invalid">
@@ -153,6 +151,7 @@ export default function CoSignup({ company, setCompany }) {
                                         name="password"
                                         value={formik.values.password}
                                         onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
                                         isInvalid={formik.touched.password && formik.errors.password}
                                     />
                                     <Form.Control.Feedback type="invalid">
@@ -175,6 +174,7 @@ export default function CoSignup({ company, setCompany }) {
                                         name="abn"
                                         value={formik.values.abn}
                                         onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
                                         isInvalid={formik.touched.abn && formik.errors.abn}
                                     />
                                     <Form.Control.Feedback type="invalid">
@@ -197,6 +197,7 @@ export default function CoSignup({ company, setCompany }) {
                                         name="logo"
                                         value={formik.values.logo}
                                         onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
                                         isInvalid={formik.touched.logo && formik.errors.logo}
                                     />
                                     <Form.Control.Feedback type="invalid">
@@ -218,6 +219,7 @@ export default function CoSignup({ company, setCompany }) {
                                         type="number"
                                         name="size"
                                         value={formik.values.size}
+                                        onBlur={formik.handleBlur}
                                         onChange={formik.handleChange}
                                         isInvalid={formik.touched.size && formik.errors.size}
                                     />
@@ -241,6 +243,7 @@ export default function CoSignup({ company, setCompany }) {
                                         name="website_link"
                                         value={formik.values.website_link}
                                         onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
                                         isInvalid={formik.touched.website_link && formik.errors.website_link}
                                     />
                                     <Form.Control.Feedback type="invalid">
@@ -263,6 +266,7 @@ export default function CoSignup({ company, setCompany }) {
                                         name="industry"
                                         value={formik.values.industry}
                                         onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
                                         isInvalid={formik.touched.industry && formik.errors.industry}
                                     >
                                         <option value="">Select Industry</option>
@@ -298,6 +302,7 @@ export default function CoSignup({ company, setCompany }) {
                                         rows={4}
                                         name="about"
                                         value={formik.values.about}
+                                        onBlur={formik.handleBlur}
                                         onChange={formik.handleChange}
                                         isInvalid={formik.touched.about && formik.errors.about}
                                     />
@@ -398,7 +403,6 @@ export default function CoSignup({ company, setCompany }) {
                         </Form.Group>
 
                         <Button type="submit">Submit</Button>
-                        {/* NEW */}
                         {errorMessage && <div className="error">{errorMessage}</div>}
 
                     </Col>

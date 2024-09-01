@@ -293,24 +293,11 @@ class JobById (Resource):
 class FilterJobs (Resource):
 
     def get (self):
-        # min_size = request.args.get('min_size')
-        # max_size = request.args.get('max_size')
         industry = request.args.get('industry')
         salary = request.args.get('salary')
         department = request.args.get('department')
         location = request.args.get('location')
         company_id = request.args.get('company_id')
-
-        # #convert integers from args & set defaults
-        # if min_size:
-        #     min_size = int(min_size)
-        # else:
-        #     min_size = 0
-        
-        # if max_size:
-        #     max_size = int(201)
-        # else:
-        #     max_size = 0
 
         if salary:
             salary=int(salary)
@@ -318,6 +305,8 @@ class FilterJobs (Resource):
             salary = 0
 
         jobs = Job.query
+
+        jobs = jobs.filter(and_(Job.archived_job == False, Job.closing_date >= date.today()))
 
         if department:
             if department.lower() == 'null':
@@ -345,8 +334,6 @@ class FilterJobs (Resource):
 
         jobs = jobs.filter(
             and_(
-                # Job.company.size >= min_size,
-                # Job.company.size <= max_size,
                 Job.salary > salary
             )
         )

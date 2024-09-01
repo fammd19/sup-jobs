@@ -43,7 +43,7 @@ export default function Filter({ setUrl, company_id }) {
         setSalary("");
         setIndustry("");
         setLocation("");
-        setUrl("/api/jobs/all")
+        setUrl("/api/jobs/live")
     }
 
     return (

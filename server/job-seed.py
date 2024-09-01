@@ -419,7 +419,7 @@ def create_records():
             department = "technology",
             role_description ="This role is an amazing opportnity for an enthusiastic designer to learn from the best & really make a difference. Working with our Lead Designer you'll be responsible for designing new features, building assets and as much or as little else as you'd like to get involved with acrosse the business.",
             application_link = "https://supjobs.com.au/careers",
-            location = "Sydney",
+            location = "nsw",
             postcode = "2000",
             essential_experience = "Passion for user experience above all else",
             optional_experience = "Experience in a fast-paced start-up",

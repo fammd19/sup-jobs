@@ -6,7 +6,6 @@ export default function SavedJobs ( { candidate }) {
     const [jobs, setJobs] = useState([])
     const navigate = useNavigate()
     const today = new Date().toISOString().split('T')[0]
-    console.log(today)
 
     useEffect ( () => {
         fetch(`/api/jobs/saved`)
@@ -69,7 +68,7 @@ export default function SavedJobs ( { candidate }) {
                 </>
                 :
                 <>
-                    <p>No jobs found</p>
+                    <p>You have no saved jobs. Please check that you're logged in.</p>
                     <Button onClick={()=>navigate("/jobs")}>Search again</Button>
                 </>
             }
