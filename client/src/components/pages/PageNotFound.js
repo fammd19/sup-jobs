@@ -1,6 +1,5 @@
 import { Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import NavBar from "../NavBar";
 
 export default function PageNotFound () {
     return (

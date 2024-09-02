@@ -37,7 +37,7 @@ export default function ACoProfile () {
 
                 <div>
                     <img className="co-logo mb-4" src={`${companyDetails.logo}`} />
-                    <p><b>Size:</b> {companyDetails.size}</p>
+                    <p><b>No of employees:</b> {companyDetails.size}</p>
                     <p><b>Industry:</b> {companyDetails.industry}</p>
                     {
                         companyDetails.mission_statement

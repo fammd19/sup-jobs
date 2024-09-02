@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Card, Col, Container, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
-import { Link, useNavigate, useLocation, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 
 export default function CoJobs ( { candidate, company }) {
 
@@ -30,9 +30,7 @@ export default function CoJobs ( { candidate, company }) {
             {
                 jobs.length>0
                 ?
-                <>
-                <Button onClick={()=>navigate("/jobs")}>Jobs from all companies</Button>
-                    
+                <>                    
                     <Col>
                         {
                             jobs.map((job)=> {
@@ -87,7 +85,14 @@ export default function CoJobs ( { candidate, company }) {
                     }
 
                 </Col>
-                <Button onClick={()=>navigate("/jobs")}>All jobs</Button>
+                <Row className="justify-content-center">
+                    <Col className="col-2">
+                        <Link className="link" to="/jobs">Jobs from all co's</Link>
+                    </Col>
+                    <Col className="col-2">
+                        <Link className="link" to="/company-account">Your account</Link>
+                    </Col>
+                </Row>
                 </>
                 :
                 <>

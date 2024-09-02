@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { Link, useNavigate } from 'react-router-dom';
-import { Row, Card, Col, Container, Button } from 'react-bootstrap'
+import { Row, Col, Button } from 'react-bootstrap'
 import JobUpdateForm from "./JobUpdateForm";
 
 
@@ -14,7 +14,7 @@ export default function JobPage ( {candidate, company} ) {
     
     function formatDate(date) {
         const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based, so add 1
+        const month = String(date.getMonth() + 1).padStart(2, '0'); 
         const day = String(date.getDate()).padStart(2, '0');
       
         return `${year}-${month}-${day}`;
@@ -261,7 +261,6 @@ export default function JobPage ( {candidate, company} ) {
                                     null
                                 }
                                 <h4>Apply</h4>
-                                {/* Need to fix link */}
                                 <p><a href={job.application_link}>{`${job.application_link}`}</a></p>
                                 
                             </Row>

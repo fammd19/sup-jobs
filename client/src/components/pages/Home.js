@@ -1,13 +1,12 @@
-import NavBar from "../NavBar"
 import Welcome from "../Welcome";
 import SampleJobs from "../SampleJobs";
 import FilterByDep from "../FilterByDep";
-import { Button, Row, Col } from "react-bootstrap";
+import { Button, Row, Col, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "../Footer";
 
 export default function Home ({ candidate, company }) {
 
-    const navigate = useNavigate();
 
     return (
         <>   
@@ -43,7 +42,7 @@ export default function Home ({ candidate, company }) {
                         <FilterByDep />
                     </>
             }
-
+            <Footer />
         </>
     )
 }

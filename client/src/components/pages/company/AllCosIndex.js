@@ -41,20 +41,20 @@ export default function AllCosIndex ( { candidate, company }) {
                                                 </Row >
                                             </Col>
                                             <Col className="col-5">
-                                                <Card.Title className="mt-2"><b>{`${co.name}`}</b></Card.Title>
+                                                <Card.Title className="mt-3"><b>{`${co.name}`}</b></Card.Title>
                                                 <Card.Subtitle><b>{`${co.industry}`}</b></Card.Subtitle>                                                
                                             </Col>
                                             <Col className="col-5">
                                                 {
                                                     candidate || company
                                                     ?
-                                                    <Link to={`/companies/${co.id}`}><Button variant="primary">View company profile</Button></Link>
+                                                    <Link to={`/companies/${co.id}`}><Button className="mt-4" variant="primary">View company profile</Button></Link>
                                                     :
                                                     <OverlayTrigger
                                                     placement="bottom"
                                                     overlay={<Tooltip id="button-tooltip">You must be logged in to view company profiles</Tooltip>}
                                                   >
-                                                    <span className="d-inline-block">
+                                                    <span className="d-inline-block mt-4">
                                                         <Link to="/login">
                                                             <Button variant="secondary" disabled>
                                                                 Login to view company

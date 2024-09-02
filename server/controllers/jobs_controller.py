@@ -95,57 +95,6 @@ class CreateJob (Resource):
 
 
 
-    # def post(self):
-        
-    #     if 'company_id' not in session:
-    #         return make_response ({"error":"Unauthorised. No company logged in."}, 401)
-        
-    #     existing_jobs = Job.query.filter(Job.company_id == session['company_id']).all()
-        
-    #     for job in existing_jobs:
-    #         if job.title.lower()==request.json.get('title').lower() and job.salary==request.json.get('salary'):
-    #             return make_response({"error":"A job with the same title & salary exists for this company."}, 403)
-
-    #     closing_date_str = request.json.get('closing_date')
-    #     if closing_date_str:
-    #         closing_date = datetime.strptime(closing_date_str, '%Y-%m-%d')
-    #     else:
-    #         closing_date = None
-
-    #     job = Job(
-    #             title = request.json.get('title'),
-    #             salary = request.json.get('salary'),
-    #             salary_comments = request.json.get('salary_comments'),
-    #             department = request.json.get('department').lower(),
-    #             role_description = request.json.get('role_description'),
-    #             application_link = request.json.get('application_link'),
-    #             location = request.json.get('location'),
-    #             postcode = request.json.get('postcode'),
-    #             essential_experience = request.json.get('essential_experience'),
-    #             optional_experience = request.json.get('optional_experience'),
-    #             key_responsibility_1 = request.json.get('key_responsibility_1'),
-    #             key_responsibility_2 = request.json.get('key_responsibility_2'),
-    #             key_responsibility_3 = request.json.get('key_responsibility_3'),
-    #             key_responsibility_4 = request.json.get('key_responsibility_4'),
-    #             key_responsibility_5 = request.json.get('key_responsibility_5'),
-    #             job_type = request.json.get('job_type'),
-    #             closing_date = closing_date,
-    #             date_posted = date.today(),
-    #             company_id = session['company_id'],
-    #             archived_job = request.json.get('archived_job')
-    #         )
-
-    #     db.session.add(job)
-    #     db.session.commit()
-
-        
-    #     if job.id:
-    #         return make_response(job.to_dict(), 201)
-
-    #     else:
-    #         return make_response({"error": "Unable to create job"}, 400)
-
-
 class AllJobs(Resource):
 
     def get(self):
@@ -241,32 +190,6 @@ class JobById (Resource):
                 return make_response({"error": "An unexpected error occurred: " + str(e)}, 500)
 
 
-    # def patch(self, id):
-
-    #     if 'company_id' not in session:
-    #         return make_response({"error": "Unauthorized. No company logged in."}, 401)
-
-    #     job = Job.query.filter(Job.id == id).first()
-
-    #     if job is None:
-    #         return make_response({"error": "Job not found."}, 404)
-
-    #     if job.company_id != session['company_id']:
-    #         return make_response({"error": "Unauthorized. This job does not belong to the logged-in company."}, 403)
-
-    #     data = request.json
-    #     if 'closing_date' in data:
-    #         try:
-    #             data['closing_date'] = datetime.strptime(data['closing_date'], '%Y-%m-%d').date()
-    #         except ValueError:
-    #             return make_response({"error": "Invalid date format. Use YYYY-MM-DD."}, 400)
-
-    #     for attr, value in data.items():
-    #         setattr(job, attr, value)
-
-    #     db.session.commit()
-
-    #     return make_response(job.to_dict(), 203)
 
     def delete(self, id):
         

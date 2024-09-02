@@ -7,9 +7,6 @@ export default function CoAccount ( {company, setCompany} ) {
         
     const navigate = useNavigate();
 
-    // if ( !company ) {
-    //     navigate("/")
-    // }
 
         const [companyDetails, setCompanyDetails] = useState({
             name: "",
@@ -52,7 +49,7 @@ export default function CoAccount ( {company, setCompany} ) {
                 <div className="account">
                     <p>Company name: {companyDetails.name} </p>
                     <img className="co-logo" src={`${companyDetails.logo}`} />
-                    <p>Size: {companyDetails.size}</p>
+                    <p>Company size: {companyDetails.size}</p>
                     <p>Industry: {companyDetails.industry}</p>
                     <p>About: {companyDetails.about}</p>
                     {
@@ -87,7 +84,7 @@ export default function CoAccount ( {company, setCompany} ) {
                     <p>Email: {companyDetails.admin_email}</p>                    
                 </div>
 
-                <Link to={`/jobs/company/${companyDetails.id}`}><Button className="mx-1" variant="primary">View your live jobs</Button></Link>
+                <Link to={`/jobs/company/${companyDetails.id}`}><Button className="mx-1" variant="primary">View your jobs</Button></Link>
                 <Link to={`/companies/${companyDetails.id}`}><Button className="mx-1" variant="primary">View your profile</Button></Link>
                 <Button className="mx-1" id="update-account-btn" onClick={displayAccountUpdateForm}>Update account details</Button>
 

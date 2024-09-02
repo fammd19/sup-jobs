@@ -56,17 +56,16 @@ export default function Filter({ setUrl, company_id, defaultDepartment }) {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className="mb-3">
             <div className="filter">
                 <Row className="justify-content-md-center">
                     <Col sm={5} md={4} lg={3} className="mb-2">
                     <Form.Group className="input-group">
                         <InputGroup.Text>$</InputGroup.Text>
-                    {/* <span className="input-prefix">Salary: $</span> */}
                             <Form.Control
                                 className="salary-input"
                                 type="number"
-                                placeholder="Minimum salary"
+                                placeholder="Min. salary"
                                 value={salary}
                                 onChange={(e) => setSalary(e.target.value)}
                             />

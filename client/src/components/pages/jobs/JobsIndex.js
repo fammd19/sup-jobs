@@ -54,7 +54,7 @@ export default function JobsIndex ( { candidate, company }) {
                     {
                         company
                         ?
-                        <Link to={`/jobs/company/${company.id}`}><p className="my-2" variant="primary"><b>View your jobs</b></p></Link>
+                        <Link to={`/jobs/company/${company.id}`} className="link my-2">View your jobs</Link>
                         :
                         null
                     }
@@ -62,7 +62,7 @@ export default function JobsIndex ( { candidate, company }) {
                     {   
                         candidate
                         ?
-                        <Link to={`/jobs/saved`}><p className="my-2" variant="primary"><b>View your saved jobs</b></p></Link>
+                        <Link to={`/jobs/saved`} className="link my-2">View your saved jobs</Link>
                         :
                         null
                     }

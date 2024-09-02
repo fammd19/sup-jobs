@@ -1,9 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Button, Form, Col, Row, Alert } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import NavBar from '../../NavBar';
 
 export default function Login({ candidate, setCandidate, company }) {
     const navigate = useNavigate();
@@ -62,7 +61,7 @@ export default function Login({ candidate, setCandidate, company }) {
         <>
             <h1>Candidate login</h1>
 
-            <Form onSubmit={formik.handleSubmit}>
+            <Form onSubmit={formik.handleSubmit} className="mb-4">
                 <Row className="justify-content-center">
                     <Col xs={12} md={7} style={{ width: '60%' }}>
                         <Form.Group className="my-3">
@@ -102,10 +101,10 @@ export default function Login({ candidate, setCandidate, company }) {
                     </Col>
                 </Row>
             </Form>
-            <h5 className="my-4"><a href="/signup">Candidate signup</a></h5>
+            <Link className="link" to="/signup">Candidate signup</Link>
 
             <div className="my-2">
-                <p>Company? Head to <a href="/company-login">company login</a></p>
+                <p>Company? Head to <a className="link" href="/company-login">company login</a></p>
             </div>
         </>
     );

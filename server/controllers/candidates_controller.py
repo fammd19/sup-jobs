@@ -7,28 +7,6 @@ from models import Candidate
 
 class CandidateSignUp (Resource):
 
-    # def post(self):
-    #     if 'candidate_id' in session or 'company_id' in session:
-    #         return make_response ({"error":"Unauthorised. User already logged in."}, 401)
-
-    #     candidate = Candidate(
-    #             first_name = request.json.get('first_name'),
-    #             last_name = request.json.get('last_name'),
-    #             email = request.json.get('email'),
-    #             hashed_password = request.json.get('password'),
-    #             preferred_department = request.json.get('preferred_department'),
-    #             preferred_industry = request.json.get('preferred_industry')
-    #         )
-
-    #     db.session.add(candidate)
-    #     db.session.commit()
-
-    #     if candidate.id:
-    #         session['candidate_id'] = candidate.id
-    #         return make_response(candidate.to_dict(), 201)
-        
-    #     else:
-    #         return make_response({"error":"Bad request. Unable to create candidate"}, 400)
 
     def post(self):
         if 'candidate_id' in session or 'company_id' in session:
