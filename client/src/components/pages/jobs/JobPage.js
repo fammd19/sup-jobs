@@ -268,7 +268,7 @@ export default function JobPage ( {candidate, company} ) {
                                 {
                                     candidate && saved===true
                                     ?
-                                    <Button className="mx-1" onClick={handleRemove}>Remove job</Button>
+                                    <Button className="mx-1" onClick={handleRemove}>Unsave job</Button>
                                     :
                                     <div>
                                         {

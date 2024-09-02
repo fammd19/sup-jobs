@@ -3,7 +3,7 @@ from flask import make_response, request, session
 from flask_restful import Resource
 from datetime import datetime, date
 from models import Job, Company
-from sqlalchemy import and_
+from sqlalchemy import and_, desc
 
 
 class CreateJob (Resource):

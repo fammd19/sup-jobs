@@ -18,13 +18,6 @@ export default function AllCosIndex ( { candidate, company }) {
         <Container>
             <h1>All companies</h1>
             {
-                !candidate && !company
-                ?
-                <p>Please <Link to="/login">login</Link> to view company details</p>
-                :
-                null
-                }
-            {
                 companies.length>0
                 ?
                 <>  

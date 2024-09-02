@@ -44,23 +44,23 @@ class Candidate (db.Model, SerializerMixin):
 
         return email
 
-    @validates('preferred_industry')
-    def validate_preferred_industry(self, key, preferred_industry):
-        industries = ["agriculture","construction","cgs","education","health","hospitality","legal","media","manufacturing","mining","technology"]
+    # @validates('preferred_industry')
+    # def validate_preferred_industry(self, key, preferred_industry):
+    #     industries = ["agriculture","construction","cgs","education","health","hospitality","legal","media","manufacturing","mining","technology"]
 
-        if preferred_industry.lower() not in industries:
-            raise ValueError("Industry must be from the predefined list")
+    #     if preferred_industry.lower() not in industries:
+    #         raise ValueError("Industry must be from the predefined list")
 
-        return preferred_industry
+    #     return preferred_industry
 
-    @validates('preferred_department')
-    def validate_preferred_department(self, key, preferred_department):
-        departments = ["co-founder","design","finance","marketing","operations","technology"]
+    # @validates('preferred_department')
+    # def validate_preferred_department(self, key, preferred_department):
+    #     departments = ["co-founder","design","finance","marketing","operations","technology"]
 
-        if preferred_department.lower() not in departments:
-            raise ValueError("Department must be from the predefined list")
+    #     if preferred_department.lower() not in departments:
+    #         raise ValueError("Department must be from the predefined list")
 
-        return preferred_department
+    #     return preferred_department
 
     @hybrid_property
     def hashed_password (self):

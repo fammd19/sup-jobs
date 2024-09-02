@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Col, Row } from "react-bootstrap";
-import NavBar from "../../NavBar";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -37,8 +36,8 @@ export default function Signup({ candidate, setCandidate }) {
             last_name: Yup.string().required("Last name is required"),
             email: emailSchema,
             password: Yup.string().required("Password is required"),
-            preferred_department: Yup.string().required("Preferred department is required"),
-            preferred_industry: Yup.string().required("Preferred industry is required")
+            preferred_department: Yup.string().notRequired(),
+            preferred_industry: Yup.string().notRequired()
         }),
         onSubmit: (values) => {
             fetch("api/candidate/signup", {
@@ -48,8 +47,6 @@ export default function Signup({ candidate, setCandidate }) {
                 },
                 body: JSON.stringify(values)
             })
-            // .then(response => response.json())
-            // new
                 .then(response => {
                     if (response.ok) {
                         return response.json();
@@ -62,7 +59,7 @@ export default function Signup({ candidate, setCandidate }) {
                 .then(json => {
                     if (json.id) {
                         setCandidate(json)
-                        navigate("/");
+                        navigate("/jobs");
                     } else {
                         console.log("Signup unsuccessful: No ID in response");
                         setCandidate(null)
@@ -79,56 +76,13 @@ export default function Signup({ candidate, setCandidate }) {
         <>
             <h1 className="mt-5">Candidate signup</h1>
             <Form className="mt-3 text-start" onSubmit={formik.handleSubmit}>
+                
                 <Row className="justify-content-center">
                     <Col xs={12} sm={10} md={7} style={{ width: '40%' }}>
-                        <Form.Group className="my-3">
+                    <Form.Group className="my-3">
                             <Row>
                                 <Col>
-                                    <Form.Label>First Name</Form.Label>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <Form.Control
-                                        type="text"
-                                        name="first_name"
-                                        value={formik.values.first_name}
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        isInvalid={formik.touched.first_name && formik.errors.first_name}
-                                    />
-                                    <Form.Control.Feedback type="invalid">
-                                        {formik.errors.first_name}
-                                    </Form.Control.Feedback>
-                                </Col>
-                            </Row>
-                        </Form.Group>
-                        <Form.Group className="my-3">
-                            <Row>
-                                <Col>
-                                    <Form.Label>Last Name</Form.Label>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <Form.Control
-                                        type="text"
-                                        name="last_name"
-                                        value={formik.values.last_name}
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        isInvalid={formik.touched.last_name && formik.errors.last_name}
-                                    />
-                                    <Form.Control.Feedback type="invalid">
-                                        {formik.errors.last_name}
-                                    </Form.Control.Feedback>
-                                </Col>
-                            </Row>
-                        </Form.Group>
-                        <Form.Group className="my-3">
-                            <Row>
-                                <Col>
-                                    <Form.Label>Email</Form.Label>
+                                    <Form.Label>Email*</Form.Label>
                                 </Col>
                             </Row>
                             <Row>
@@ -150,7 +104,7 @@ export default function Signup({ candidate, setCandidate }) {
                         <Form.Group className="my-3">
                             <Row>
                                 <Col>
-                                    <Form.Label>Password</Form.Label>
+                                    <Form.Label>Password*</Form.Label>
                                 </Col>
                             </Row>
                             <Row>
@@ -172,7 +126,52 @@ export default function Signup({ candidate, setCandidate }) {
                         <Form.Group className="my-3">
                             <Row>
                                 <Col>
-                                    <Form.Label>Preferred Industry</Form.Label>
+                                    <Form.Label>First name*</Form.Label>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        name="first_name"
+                                        value={formik.values.first_name}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        isInvalid={formik.touched.first_name && formik.errors.first_name}
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {formik.errors.first_name}
+                                    </Form.Control.Feedback>
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                        <Form.Group className="my-3">
+                            <Row>
+                                <Col>
+                                    <Form.Label>Last name*</Form.Label>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        name="last_name"
+                                        value={formik.values.last_name}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        isInvalid={formik.touched.last_name && formik.errors.last_name}
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {formik.errors.last_name}
+                                    </Form.Control.Feedback>
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                        
+                        <Form.Group className="my-3">
+                            <Row>
+                                <Col>
+                                    <Form.Label>Preferred industry</Form.Label>
                                 </Col>
                             </Row>
                             <Row>
@@ -204,7 +203,7 @@ export default function Signup({ candidate, setCandidate }) {
                         <Form.Group className="my-3">
                             <Row>
                                 <Col>
-                                    <Form.Label>Preferred Department</Form.Label>
+                                    <Form.Label>Preferred department</Form.Label>
                                 </Col>
                             </Row>
                             <Row>
@@ -231,7 +230,6 @@ export default function Signup({ candidate, setCandidate }) {
                             </Row>
                         </Form.Group>
                         <Button type="submit">Submit</Button>
-                        {/* NEW */}
                         {errorMessage && <div className="error">{errorMessage}</div>}
                     </Col>
                 </Row>

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Col, Row, Button, Dropdown, InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-export default function Filter({ setUrl, company_id, defaultDepartment }) {
+export default function Filter({ setUrl, company_id, defaultDepartment, url }) {
 
     const navigate = useNavigate();
 
@@ -36,6 +36,7 @@ export default function Filter({ setUrl, company_id, defaultDepartment }) {
         }
 
         setUrl(url);
+
     }
 
     useEffect(() => {
@@ -113,7 +114,19 @@ export default function Filter({ setUrl, company_id, defaultDepartment }) {
                     </Col>
                 </Row>
             </div>
-            <Button className="mx-2" type="submit">Filter</Button><Button className="mx-2" onClick={clearFilter}>Clear filter</Button>
+            {
+                url.includes("filter")
+                ?
+                <>
+                    <Button className="mx-2 disabled" type="submit">Filter</Button>
+                    <Button className="mx-2" onClick={clearFilter}>Clear filter</Button>
+                </>
+                :
+                <>
+                    <Button className="mx-2" type="submit">Filter</Button>
+                    <Button className="mx-2 disabled" onClick={clearFilter}>Clear filter</Button>
+                </>
+            }
         </Form>
     );
 }

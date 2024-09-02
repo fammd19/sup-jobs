@@ -29,9 +29,9 @@ export default function JobsIndex ( { candidate, company }) {
 
     // //Condition to limit number of jobs to 10 if candidate not logged in
     let numJobs
-    // if (!candidate && !company) {
-    //     numJobs = 10
-    // }
+    if (!candidate && !company) {
+        numJobs = 25
+    }
 
     return (
 
@@ -42,15 +42,12 @@ export default function JobsIndex ( { candidate, company }) {
                 ?
                 <>
                     {
-                        !candidate && !company
+                        candidate || company
                         ?
-                        <p>Please <Link to="/login">login</Link> to view job details</p>
+                        <Filter setUrl={setUrl} defaultDepartment={departmentFromURL} url={url}/>
                         :
                         null
                     }
-
-                    <Filter setUrl={setUrl} defaultDepartment={departmentFromURL}/>
-
                     {
                         company
                         ?
@@ -114,16 +111,20 @@ export default function JobsIndex ( { candidate, company }) {
                     })
                     }
 
-                </Col>
-                {/* <Button onClick={()=>setUrl("/api/jobs/live")}>Clear filters</Button> */}
-                <Button onClick={clearFilters}>Clear filters</Button>
+                    </Col>
                 </>
                 :
                 <>
                     <p>No jobs found</p>
-                    {/* <Button onClick={()=>setUrl("/api/jobs/live")}>Search again</Button> */}
-                    <Button onClick={clearFilters}>Clear filters</Button>
+                    <Filter setUrl={setUrl} defaultDepartment={departmentFromURL} url={url}/>
                 </>
+            }
+            {
+                url !== "/api/jobs/live" && jobs.length > 5
+                ?
+                <Button onClick={clearFilters}>Clear filters</Button>
+                :
+                null
             }
         </Container>
     )
