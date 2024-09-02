@@ -7,8 +7,6 @@ def create_records():
 
         db.create_all()
 
-
-
         job1 = Job(
             title="Junior Designer",
             salary=80000,
@@ -670,12 +668,152 @@ def create_records():
             company_id=30
         )
 
+        job34 = Job(
+            title="Senior Financial Analyst",
+            salary=90000,
+            salary_comments="Performance bonuses and benefits",
+            department="finance",
+            role_description="Analyze financial data, create reports, and support strategic decision-making to drive financial performance.",
+            application_link="careers@example.com.au",
+            location="tas",
+            postcode="3000",
+            essential_experience="Advanced knowledge of financial modeling and analysis.",
+            optional_experience="Experience with financial forecasting.",
+            key_responsibility_1="Analyze financial data and trends.",
+            key_responsibility_2="Prepare detailed financial reports.",
+            key_responsibility_3="Support budgeting and forecasting activities.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=25),
+            date_posted=date.today(),
+            company_id=4
+        )
+
+        job35 = Job(
+            title="Frontend Developer",
+            salary=85000,
+            salary_comments="Base salary with annual bonus",
+            department="technology",
+            role_description="Develop and maintain user-facing features, ensuring a seamless and responsive experience for web and mobile applications.",
+            application_link="careers@example.com.au",
+            location="sa",
+            postcode="5000",
+            essential_experience="Proficiency in HTML, CSS, and JavaScript.",
+            optional_experience="Experience with modern frontend frameworks like React or Vue.",
+            key_responsibility_1="Build and maintain user-facing features.",
+            key_responsibility_2="Ensure responsiveness and performance across devices.",
+            key_responsibility_3="Collaborate with designers and backend developers.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=30),
+            date_posted=date.today(),
+            company_id=4
+        )
+
+        job36 = Job(
+            title="Digital Marketing Manager",
+            salary=85000,
+            salary_comments="Performance-based incentives available",
+            department="marketing",
+            role_description="Lead our digital marketing strategies, enhance online presence, and manage campaigns across various digital channels.",
+            application_link="https://indeed.com.au",
+            location="remote",
+            essential_experience="Proven track record in digital marketing.",
+            optional_experience="Experience with Google Ads and SEO tools.",
+            key_responsibility_1="Develop and execute digital marketing strategies.",
+            key_responsibility_2="Manage and optimize online advertising campaigns.",
+            key_responsibility_3="Analyze performance metrics and adjust strategies.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=20),
+            date_posted=date.today(),
+            company_id=22
+        )
+
+        job37 = Job(
+            title="Senior Backend Developer",
+            salary=110000,
+            salary_comments="Competitive salary with equity options",
+            department="technology",
+            role_description="Lead backend development projects, design robust systems, and ensure high performance and scalability of applications.",
+            application_link="https://example.com.au",
+            location="nt",
+            postcode="3000",
+            essential_experience="Extensive experience in backend technologies like Node.js or Java.",
+            optional_experience="Experience with microservices architecture.",
+            key_responsibility_1="Design and implement scalable backend systems.",
+            key_responsibility_2="Ensure high performance and reliability.",
+            key_responsibility_3="Collaborate with frontend developers and other teams.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=30),
+            date_posted=date.today(),
+            company_id=15
+        )
+
+        job38 = Job(
+            title="Graphic Designer",
+            salary=75000,
+            salary_comments="Base salary with health benefits",
+            department="design",
+            role_description="Create visual content for digital and print media, contributing to branding and marketing efforts.",
+            application_link="careers@example.com.au",
+            location="wa",
+            postcode="5000",
+            essential_experience="Strong portfolio in graphic design.",
+            optional_experience="Experience with Adobe Creative Suite.",
+            key_responsibility_1="Design visual content for various platforms.",
+            key_responsibility_2="Collaborate with marketing and design teams.",
+            key_responsibility_3="Ensure consistency with brand guidelines.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=15),
+            date_posted=date.today(),
+            archived_job=True,
+            company_id=9
+        )
+
+        job39 = Job(
+            title="Health Services Coordinator",
+            salary=70000,
+            salary_comments="Includes healthcare benefits",
+            department="operations",
+            role_description="Coordinate and manage the delivery of health services across multiple locations, ensuring high standards of patient care and efficient operations.",
+            application_link="https://spirehealthservices.com.au/careers/health-services-coordinator",
+            location="sa",
+            postcode="0800",
+            essential_experience="3+ years in healthcare management or coordination",
+            optional_experience="Experience with patient management systems",
+            key_responsibility_1="Coordinate the day-to-day operations of health services.",
+            key_responsibility_2="Ensure compliance with healthcare regulations.",
+            key_responsibility_3="Manage staff schedules and patient appointments.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=16),
+            date_posted=date.today(),
+            company_id=8
+        )
+
+        job40 = Job(
+            title="AI Healthcare Researcher",
+            salary=140000,
+            salary_comments="Includes research grants",
+            department="technology",
+            role_description="Lead research projects focused on developing AI-driven healthcare solutions that improve patient outcomes and streamline medical processes.",
+            application_link="https://smarthealthinnovations.com.au/careers/ai-healthcare-researcher",
+            location="remote",
+            essential_experience="PhD in AI, medical research or related field, with experience in healthcare applications",
+            optional_experience="Experience in leading research teams",
+            key_responsibility_1="Conduct cutting-edge research in AI healthcare technologies.",
+            key_responsibility_2="Collaborate with healthcare professionals to identify key challenges.",
+            key_responsibility_3="Publish research findings in leading journals and conferences.",
+            job_type="full-time",
+            closing_date=date.today() + timedelta(days=14),
+            date_posted=date.today(),
+            company_id=7
+        )
+
 
 
 
         db.session.add_all([job1,job2,job3,job4,job5,job6,job7,job8,job9,job10])
         db.session.add_all([job11,job12,job13,job14,job15,job16,job17,job18,job19,job20])
-        db.session.add_all([job21,job22,job23,job24,job25,job26,job27,job28,job29,job30,job31])
+        db.session.add_all([job21,job22,job23,job24,job25,job26,job27,job28,job29,job30])
+        db.session.add_all([job31,job32,job33])
         db.session.commit()
 
         print("Records created successfully!")

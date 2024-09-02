@@ -92,16 +92,14 @@ export default function Filter({ setUrl, company_id }) {
                     <Col sm={5} md={4} lg={3} className="mb-2">
                         <Form.Select value={industry} name="industry-filter" onChange={(e) => setIndustry(e.target.value)}>
                             <option value="">All industries</option>
-                            <option value="agriculture">Agriculture, Forestry & Fishing</option>
-                            <option value="construction">Construction</option>
+                            <option value="agriculture">Agriculture & Manufacturing</option>
+                            <option value="construction">Construction & Mining</option>
                             <option value="cgs">Consumer Goods & Services</option>
                             <option value="education">Education</option>
                             <option value="health">Health</option>
                             <option value="hospitality">Hospitality, Travel & Leisure</option>
                             <option value="legal">Legal & Financial Services</option>
                             <option value="media">Media & Telecomms</option>
-                            <option value="manufacturing">Manufacturing</option>
-                            <option value="mining">Mining</option>
                             <option value="technology">Technology & Software</option>
                         </Form.Select>
                     </Col>

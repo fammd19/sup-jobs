@@ -11,11 +11,11 @@ export default function FilterByDep () {
     return (
         <Container>
             <Row className="d-flex justify-content-center align-items-center">
-                <Col xs="auto" onClick={() => navigate('/jobs?dep=co-found')}>
+                <Col xs="auto" onClick={() => navigate('/jobs?deprtment=co-found')}>
                     <Row className="justify-content-center">Co-Found</Row>
                     <Row className="justify-content-center"><img className="icon clickable" src="../../../assets/co-found.svg"/></Row>
                 </Col>
-                <Col xs="auto" onClick={() => navigate('/jobs?dep=technology')}>
+                <Col xs="auto" onClick={() => navigate('/jobs?department=technology')}>
                     <Row className="justify-content-center">Tech</Row>
                     <Row className="justify-content-center"><img className="icon clickable" src="../../../assets/dev.svg"/></Row>
                 </Col>

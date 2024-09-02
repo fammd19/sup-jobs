@@ -18,6 +18,13 @@ export default function AllCosIndex ( { candidate, company }) {
         <Container>
             <h1>All companies</h1>
             {
+                !candidate && !company
+                ?
+                <p>Please <Link to="/login">login</Link> to view company details</p>
+                :
+                null
+                }
+            {
                 companies.length>0
                 ?
                 <>  
@@ -48,9 +55,11 @@ export default function AllCosIndex ( { candidate, company }) {
                                                     overlay={<Tooltip id="button-tooltip">You must be logged in to view company profiles</Tooltip>}
                                                   >
                                                     <span className="d-inline-block">
-                                                      <Button variant="primary  disabled" disabled style={{ pointerEvents: 'none' }}>
-                                                        Signup to view company
-                                                      </Button>
+                                                        <Link to="/login">
+                                                            <Button variant="secondary" disabled>
+                                                                Login to view company
+                                                            </Button>
+                                                        </Link>
                                                     </span>
                                                   </OverlayTrigger>
                                                     

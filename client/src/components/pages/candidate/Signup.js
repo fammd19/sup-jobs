@@ -185,16 +185,14 @@ export default function Signup({ candidate, setCandidate }) {
                                         isInvalid={formik.touched.preferred_industry && formik.errors.preferred_industry}
                                     >
                                         <option value="">Preferred industry</option>
-                                        <option value="agriculture">Agriculture, Forestry & Fishing</option>
-                                        <option value="construction">Construction</option>
+                                        <option value="agriculture">Agriculture & Manufacturing</option>
+                                        <option value="construction">Construction & Mining</option>
                                         <option value="cgs">Consumer Goods & Services</option>
                                         <option value="education">Education</option>
                                         <option value="health">Health</option>
                                         <option value="hospitality">Hospitality, Travel & Leisure</option>
                                         <option value="legal">Legal & Financial Services</option>
                                         <option value="media">Media & Telecomms</option>
-                                        <option value="manufacturing">Manufacturing</option>
-                                        <option value="mining">Mining</option>
                                         <option value="technology">Technology & Software</option>
                                     </Form.Select>
                                     <Form.Control.Feedback type="invalid">

@@ -59,13 +59,15 @@ h1 {
   --bs-btn-border-color: None;
 }
 
-/* .disabled {
+.disabled {
+  --bs-link-color-rgb: #B6FFBB;
   --bs-btn-bg: #B6FFBB;
   background-color:#B6FFBB;
   --bs-btn-color: black;
+  --bs-link-opacity: 0.6;
   opacity: 0.6;
-  cursor: not-allowed;
-} */
+}
+
 .btn.disabled {
   --bs-btn-bg: #B6FFBB;
   --bs-btn-disabled-color: black;

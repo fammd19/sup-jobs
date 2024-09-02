@@ -42,7 +42,7 @@ export default function JobsIndex ( { candidate, company }) {
                     {
                         !candidate && !company
                         ?
-                        <p>Please login to view all jobs</p>
+                        <p>Please <Link to="/login">login</Link> to view job details</p>
                         :
                         null
                     }
@@ -92,14 +92,13 @@ export default function JobsIndex ( { candidate, company }) {
                                                     <Link to={`/jobs/${job.id}`}><Button variant="primary">More details</Button></Link>
                                                     :
                                                     <OverlayTrigger
-                                                    placement="bottom"
-                                                    overlay={<Tooltip id="button-tooltip">You must be logged in to view job details</Tooltip>}
-                                                  >
-                                                    <span className="d-inline-block">
-                                                      <Button variant="primary  disabled" disabled style={{ pointerEvents: 'none' }}>
-                                                        Sign up to view details
-                                                      </Button>
-                                                    </span>
+                                                        placement="bottom"
+                                                        overlay={<Tooltip id="button-tooltip">You must be logged in to view job details</Tooltip>}>
+                                                        <span className="d-inline-block">
+                                                            <Link to="/login"><Button variant="secondary" disabled>
+                                                            Login to view details
+                                                        </Button></Link>
+                                                        </span>
                                                   </OverlayTrigger>
                                                     
                                                 }

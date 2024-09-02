@@ -35,8 +35,8 @@ export default function Home ({ candidate, company }) {
                     <>
                         <Welcome />
                         <Row className="justify-content-center mt-0 mb-5">
-                            <Col xs="auto"><Link to="/login">Candidate login/ signup</Link></Col>
-                            <Col xs="auto"><Link to="/company-login">Company login/ signup</Link></Col>
+                            <Col xs="auto"><Link to="/login"><Button className="btn-primary">Candidate login/ signup</Button></Link></Col>
+                            <Col xs="auto"><Link to="/company-login"><Button className="btn-secondary">Company login/ signup</Button></Link></Col>
                         </Row>
                         <SampleJobs number={3} candidate={candidate} company={company} selection={"live"}/>
                         <h4>Search by department</h4>

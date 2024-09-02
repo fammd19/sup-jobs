@@ -46,16 +46,15 @@ export default function SampleJobs ( {number, candidate, company, selection} ) {
                                                             <Link to={`/jobs/${job.id}`}><Button variant="primary">More details</Button></Link>
                                                             :
                                                             <OverlayTrigger
-                                                            placement="bottom"
-                                                            overlay={<Tooltip id="button-tooltip">You must be logged in to view job details</Tooltip>}
-                                                        >
-                                                            <span className="d-inline-block">
-                                                            <Button variant="primary  disabled" disabled style={{ pointerEvents: 'none' }}>
-                                                                Signup to view details
-                                                            </Button>
-                                                            </span>
-                                                        </OverlayTrigger>
-                                                            
+                                                                placement="bottom"
+                                                                overlay={<Tooltip id="button-tooltip">You must be logged in to view job details</Tooltip>}
+                                                                >
+                                                                <span className="d-inline-block">
+                                                                <Link to="/login"><Button variant="secondary" disabled>
+                                                                    Login to view details
+                                                                </Button></Link>
+                                                                </span>
+                                                            </OverlayTrigger>                                                            
                                                         }
                                             </Card.Body>
                                         </Card>

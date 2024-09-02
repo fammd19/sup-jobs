@@ -61,8 +61,8 @@ def create_records():
             size=8,
             industry="construction",
             logo="https://picsum.photos/204",
-            about="GreenScape Builders is a forward-thinking construction company focused on sustainable and eco-friendly building practices. Our projects range from residential homes to commercial spaces, all designed with environmental impact in mind.",
-            mission_statement="Building a greener future with sustainable construction practices.",
+            about="GreenScape Builders is a forward-thinking construction company focused on sustainable and eco-friendly building practices. Our projects range from residential homes to commercial spaces, all designed with environmental impact in mind. We take a tech first approach to our materials development and designs, using extensive data to ensure that we have the most robust and environmentally friendly solutions for our customers. We do not aspire to be the cheapest, simply the best.",
+            mission_statement="Building a greener future with sustainable, technology-driven construction practices.",
             website_link="https://greenscapebuilders.com.au",
             linkedin_link="https://linkedin.com/greenscape-builders",
             instagram_link="https://instagram.com/greenscapebuilders",
@@ -531,7 +531,6 @@ def create_records():
             hashed_password="1234abcd"
         )
 
-        # Add records to the session and commit
         db.session.add_all([company1, company2, company3, company4, company5, company6, company7, company8, company9, company10,company11, company12, company13, company14, company15, company16, company17, company18, company19, company20,company21, company22, company23, company24, company25, company26, company27, company28, company29, company30, company31, company32, company33])
         db.session.commit()
 
