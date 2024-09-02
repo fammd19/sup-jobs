@@ -334,7 +334,7 @@ class FilterJobs (Resource):
 
         jobs = jobs.filter(
             and_(
-                Job.salary > salary
+                Job.salary >= salary
             )
         )
 

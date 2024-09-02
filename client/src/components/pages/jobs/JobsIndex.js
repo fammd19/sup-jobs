@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Card, Col, Container, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom"
 import Filter from '../../Filter'
 
 export default function JobsIndex ( { candidate, company }) {
@@ -9,20 +9,22 @@ export default function JobsIndex ( { candidate, company }) {
 
     const location = useLocation();
     const navigate = useNavigate()
+    const [searchParams] = useSearchParams();
+
+    const departmentFromURL = searchParams.get('department') || '';
 
     useEffect ( () => {
-
-        const queryParams = new URLSearchParams(location.search);
-        const dep = queryParams.get('dep');
-        if (dep) {
-            setUrl(`/api/jobs/filter?department=${dep}`)
-        }
 
         fetch(url)
         .then(res => res.json())
         .then(json => setJobs(json))
         .catch(error => console.log(error.message))
     },[url])
+
+    const clearFilters = () => {
+        navigate('/jobs', { replace: true });
+        setUrl("/api/jobs/live")
+    };
 
 
     // //Condition to limit number of jobs to 10 if candidate not logged in
@@ -47,7 +49,7 @@ export default function JobsIndex ( { candidate, company }) {
                         null
                     }
 
-                    <Filter setUrl={setUrl}/>
+                    <Filter setUrl={setUrl} defaultDepartment={departmentFromURL}/>
 
                     {
                         company
@@ -95,9 +97,11 @@ export default function JobsIndex ( { candidate, company }) {
                                                         placement="bottom"
                                                         overlay={<Tooltip id="button-tooltip">You must be logged in to view job details</Tooltip>}>
                                                         <span className="d-inline-block">
-                                                            <Link to="/login"><Button variant="secondary" disabled>
-                                                            Login to view details
-                                                        </Button></Link>
+                                                            <Link to="/login">
+                                                                <Button variant="secondary" disabled>
+                                                                    Login to view details
+                                                                </Button>
+                                                            </Link>
                                                         </span>
                                                   </OverlayTrigger>
                                                     
@@ -111,12 +115,14 @@ export default function JobsIndex ( { candidate, company }) {
                     }
 
                 </Col>
-                <Button onClick={()=>setUrl("/api/jobs/live")}>Clear filters</Button>
+                {/* <Button onClick={()=>setUrl("/api/jobs/live")}>Clear filters</Button> */}
+                <Button onClick={clearFilters}>Clear filters</Button>
                 </>
                 :
                 <>
                     <p>No jobs found</p>
-                    <Button onClick={()=>setUrl("/api/jobs/live")}>Search again</Button>
+                    {/* <Button onClick={()=>setUrl("/api/jobs/live")}>Search again</Button> */}
+                    <Button onClick={clearFilters}>Clear filters</Button>
                 </>
             }
         </Container>

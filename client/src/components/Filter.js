@@ -1,9 +1,13 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Col, Row, Button, Dropdown, InputGroup } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-export default function Filter({ setUrl, company_id }) {
-    const [department, setDepartment] = useState("");
+export default function Filter({ setUrl, company_id, defaultDepartment }) {
+
+    const navigate = useNavigate();
+
+    const [department, setDepartment] = useState(defaultDepartment || "");
     const [salary, setSalary] = useState("");
     const [industry, setIndustry] = useState("");
     const [location, setLocation] = useState("");
@@ -31,12 +35,16 @@ export default function Filter({ setUrl, company_id }) {
             url = `${url}&location=${location}`;
         }
 
-        // if (companyId) {  
-        //     url = `${url}&company_id=${companyId}`;
-        // }
-
         setUrl(url);
     }
+
+    useEffect(() => {
+        if (defaultDepartment) {
+            let url = "/api/jobs/filter?";
+            url = `${url}&department=${department}`;
+            setUrl(url)
+        }
+    }, [defaultDepartment]);
 
     function clearFilter () {
         setDepartment("");
@@ -44,6 +52,7 @@ export default function Filter({ setUrl, company_id }) {
         setIndustry("");
         setLocation("");
         setUrl("/api/jobs/live")
+        navigate('/jobs', { replace: true });
     }
 
     return (
@@ -57,7 +66,7 @@ export default function Filter({ setUrl, company_id }) {
                             <Form.Control
                                 className="salary-input"
                                 type="number"
-                                placeholder="Salary"
+                                placeholder="Minimum salary"
                                 value={salary}
                                 onChange={(e) => setSalary(e.target.value)}
                             />
