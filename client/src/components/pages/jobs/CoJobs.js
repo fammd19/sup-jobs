@@ -47,7 +47,13 @@ export default function CoJobs ( { candidate, company }) {
                                         <Row>
                                             <Col>
                                                 <Row className="justify-content-center mt-2">
-                                                    <Card.Img src={`${job.company.logo}`} />
+                                                    {
+                                                        job.company.logo
+                                                        ?
+                                                        <Card.Img src={`${job.company.logo}`} />
+                                                        :
+                                                        <Card.Img src="../../../assets/placeholder.svg" />
+                                                    }      
                                                 </Row >
                                             </Col>
                                             <Col className="col-5">
@@ -85,14 +91,25 @@ export default function CoJobs ( { candidate, company }) {
                     }
 
                 </Col>
-                <Row className="justify-content-center">
-                    <Col className="col-2">
-                        <Link className="link" to="/jobs">Jobs from all co's</Link>
-                    </Col>
-                    <Col className="col-2">
-                        <Link className="link" to="/company-account">Your account</Link>
-                    </Col>
-                </Row>
+                {
+                    company
+                    ?
+                    <Row className="justify-content-center">
+                        <Col className="col-2">
+                            <Link className="link" to="/jobs">Jobs from all companies</Link>
+                        </Col>
+                        <Col className="col-2">
+                            <Link className="link" to="/company-account">Back to your account</Link>
+                        </Col>
+                    </Row>
+                    :
+                    <Row className="justify-content-center">
+                        <Col className="col-2">
+                            <Link className="link" to="/jobs">Jobs from all companies</Link>
+                        </Col>
+                    </Row>
+                }
+
                 </>
                 :
                 <>
