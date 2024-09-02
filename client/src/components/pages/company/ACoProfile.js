@@ -36,7 +36,13 @@ export default function ACoProfile () {
                 <h1>{companyDetails.name}</h1>
 
                 <div>
-                    <img className="co-logo mb-4" src={`${companyDetails.logo}`} />
+                    {
+                        companyDetails.logo
+                        ?
+                        <img className="co-logo mb-4" src={`${companyDetails.logo}`} />
+                        :
+                        <img className="co-logo mb-4" src="../../../assets/placeholder.svg" />
+                    }
                     <p><b>No of employees:</b> {companyDetails.size}</p>
                     <p><b>Industry:</b> {companyDetails.industry}</p>
                     {

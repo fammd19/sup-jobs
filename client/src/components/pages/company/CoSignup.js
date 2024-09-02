@@ -48,7 +48,7 @@ export default function CoSignup({ company, setCompany }) {
             facebook_link: Yup.string().url("Invalid URL").notRequired(),
             instagram_link: Yup.string().url("Invalid URL").notRequired(),
             admin_email: emailSchema,
-            logo: Yup.string().url("Invalid URL").required("Please add a link to your company logo"),
+            logo: Yup.string().url("Invalid URL").notRequired(),
             password: Yup.string().required("Password is required")
         }),
         onSubmit: (values) => {
@@ -59,8 +59,6 @@ export default function CoSignup({ company, setCompany }) {
                 },
                 body: JSON.stringify(values)
             })
-            // .then(response => response.json())
-            // new
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -92,33 +90,10 @@ export default function CoSignup({ company, setCompany }) {
             <Form className="mt-3 text-start" onSubmit={formik.handleSubmit}>
                 <Row className="justify-content-center">
                     <Col xs={12} sm={10} md={7} style={{ width: '40%' }}>
-                        <Form.Group className="my-3">
+                    <Form.Group className="my-3">
                             <Row>
                                 <Col>
-                                    <Form.Label>Company name</Form.Label>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <Form.Control
-                                        type="text"
-                                        name="name"
-                                        value={formik.values.name}
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        isInvalid={formik.touched.name && formik.errors.name}
-                                    />
-                                    <Form.Control.Feedback type="invalid">
-                                        {formik.errors.name}
-                                    </Form.Control.Feedback>
-                                </Col>
-                            </Row>
-                        </Form.Group>
-
-                        <Form.Group className="my-3">
-                            <Row>
-                                <Col>
-                                    <Form.Label>Admin Email</Form.Label>
+                                    <Form.Label>Admin email*</Form.Label>
                                 </Col>
                             </Row>
                             <Row>
@@ -137,11 +112,10 @@ export default function CoSignup({ company, setCompany }) {
                                 </Col>
                             </Row>
                         </Form.Group>
-
                         <Form.Group className="my-3">
                             <Row>
                                 <Col>
-                                    <Form.Label>Password</Form.Label>
+                                    <Form.Label>Password*</Form.Label>
                                 </Col>
                             </Row>
                             <Row>
@@ -160,11 +134,32 @@ export default function CoSignup({ company, setCompany }) {
                                 </Col>
                             </Row>
                         </Form.Group>
-
                         <Form.Group className="my-3">
                             <Row>
                                 <Col>
-                                    <Form.Label>ABN</Form.Label>
+                                    <Form.Label>Company name*</Form.Label>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        name="name"
+                                        value={formik.values.name}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        isInvalid={formik.touched.name && formik.errors.name}
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {formik.errors.name}
+                                    </Form.Control.Feedback>
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                        <Form.Group className="my-3">
+                            <Row>
+                                <Col>
+                                    <Form.Label>ABN*</Form.Label>
                                 </Col>
                             </Row>
                             <Row>
@@ -184,33 +179,12 @@ export default function CoSignup({ company, setCompany }) {
                             </Row>
                         </Form.Group>
 
-                        <Form.Group className="my-3">
-                            <Row>
-                                <Col>
-                                    <Form.Label>Logo Link</Form.Label>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <Form.Control
-                                        type="text"
-                                        name="logo"
-                                        value={formik.values.logo}
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        isInvalid={formik.touched.logo && formik.errors.logo}
-                                    />
-                                    <Form.Control.Feedback type="invalid">
-                                        {formik.errors.logo}
-                                    </Form.Control.Feedback>
-                                </Col>
-                            </Row>
-                        </Form.Group>
+                        
 
                         <Form.Group className="my-3">
                             <Row>
                                 <Col>
-                                    <Form.Label>Number of Employees</Form.Label>
+                                    <Form.Label>Number of employees*</Form.Label>
                                 </Col>
                             </Row>
                             <Row>
@@ -229,34 +203,10 @@ export default function CoSignup({ company, setCompany }) {
                                 </Col>
                             </Row>
                         </Form.Group>
-
                         <Form.Group className="my-3">
                             <Row>
                                 <Col>
-                                    <Form.Label>Website Link</Form.Label>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <Form.Control
-                                        type="text"
-                                        name="website_link"
-                                        value={formik.values.website_link}
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        isInvalid={formik.touched.website_link && formik.errors.website_link}
-                                    />
-                                    <Form.Control.Feedback type="invalid">
-                                        {formik.errors.website_link}
-                                    </Form.Control.Feedback>
-                                </Col>
-                            </Row>
-                        </Form.Group>
-
-                        <Form.Group className="my-3">
-                            <Row>
-                                <Col>
-                                    <Form.Label>Industry</Form.Label>
+                                    <Form.Label>Industry*</Form.Label>
                                 </Col>
                             </Row>
                             <Row>
@@ -290,7 +240,54 @@ export default function CoSignup({ company, setCompany }) {
                         <Form.Group className="my-3">
                             <Row>
                                 <Col>
-                                    <Form.Label>About</Form.Label>
+                                    <Form.Label>Website link*</Form.Label>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        name="website_link"
+                                        value={formik.values.website_link}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        isInvalid={formik.touched.website_link && formik.errors.website_link}
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {formik.errors.website_link}
+                                    </Form.Control.Feedback>
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                        <Form.Group className="my-3">
+                            <Row>
+                                <Col>
+                                    <Form.Label>Logo Link</Form.Label>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        name="logo"
+                                        value={formik.values.logo}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        isInvalid={formik.touched.logo && formik.errors.logo}
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {formik.errors.logo}
+                                    </Form.Control.Feedback>
+                                </Col>
+                            </Row>
+                        </Form.Group>
+
+                        
+
+                        <Form.Group className="my-3">
+                            <Row>
+                                <Col>
+                                    <Form.Label>About*</Form.Label>
                                 </Col>
                             </Row>
                             <Row>

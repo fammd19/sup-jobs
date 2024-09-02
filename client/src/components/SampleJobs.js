@@ -25,7 +25,13 @@ export default function SampleJobs ( {number, candidate, company, selection} ) {
                                     <Col key={job.id}>
                                         <Card key={job.id}>
                                             <Row className="justify-content-center mt-2">
-                                                <Card.Img variant="top" src={`${job.company.logo}`} />
+                                                {
+                                                    job.company.logo
+                                                    ?
+                                                    <Card.Img variant="top" src={`${job.company.logo}`} />
+                                                    :
+                                                    <Card.Img variant="top" src="../../../assets/placeholder.svg" />
+                                                }          
                                             </Row >
                                             <Card.Body>
                                                     <Card.Title>{`${job.title}`}</Card.Title>

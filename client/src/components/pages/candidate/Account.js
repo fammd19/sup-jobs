@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Row } from 'react-bootstrap';
 import UpdateForm from '../../UpdateForm';
-import SampleJobs from '../../SampleJobs';
 
 export default function Account ( {candidate, setCandidate} ) {
         
-        const navigate = useNavigate();
         const [savedJobs, setSavedJobs] = useState(0);
 
         const [candidateDetails, setCandidateDetails] = useState({

@@ -73,7 +73,14 @@ export default function JobsIndex ( { candidate, company }) {
                                         <Row>
                                             <Col>
                                                 <Row className="justify-content-center mt-2">
-                                                    <Card.Img src={`${job.company.logo}`} />
+                                                    {
+                                                        job.company.logo
+                                                        ?
+                                                        <Card.Img src={`${job.company.logo}`} />
+                                                        :
+                                                        <Card.Img src="../../../assets/placeholder.svg" />
+                                                    }
+                                                    
                                                 </Row >
                                             </Col>
                                             <Col className="col-5">

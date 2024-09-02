@@ -30,7 +30,13 @@ export default function AllCosIndex ( { candidate, company }) {
                                         <Row>
                                             <Col>
                                                 <Row className="justify-content-center mt-2">
-                                                    <Card.Img src={`${co.logo}`} />
+                                                    {
+                                                        co.logo
+                                                        ?
+                                                        <Card.Img src={`${co.logo}`} />
+                                                        :
+                                                        <Card.Img src="../../../assets/placeholder.svg" />
+                                                    }
                                                 </Row >
                                             </Col>
                                             <Col className="col-5">

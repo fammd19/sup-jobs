@@ -150,7 +150,13 @@ export default function JobPage ( {candidate, company} ) {
                         <Row>
                             <Col>
                                 <Row className="justify-content-center mt-2">
-                                    <img className="job-logo" src={`${job.company.logo}`} />
+                                    {
+                                        job.company.logo
+                                        ?
+                                        <img className="job-logo" src={`${job.company.logo}`} />
+                                        :
+                                        <img className="job-logo" src="../../../assets/placeholder.svg" />
+                                    }
                                 </Row >
                             </Col>
                             <Col className="job-title col-8">
@@ -272,7 +278,7 @@ export default function JobPage ( {candidate, company} ) {
                                     :
                                     <div>
                                         {
-                                        candidate && job.closing_date>today && job.archived_job==false
+                                        candidate && job.closing_date>today && job.archived_job===false
                                         ?
                                         <Button className="mx-1" onClick={handleSave}>Save job</Button>
                                         :
