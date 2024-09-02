@@ -306,7 +306,7 @@ export default function JobPage ( {candidate, company} ) {
                 :
                 <p>No job details found</p>
             }
-            <Link to="/jobs"><Button>Back to jobs</Button></Link>
+            <Link to="/jobs" className="link">Back to jobs</Link>
         </>
 
     )

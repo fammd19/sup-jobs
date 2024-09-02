@@ -44,7 +44,7 @@ export default function Account ( {candidate, setCandidate} ) {
             <>
                 <h1>Account</h1>
 
-                <div>
+                <div className="account">
                     <p>First name: {candidateDetails.first_name} </p>
                     <p>Last name: {candidateDetails.last_name}</p>
                     <p>Email: {candidateDetails.email}</p>

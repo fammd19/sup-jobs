@@ -129,6 +129,8 @@ class CandidateAccount (Resource):
                 for attr in request.json:
                     if attr == 'email' and request.json[attr] == candidate.email:
                         continue
+                    if attr == 'hashed_password' and request.json[attr] == "":
+                        continue
                     setattr(candidate, attr, request.json[attr])
                     
                 db.session.commit()

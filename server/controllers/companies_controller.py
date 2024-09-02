@@ -169,6 +169,8 @@ class CompanyAccount(Resource):
                 for attr in request.json:
                     if attr == 'admin_email' and request.json[attr] == company.admin_email:
                         continue
+                    if attr == 'hashed_password' and request.json[attr] == "":
+                        continue
                     setattr(company, attr, request.json[attr])
                 
                 db.session.commit()

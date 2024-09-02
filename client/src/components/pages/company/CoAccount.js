@@ -49,7 +49,7 @@ export default function CoAccount ( {company, setCompany} ) {
             <>
                 <h1>Account</h1>
 
-                <div>
+                <div className="account">
                     <p>Company name: {companyDetails.name} </p>
                     <img className="co-logo" src={`${companyDetails.logo}`} />
                     <p>Size: {companyDetails.size}</p>

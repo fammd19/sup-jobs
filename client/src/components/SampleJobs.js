@@ -71,9 +71,9 @@ export default function SampleJobs ( {number, candidate, company, selection} ) {
             {
                 selection ==="saved"
                 ?
-                <Link to="/jobs/saved"><Button>View all saved jobs</Button></Link>
+                <Link to="/jobs/saved" className="link">View all saved jobs</Link>
                 :
-                <Link to="/jobs"><Button>View more jobs</Button></Link>
+                <Link to="/jobs" className="link">View more jobs</Link>
             }
 
         </Container>

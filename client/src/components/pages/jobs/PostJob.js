@@ -162,8 +162,7 @@ export default function PostJob({ company }) {
                                 <option value="part-time">Part-Time</option>
                                 <option value="contract">Contract</option>
                                 <option value="freelance">Freelance</option>
-                                <option value="intern">Intern</option>
-                                <option value="co-founder">Co-Founder</option>
+                                <option value="internship">Intern</option>
                             </Form.Select>
                             <Form.Control.Feedback type="invalid">
                                 {formik.errors.job_type}

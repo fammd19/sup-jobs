@@ -96,7 +96,7 @@ export default function CoUpdateForm({ companyDetails, setCompanyDetails, displa
     }, []);
 
     return (
-        <Form className="my-4" onSubmit={formik.handleSubmit}>
+        <Form className="my-3 update-form" onSubmit={formik.handleSubmit}>
             <h3>Update company details</h3>
             <Form.Group>
                 <Form.Label>Size</Form.Label>

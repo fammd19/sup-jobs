@@ -133,7 +133,24 @@ h1 {
   font-weight: bolder;
 }
 
+.link {
+  font-weight: bolder;
+  color: black;
+}
 
+.form-label {
+  font-weight: bold;
+}
+
+.update-form {
+  max-width: 70%;
+  margin: auto;
+}
+
+.account {
+  max-width: 70%;
+  margin: auto;
+}
 
 
 .App {

@@ -69,9 +69,9 @@ export default function UpdateForm({ candidateDetails, setCandidateDetails, disp
     }, []);
 
     return (
-        <Form onSubmit={formik.handleSubmit}>
-            <Form.Group>
-                <Form.Label>First name</Form.Label>
+        <Form className="my-3 update-form" onSubmit={formik.handleSubmit} >
+            <Form.Group sm={6} md={5} lg={4}>
+                <Form.Label className="form-label">First name</Form.Label>
                 <Form.Control
                     type="text"
                     name="first_name"
@@ -84,8 +84,8 @@ export default function UpdateForm({ candidateDetails, setCandidateDetails, disp
                     {formik.errors.first_name}
                 </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group>
-                <Form.Label>Last name</Form.Label>
+            <Form.Group >
+                <Form.Label className="form-label">Last name</Form.Label>
                 <Form.Control
                     type="text"
                     name="last_name"
@@ -99,7 +99,7 @@ export default function UpdateForm({ candidateDetails, setCandidateDetails, disp
                 </Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
-                <Form.Label>Email</Form.Label>
+                <Form.Label className="form-label">Email</Form.Label>
                 <Form.Control
                     type="text"
                     name="email"
@@ -113,7 +113,7 @@ export default function UpdateForm({ candidateDetails, setCandidateDetails, disp
                 </Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
-                <Form.Label>New password</Form.Label>
+                <Form.Label className="form-label">New password</Form.Label>
                 <p>Please add a passsword if you'd like to update your existing password</p>
                 <Form.Control
                     type="password"
@@ -127,7 +127,7 @@ export default function UpdateForm({ candidateDetails, setCandidateDetails, disp
                     {formik.errors.hashed_password}
                 </Form.Control.Feedback>
             </Form.Group>
-            <Button type="submit">Submit update</Button>
+            <Button className="mt-3" type="submit">Submit update</Button>
             {errorMessage && <div className="error">{errorMessage}</div>}
         </Form>
     );
