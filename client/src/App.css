@@ -157,10 +157,23 @@ h1 {
   font-weight: bold;
 }
 
-.footer {
+/* .footer {
   padding: 10px; ;
+} */
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f9fa; 
+  display: none;
+  transition: opacity 0.5s ease; 
+  padding: 10px;
 }
 
+.footer.visible {
+  display: block; 
+}
 
 .App {
   text-align: center;

@@ -34,10 +34,10 @@ export default function NavBar ({ candidate, company } ) {
               ?
               <Nav className="ms-auto">
                 <Link className="nav-item nav-link" onClick={handleLinkClick} to="/">Home</Link>
-                <Link className="nav-item nav-link" onClick={handleLinkClick} to="/jobs">Jobs</Link>
-                <Link className="nav-item nav-link" onClick={handleLinkClick} to="/post-job">Post jobs</Link>
+                <Link className="nav-item nav-link" onClick={handleLinkClick} to={`/jobs/company/${company.id}`}>My jobs</Link>
                 <Link className="nav-item nav-link" onClick={handleLinkClick} to="/company-account">Account</Link>
                 <Link className="nav-item nav-link" onClick={handleLinkClick} to="/company-logout">Logout</Link>
+                <Link to="/post-job" onClick={handleLinkClick}><Button className="btn-secondary">Post job</Button></Link>
               </Nav>
               :
               <Nav className="ms-auto">

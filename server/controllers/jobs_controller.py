@@ -119,20 +119,39 @@ class LiveJobs(Resource):
             return make_response({"message": "No jobs available"}, 200)
             
 
-
-
-class JobsByCompany (Resource):
+class JobsByCompany(Resource):
 
     def get(self, id):
-        
-        jobs = Job.query.filter(Job.company_id == id).all()
+        try:
+            jobs = Job.query.filter(Job.company_id == id).all()
 
-        if len(jobs)>0:
-            jobs_dict = [ job.to_dict() for job in jobs ]
-            return make_response(jobs_dict, 200)
-            
-        else:
-            return make_response({"message": "No jobs posted for this company"}, 404)
+            if jobs:
+                jobs_dict = [job.to_dict() for job in jobs]
+                return make_response(jobs_dict, 200)
+            else:
+                return make_response({"message": "No jobs posted for this company"}, 404)
+
+        except Exception as e:
+            return make_response({"message": "An error occurred: " + str(e)}, 500)
+
+
+class LiveJobsByCompany(Resource):
+
+    def get(self, id):
+        try:
+            jobs = Job.query.filter(
+                and_(Job.company_id == id, Job.archived_job == False, Job.closing_date >= date.today())
+            ).order_by(Job.date_posted).all()
+
+            if jobs:
+                jobs_dict = [job.to_dict() for job in jobs]
+                return make_response(jobs_dict, 200)
+            else:
+                return make_response({"message": "No live jobs posted for this company"}, 404)
+
+        except Exception as e:
+            return make_response({"message": "An error occurred: " + str(e)}, 500)
+
 
 
 class JobById (Resource):

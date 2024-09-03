@@ -6,7 +6,7 @@ from models import db
 
 from controllers.candidates_controller import CandidateSignUp, CandidateLogin, CandidateLogout, CandidateAccount
 from controllers.companies_controller import CompanySignUp, CompanyLogin, CompanyLogout, CompanyAccount, CompanyById, AllCompanies
-from controllers.jobs_controller import CreateJob, AllJobs, JobById, JobsByCompany, FilterJobs, ArchivedJobs, ArchivedJobsByCompany, LiveJobs
+from controllers.jobs_controller import CreateJob, AllJobs, JobById, JobsByCompany, FilterJobs, ArchivedJobs, ArchivedJobsByCompany, LiveJobs, LiveJobsByCompany
 from controllers.saved_jobs_controller import SaveJob, AllSavedJobs, SavedJobById
 
 @app.before_request
@@ -52,6 +52,7 @@ api.add_resource(JobById, '/jobs/<int:id>', endpoint='job_by_id')
 api.add_resource(AllJobs, '/jobs/all', endpoint='jobs')
 api.add_resource(LiveJobs, '/jobs/live', endpoint='live_jobs')
 api.add_resource(JobsByCompany, '/jobs/company/<int:id>', endpoint='jobs_by_company')
+api.add_resource(LiveJobsByCompany, '/jobs/company/<int:id>/live', endpoint='live_jobs_by_company')
 api.add_resource(SaveJob, '/jobs/<int:id>/save', endpoint='save_job')
 api.add_resource(FilterJobs, '/jobs/filter', endpoint='filter_jobs')
 api.add_resource(ArchivedJobs, '/jobs/archived', endpoint='archived_jobs')

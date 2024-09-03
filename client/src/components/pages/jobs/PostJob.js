@@ -88,7 +88,7 @@ export default function PostJob({ company }) {
                 <Form.Group className="my-3">
                     <Row>
                         <Col sm={2} md={2} lg={2}>
-                            <Form.Label>Title</Form.Label>
+                            <Form.Label>Title*</Form.Label>
                         </Col>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control
@@ -109,7 +109,7 @@ export default function PostJob({ company }) {
                 <Form.Group className="my-3">
                     <Row>
                         <Col sm={2} md={2} lg={2}>
-                            <Form.Label>Salary</Form.Label>
+                            <Form.Label>Salary*</Form.Label>
                         </Col>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control
@@ -147,7 +147,7 @@ export default function PostJob({ company }) {
                 <Form.Group className="my-3">
                     <Row>
                         <Col sm={2} md={2} lg={2}>
-                            <Form.Label>Job type</Form.Label>
+                            <Form.Label>Job type*</Form.Label>
                         </Col>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Select
@@ -174,7 +174,7 @@ export default function PostJob({ company }) {
                 <Form.Group className="my-3">
                     <Row>
                         <Col sm={2} md={2} lg={2}>
-                            <Form.Label>Department</Form.Label>
+                            <Form.Label>Department*</Form.Label>
                         </Col>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Select
@@ -202,7 +202,7 @@ export default function PostJob({ company }) {
                 <Form.Group className="my-3">
                     <Row>
                         <Col sm={2} md={2} lg={2}>
-                            <Form.Label>Location</Form.Label>
+                            <Form.Label>Location*</Form.Label>
                         </Col>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Select
@@ -254,7 +254,7 @@ export default function PostJob({ company }) {
                 <Form.Group className="my-3">
                     <Row>
                         <Col sm={2} md={2} lg={2}>
-                            <Form.Label>Role description</Form.Label>
+                            <Form.Label>Role description*</Form.Label>
                         </Col>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control
@@ -276,6 +276,7 @@ export default function PostJob({ company }) {
                 <Form.Group className="my-3">
                     <Row>
                         <Form.Label>Key responsibilities</Form.Label>
+                        <p>Please include a minimum of 3 repsonsibilities</p>
                         <Col className="mb-2" sm={6} md={5} lg={4}>
                             <Form.Control
                                 placeholder="1"
@@ -385,7 +386,7 @@ export default function PostJob({ company }) {
                 <Form.Group className="my-3">
                     <Row>
                         <Col sm={2} md={2} lg={2}>
-                            <Form.Label>Application link or email</Form.Label>
+                            <Form.Label>Application link or email*</Form.Label>
                         </Col>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control
@@ -406,7 +407,7 @@ export default function PostJob({ company }) {
                 <Form.Group className="my-3">
                     <Row>
                         <Col sm={2} md={2} lg={2}>
-                            <Form.Label>Closing date</Form.Label>
+                            <Form.Label>Closing date*</Form.Label>
                         </Col>
                         <Col sm={6} md={5} lg={4}>
                             <Form.Control

@@ -94,7 +94,6 @@ export default function JobPage ( {candidate, company} ) {
             response.json()
             setSaved(true)
     })
-        //need to display a prompt here?
     }
     
 
@@ -112,7 +111,6 @@ export default function JobPage ( {candidate, company} ) {
     }
 
     function handleArchive () {
-
         fetch(`/api/jobs/${id}`, {
             method: "PATCH",
             headers: {
@@ -123,7 +121,26 @@ export default function JobPage ( {candidate, company} ) {
             .then(response => {
                 if (response.ok) {
                     setJob(null)
-                    navigate('/jobs')
+                    navigate(`/jobs/company/${company.id}`)
+                }
+                else {
+                    console.log(response.error)
+                }
+        })
+    }
+
+    function handleUnArchive () {
+        fetch(`/api/jobs/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({archived_job:false}),
+        })
+            .then(response => {
+                if (response.ok) {
+                    setJob(null)
+                    navigate(`/jobs/company/${company.id}`)
                 }
                 else {
                     console.log(response.error)
@@ -276,42 +293,59 @@ export default function JobPage ( {candidate, company} ) {
                                     ?
                                     <Button className="mx-1" onClick={handleRemove}>Unsave job</Button>
                                     :
-                                    <div>
-                                        {
                                         candidate && job.closing_date>today && job.archived_job===false
                                         ?
                                         <Button className="mx-1" onClick={handleSave}>Save job</Button>
                                         :
                                         null
-                                        }
-                                        {
-                                        company && job.company.id === company.id
-                                            ?
-                                            <Row>
-                                                <Col><Button className="mx-1" id="update-job-btn" onClick={displayJobUpdateForm}>Update job</Button></Col>
-                                                <div id="job-update-form" className="hide">
-                                                    <JobUpdateForm job={job} setJob={setJob} displayJobUpdateForm={displayJobUpdateForm} />
-                                                </div>
-                                                <Col><Button className="mx-1" onClick={handleArchive}>Archive job</Button></Col>
-                                            </Row>
-                                            :
-                                            null
-                                        }
-                                </div>
-
                                 }
-
                             </div>
-
+                            <div>
+                                {
+                                    company && job.company.id === company.id && job.archived_job === false
+                                    ?
+                                        <Row>
+                                            <Col>
+                                                <Button className="mx-1" id="update-job-btn" onClick={displayJobUpdateForm}>Update job</Button>
+                                            </Col>
+                                            <Col>
+                                                <Button className="mx-1" onClick={handleArchive}>Archive job</Button>
+                                            </Col>
+                                            <div id="job-update-form" className="hide">
+                                                <JobUpdateForm job={job} setJob={setJob} displayJobUpdateForm={displayJobUpdateForm} />
+                                            </div>
+                                        </Row>
+                                        :
+                                            company && job.company.id === company.id && job.archived_job === true
+                                            ?
+                                                <Row>
+                                                    <Col>
+                                                        <Button className="mx-1" onClick={handleUnArchive}>Unarchive job</Button>
+                                                    </Col>
+                                                </Row>
+                                                :
+                                                null
+                                }
+                            </div>
                         </div>
-                        
-
-            
                 </main>
                 :
                 <p>No job details found</p>
             }
-            <Link to="/jobs" className="link">Back to jobs</Link>
+            {
+                company
+                ?
+                <Row className="mt-2">
+                    <Col>
+                        <Link to={`/jobs/company/${company.id}`} className="link">Your jobs</Link>
+                    </Col>
+                    <Col>
+                        <Link to="/jobs" className="link">All company jobs</Link>
+                    </Col>
+                </Row>
+                :
+                <Link to="/jobs" className="link">Back to jobs</Link>
+            }
         </>
 
     )
