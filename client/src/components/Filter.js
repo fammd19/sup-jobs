@@ -118,7 +118,7 @@ export default function Filter({ setUrl, company_id, defaultDepartment, url }) {
                 url.includes("filter")
                 ?
                 <>
-                    <Button className="mx-2 disabled" type="submit">Filter</Button>
+                    <Button className="mx-2" type="submit">Filter</Button>
                     <Button className="mx-2" onClick={clearFilter}>Clear filter</Button>
                 </>
                 :
