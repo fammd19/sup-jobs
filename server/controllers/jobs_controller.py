@@ -3,7 +3,7 @@ from flask import make_response, request, session
 from flask_restful import Resource
 from datetime import datetime, date
 from models import Job, Company
-from sqlalchemy import and_, desc
+from sqlalchemy import and_, or_, desc
 
 
 class CreateJob (Resource):
@@ -307,8 +307,18 @@ class ArchivedJobs(Resource):
 class ArchivedJobsByCompany(Resource):
 
     def get(self, id):
-        archived_jobs = Job.query.filter(and_(Job.archived_job == True), Job.company_id==id).all()
+        # archived_jobs = Job.query.filter(and_(Job.archived_job == True), Job.company_id==id).all()
 
+        archived_jobs = Job.query.filter(
+            and_(
+                or_(
+                    Job.archived_job == True,
+                    Job.closing_date < date.today()
+                ),
+                Job.company_id == id
+            )
+        ).all()
+        
         if len(archived_jobs) > 0:
             jobs_dict = [job.to_dict() for job in archived_jobs]
             return make_response(jobs_dict, 200)

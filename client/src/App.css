@@ -59,6 +59,12 @@ h1 {
   --bs-btn-border-color: None;
 }
 
+.btn-tertiary {
+  --bs-btn-bg: #6c757d;
+  --bs-btn-color: white;
+  --bs-btn-hover-bg: #495057;
+}
+
 .disabled {
   --bs-link-color-rgb: #B6FFBB;
   --bs-btn-bg: #B6FFBB;

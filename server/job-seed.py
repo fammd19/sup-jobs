@@ -802,7 +802,7 @@ def create_records():
             key_responsibility_2="Collaborate with healthcare professionals to identify key challenges.",
             key_responsibility_3="Publish research findings in leading journals and conferences.",
             job_type="full-time",
-            closing_date=date.today() + timedelta(days=14),
+            closing_date=date.today() + timedelta(days=-1),
             date_posted=date.today(),
             company_id=7
         )
@@ -814,6 +814,7 @@ def create_records():
         db.session.add_all([job11,job12,job13,job14,job15,job16,job17,job18,job19,job20])
         db.session.add_all([job21,job22,job23,job24,job25,job26,job27,job28,job29,job30])
         db.session.add_all([job31,job32,job33])
+        db.session.add_all([job40])
         db.session.commit()
 
         print("Records created successfully!")

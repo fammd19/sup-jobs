@@ -37,9 +37,11 @@ export default function Account ( {candidate, setCandidate} ) {
             if (formDiv.classList.contains("hide")) {
                 formDiv.classList.remove("hide") 
                 showBtn.textContent="Cancel update"
+                showBtn.classList.add("btn-tertiary")
             } else {
                 formDiv.classList.add("hide")
                 showBtn.textContent="Update details"   
+                showBtn.classList.remove("btn-tertiary")
             }
         }
 

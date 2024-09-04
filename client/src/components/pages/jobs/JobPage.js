@@ -72,9 +72,12 @@ export default function JobPage ( {candidate, company} ) {
         if (formDiv.classList.contains("hide")) {
             formDiv.classList.remove("hide") 
             showBtn.textContent="Cancel update"
+            showBtn.classList.add("btn-tertiary")
+
         } else {
             formDiv.classList.add("hide")
             showBtn.textContent="Update details"   
+            showBtn.classList.remove("btn-tertiary")
         }
     }
     
@@ -159,7 +162,7 @@ export default function JobPage ( {candidate, company} ) {
                     {
                         job.archived_job || job.closing_date < today
                         ?
-                        <h2 className="my-4 archived-banner">This job is no longer available</h2>
+                        <h2 className="my-4 archived-banner">This job is no longer live</h2>
                         :
                         null
                     }
@@ -309,7 +312,7 @@ export default function JobPage ( {candidate, company} ) {
                                                 <Button className="mx-1" id="update-job-btn" onClick={displayJobUpdateForm}>Update job</Button>
                                             </Col>
                                             <Col>
-                                                <Button className="mx-1" onClick={handleArchive}>Archive job</Button>
+                                                <Button className="mx-1 btn-tertiary" onClick={handleArchive}>Archive job</Button>
                                             </Col>
                                             <div id="job-update-form" className="hide">
                                                 <JobUpdateForm job={job} setJob={setJob} displayJobUpdateForm={displayJobUpdateForm} />

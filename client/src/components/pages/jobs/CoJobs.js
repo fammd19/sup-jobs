@@ -7,6 +7,19 @@ export default function CoJobs({ candidate, company }) {
     const { id } = useParams(); 
     const [jobs, setJobs] = useState([]);
 
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); 
+        const day = String(date.getDate()).padStart(2, '0');
+      
+        return `${year}-${month}-${day}`;
+    }
+      
+    const today_unformatted = new Date();
+      
+    const today = formatDate(today_unformatted);
+
+
     useEffect(() => {
         if (id) {
             const endpoint = company && company.id === parseInt(id, 10)
@@ -49,7 +62,7 @@ export default function CoJobs({ candidate, company }) {
                 ?
                 <>
                     <Button className="mx-2" onClick={seeLiveJobs}>Live jobs</Button>
-                    <Button className="mx-2" onClick={seeArchivedJobs}>Archived jobs</Button>
+                    <Button className="mx-2" onClick={seeArchivedJobs}>Expired & archived jobs</Button>
                     <Button className="mx-2" onClick={seeAllJobs}>All jobs</Button>
                 </>
                 :
@@ -63,9 +76,13 @@ export default function CoJobs({ candidate, company }) {
                         {
                             jobs.map((job) => (
                                 <Card className="my-3" key={job.id}>
-                                    {job.archived_job === true && (
-                                        <p className="archived-banner">This job has been archived</p>
-                                    )}
+                                    {
+                                        job.archived_job === true ||  job.closing_date < today
+                                        ?
+                                        <p className="archived-banner">This job is no longer live</p>
+                                        :
+                                        null
+                                    }
                                     <Card.Body>
                                         <Row>
                                             <Col>
