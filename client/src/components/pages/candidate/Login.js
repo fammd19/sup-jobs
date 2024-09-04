@@ -42,7 +42,7 @@ export default function Login({ candidate, setCandidate, company }) {
             .then(json => {
                 if (json.id) {
                     setCandidate(json);
-                    navigate("/");
+                    navigate("/jobs");
                 } else {
                     console.log("Login unsuccessful: No ID in response");
                     setCandidate(null);

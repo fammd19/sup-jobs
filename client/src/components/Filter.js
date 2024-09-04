@@ -12,10 +12,13 @@ export default function Filter({ setUrl, company_id, defaultDepartment, url }) {
     const [industry, setIndustry] = useState("");
     const [location, setLocation] = useState("");
 
+
     function handleSubmit(e) {
+        
         e.preventDefault();
 
-        let url = "/api/jobs/filter?";
+        let url = "/api/jobs/live/filter?";
+
 
         if (salary) {  
             url = `${url}salary=${salary}`;
@@ -41,7 +44,7 @@ export default function Filter({ setUrl, company_id, defaultDepartment, url }) {
 
     useEffect(() => {
         if (defaultDepartment) {
-            let url = "/api/jobs/filter?";
+            let url = "/api/jobs/live/filter?";
             url = `${url}&department=${department}`;
             setUrl(url)
         }

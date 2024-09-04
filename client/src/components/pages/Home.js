@@ -28,7 +28,7 @@ export default function Home ({ candidate, company }) {
                         <Welcome />
                         <SampleJobs number={3} candidate={candidate} company={company} selection={"live"}/>
                         <h4>Search by department</h4>
-                        <FilterByDep />
+                        {/* <FilterByDep /> */}
                     </>
                     :
                     <>
@@ -39,7 +39,7 @@ export default function Home ({ candidate, company }) {
                         </Row>
                         <SampleJobs number={3} candidate={candidate} company={company} selection={"live"}/>
                         <h4>Search by department</h4>
-                        <FilterByDep />
+                        {/* <FilterByDep /> */}
                     </>
             }
             <Footer />

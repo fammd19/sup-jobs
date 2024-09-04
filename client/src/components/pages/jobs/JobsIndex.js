@@ -11,15 +11,17 @@ export default function JobsIndex ( { candidate, company }) {
     const navigate = useNavigate()
     const [searchParams] = useSearchParams();
 
-    const departmentFromURL = searchParams.get('department') || '';
-
+    const departmentFromURL = searchParams.get('department') || ''
+    
     useEffect ( () => {
-
+        console.log(url)
         fetch(url)
         .then(res => res.json())
         .then(json => setJobs(json))
         .catch(error => console.log(error.message))
     },[url])
+
+
 
     const clearFilters = () => {
         navigate('/jobs', { replace: true });
@@ -27,7 +29,7 @@ export default function JobsIndex ( { candidate, company }) {
     };
 
 
-    // //Condition to limit number of jobs to 10 if candidate not logged in
+    // //Condition to limit number of jobs to 25 if candidate not logged in
     let numJobs
     if (!candidate && !company) {
         numJobs = 25
@@ -80,7 +82,6 @@ export default function JobsIndex ( { candidate, company }) {
                                                         :
                                                         <Card.Img src="../../../assets/placeholder.svg" />
                                                     }
-                                                    
                                                 </Row >
                                             </Col>
                                             <Col className="col-5">

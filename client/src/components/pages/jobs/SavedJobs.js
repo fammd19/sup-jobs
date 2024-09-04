@@ -71,7 +71,7 @@ export default function SavedJobs ( { candidate }) {
                 </>
                 :
                 <>
-                    <p>You have no saved jobs. Please check that you're logged in.</p>
+                    <p>You have no saved jobs.</p>
                     <Button onClick={()=>navigate("/jobs")}>Search again</Button>
                 </>
             }
