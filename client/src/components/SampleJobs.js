@@ -13,6 +13,15 @@ export default function SampleJobs ( {number, candidate, company, selection} ) {
         .then(json => setJobs(json))
         .catch(error => console.log(error.message))
     },[])
+
+    function titleCase(str) {
+        str = str.toLowerCase().split(' ');
+        for (var i = 0; i < str.length; i++) {
+          str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+        }
+        return str.join(' ');
+      }
+
     return (
     <Container className="mb-5">
             {
@@ -34,11 +43,11 @@ export default function SampleJobs ( {number, candidate, company, selection} ) {
                                                 }          
                                             </Row >
                                             <Card.Body>
-                                                    <Card.Title>{`${job.title}`}</Card.Title>
+                                                    <Card.Title>{`${titleCase(job.title)}`}</Card.Title>
                                                     <Card.Subtitle>{`${job.company.name}`}</Card.Subtitle>
                                                     <Card.Text>${`${job.salary}`}</Card.Text>
-                                                    <Card.Text>{`${job.location}`}</Card.Text>
-                                                    <Card.Text>{`${job.job_type}`}</Card.Text>
+                                                    <Card.Text>{`${job.location.toUpperCase()}`}</Card.Text>
+                                                    <Card.Text>{`${titleCase(job.job_type)}`}</Card.Text>
                                                     { 
                                                         job.closing_date
                                                         ?

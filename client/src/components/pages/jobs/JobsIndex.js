@@ -21,7 +21,13 @@ export default function JobsIndex ( { candidate, company }) {
         .catch(error => console.log(error.message))
     },[url])
 
-
+    function titleCase(str) {
+        str = str.toLowerCase().split(' ');
+        for (var i = 0; i < str.length; i++) {
+          str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+        }
+        return str.join(' ');
+    }
 
     const clearFilters = () => {
         navigate('/jobs', { replace: true });
@@ -85,13 +91,13 @@ export default function JobsIndex ( { candidate, company }) {
                                                 </Row >
                                             </Col>
                                             <Col className="col-5">
-                                                <Card.Title className="mt-2"><b>{`${job.title}`}</b></Card.Title>
+                                                <Card.Title className="mt-2"><b>{`${titleCase(job.title)}`}</b></Card.Title>
                                                 <Card.Subtitle><b>{`${job.company.name}`}</b></Card.Subtitle>
                                                 <Card.Text className="mt-4">${`${job.salary}`}</Card.Text>
                                                 
                                             </Col>
                                             <Col className="col-5">
-                                                <Card.Text className="mt-2">{`${job.job_type.toUpperCase()}`}</Card.Text>
+                                                <Card.Text className="mt-2">{`${titleCase(job.job_type)}`}</Card.Text>
                                                 <Card.Text>{`${job.location.toUpperCase()}`}</Card.Text>
                                                 {
                                                     candidate || company

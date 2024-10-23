@@ -38,7 +38,7 @@ export default function Home ({ candidate, company }) {
                             <Col xs="auto"><Link to="/company-login"><Button className="btn-secondary">Company login/ signup</Button></Link></Col>
                         </Row>
                         <SampleJobs number={3} candidate={candidate} company={company} selection={"live"}/>
-                        <h4>Search by department</h4>
+                        {/* <h4>Search by department</h4> */}
                         {/* <FilterByDep /> */}
                     </>
             }
